@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/andkit-lifecycle" />
+            <option value="$PROJECT_DIR$/andkit-mvvm" />
             <option value="$PROJECT_DIR$/andkit-repository" />
             <option value="$PROJECT_DIR$/demo" />
           </set>
