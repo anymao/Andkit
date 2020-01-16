@@ -1,6 +1,7 @@
 package com.anymore.andkit.mvvm
 
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -19,4 +20,9 @@ abstract class BindingActivity<B:ViewDataBinding> :AppCompatActivity(),
         mBinding.lifecycleOwner = this
         initData(savedInstanceState)
     }
+
+    @LayoutRes
+    abstract fun initView(savedInstanceState: Bundle?): Int
+
+    open fun initData(savedInstanceState: Bundle?){}
 }

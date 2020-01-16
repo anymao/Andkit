@@ -10,29 +10,29 @@ import com.anymore.andkit.repository.di.module.RepositoryModule
 /**
  * Created by liuyuanmao on 2019/3/9.
  */
-interface IRepositoryInjector{
+interface IRepositoryInjector {
     fun getRepositoryComponent(): RepositoryComponent
 }
 
-class RepositoryInjector constructor(private val application: Application): IRepositoryInjector {
+class RepositoryInjector constructor(private val application: Application) : IRepositoryInjector {
 
     private lateinit var mRepositoryComponent: RepositoryComponent
 
-    fun onCreate(){
+    fun onCreate() {
         val mRepositoryConfigsModule = getRepositoryConfigsModule()
         mRepositoryComponent = DaggerRepositoryComponent
-                                    .builder()
-                                    .repositoryModule(RepositoryModule())
-                                    .repositoryConfigsModule(mRepositoryConfigsModule)
-                                    .httpClientModule(HttpClientModule())
-                                    .build()
+            .builder()
+            .repositoryModule(RepositoryModule())
+            .repositoryConfigsModule(mRepositoryConfigsModule)
+            .httpClientModule(HttpClientModule())
+            .build()
     }
 
     private fun getRepositoryConfigsModule(): RepositoryConfigsModule {
         val repositoryConfigs = ManifestParser.parseRepositoryConfig(application)
         val builder = RepositoryConfigsModule.builder(application)
-        for(config in repositoryConfigs){
-            config.applyConfig(application,builder)
+        for (config in repositoryConfigs) {
+            config.applyConfig(application, builder)
         }
         return builder.build()
     }
