@@ -1,9 +1,11 @@
 package com.anymore.andkit.mvp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.andkit.mvp.widget.LoadingDialog
 
 /**
  * BaseActivity 实现[BaseContract.IBaseView]接口，后续MVP在Activity作为View层时候
@@ -34,13 +36,7 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, BaseContract.IBase
     override fun provideLifecycleOwner()=this
 
     override fun showProgressBar(message: String, cancelable: Boolean) {
-        if (!this::mLoadingDialog.isInitialized){
-//            mLoadingDialog = LoadingDialog(this,message,cancelable)
-        }else{
-//            mLoadingDialog.title = message
-//            mLoadingDialog.setCancelable(cancelable)
-        }
-        mLoadingDialog.show()
+        showDefaultLoadingDialog(message,cancelable)
     }
 
     override fun hideProgressBar() {
@@ -54,7 +50,7 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, BaseContract.IBase
     }
 
     override fun showSuccess(message: String) {
-//        toast(message)
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
 
     override fun showError(stringId: Int) {
@@ -62,7 +58,17 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, BaseContract.IBase
     }
 
     override fun showError(message: String) {
-//        toast(message)
+        Toast.makeText(this,message,Toast.LENGTH_LONG).show()
+    }
+
+    private fun showDefaultLoadingDialog(message: String, cancelable: Boolean){
+        if (!this::mLoadingDialog.isInitialized){
+            mLoadingDialog = LoadingDialog(this,message,cancelable)
+        }else{
+            mLoadingDialog.setTitle(message)
+            mLoadingDialog.setCancelable(cancelable)
+        }
+        mLoadingDialog.show()
     }
 
 }

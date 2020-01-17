@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/mvpkit_loading_dialog"
+              android:gravity="center"
+              android:layout_gravity="center"
+              android:orientation="vertical"
+              android:paddingBottom="10dp"
+              android:paddingLeft="21dp"
+              android:paddingRight="21dp"
+              android:paddingTop="10dp">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateDrawable="@drawable/mvpkit_loading_anim"
+        android:indeterminateOnly="true" />
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="加载中..."
+        android:textColor="#f0f0f0"
+        android:textSize="15sp"/>
+
+</LinearLayout>

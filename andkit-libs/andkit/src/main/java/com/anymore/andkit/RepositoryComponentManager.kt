@@ -1,7 +1,7 @@
 package com.anymore.andkit
 
 import android.app.Application
-import com.anymore.andkit.di.component.DaggerKitAppComponent
+import com.anymore.andkit.di.component.DaggerAndkitComponent
 import com.anymore.andkit.repository.IRepositoryComponentProvider
 import com.anymore.andkit.repository.RepositoryInjector
 import com.anymore.andkit.repository.di.component.RepositoryComponent
@@ -17,10 +17,10 @@ object RepositoryComponentManager:IRepositoryComponentProvider {
 
     fun install(application: Application) {
         mApplication = application
-        check(application is KitApplication) {
-            "the application must be subclass of<${KitApplication::class.java.name}>"
+        check(application is AndkitApplication) {
+            "the application must be subclass of<${AndkitApplication::class.java.name}>"
         }
-        DaggerKitAppComponent.create().inject(application)
+        DaggerAndkitComponent.create().inject(application)
     }
 
     fun onCreate() {

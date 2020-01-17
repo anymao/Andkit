@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anymore.wanandroid.common">
+
+    <application>
+        <provider
+            android:name=".ContextProvider"
+            android:authorities="${applicationId}.andkit.ContextProvider"
+            android:exported="false" />
+    </application>
+</manifest>

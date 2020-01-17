@@ -1,10 +1,2 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.anymore.andkit">
-
-    <application>
-        <provider
-            android:name=".ContextProvider"
-            android:authorities="${applicationId}.andkit.ContextProvider"
-            android:exported="false" />
-    </application>
-</manifest>
+    package="com.anymore.andkit" />

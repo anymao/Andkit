@@ -1,6 +1,7 @@
 package com.anymore.andkit.mvp
 
 import androidx.annotation.StringRes
+import androidx.annotation.UiThread
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import timber.log.Timber
@@ -24,22 +25,28 @@ interface BaseContract {
          * 通知UI目前处于loading状态，在[BaseActivity]和[BaseFragment]中有默认实现的弹窗形式LoadingDialog
          * 如果界面需要使用嵌入式的loading控件，请重写
          */
+        @UiThread
         fun showProgressBar(message:String,cancelable: Boolean = true)
 
         /**
          * 通知UI loading结束
          */
+        @UiThread
         fun hideProgressBar()
 
         /**
          * UI界面给出一条积极的提示
          */
+        @UiThread
         fun showSuccess(@StringRes stringId: Int)
+        @UiThread
         fun showSuccess(message: String)
         /**
          * UI界面给出一条消极的提示
          */
+        @UiThread
         fun showError(@StringRes stringId: Int)
+        @UiThread
         fun showError(message: String)
     }
 
