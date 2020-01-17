@@ -13,9 +13,10 @@
             <option value="$PROJECT_DIR$/andkit-libs/andkit-mvp" />
             <option value="$PROJECT_DIR$/andkit-libs/andkit-mvvm" />
             <option value="$PROJECT_DIR$/andkit-libs/andkit-repository" />
-            <option value="$PROJECT_DIR$/examples/demo" />
             <option value="$PROJECT_DIR$/examples/wa-common" />
+            <option value="$PROJECT_DIR$/examples/wa-contants" />
             <option value="$PROJECT_DIR$/examples/wa-repository" />
+            <option value="$PROJECT_DIR$/examples/wa-user" />
             <option value="$PROJECT_DIR$/examples/wanandroid" />
           </set>
         </option>

@@ -47,7 +47,7 @@ class WanAndroidRepositoryConfig : RepositoryConfigsModule.RepositoryConfig {
             }
             roomDatabaseConfig = object : RepositoryConfigsModule.RoomDatabaseConfig {
                 override fun config(context: Context, builder: RoomDatabase.Builder<*>) {
-                    builder.fallbackToDestructiveMigration()
+
                 }
 
             }

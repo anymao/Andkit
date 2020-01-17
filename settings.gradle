@@ -1,8 +1,9 @@
 rootProject.name='Andkit'
-include ':demo',
-        ':wanandroid',
+include ':wanandroid',
+        ':wa-contants',
         ':wa-common',
         ':wa-repository',
+        ':wa-user',
         ':andkit-lifecycle',
         ':andkit-repository',
         ':andkit-mvvm',
@@ -10,10 +11,12 @@ include ':demo',
         ':andkit'
 
 //app
-project(':demo').projectDir = file('examples/demo')
 project(':wanandroid').projectDir = file('examples/wanandroid')
+project(':wa-contants').projectDir = file('examples/wa-contants')
 project(':wa-common').projectDir = file('examples/wa-common')
 project(':wa-repository').projectDir = file('examples/wa-repository')
+project(':wa-user').projectDir = file('examples/wa-user')
+
 
 
 //andkit-libs
