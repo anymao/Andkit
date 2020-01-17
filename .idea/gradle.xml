@@ -8,12 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/andkit" />
-            <option value="$PROJECT_DIR$/andkit-lifecycle" />
-            <option value="$PROJECT_DIR$/andkit-mvp" />
-            <option value="$PROJECT_DIR$/andkit-mvvm" />
-            <option value="$PROJECT_DIR$/andkit-repository" />
-            <option value="$PROJECT_DIR$/demo" />
+            <option value="$PROJECT_DIR$/andkit-libs/andkit" />
+            <option value="$PROJECT_DIR$/andkit-libs/andkit-lifecycle" />
+            <option value="$PROJECT_DIR$/andkit-libs/andkit-mvp" />
+            <option value="$PROJECT_DIR$/andkit-libs/andkit-mvvm" />
+            <option value="$PROJECT_DIR$/andkit-libs/andkit-repository" />
+            <option value="$PROJECT_DIR$/examples/demo" />
+            <option value="$PROJECT_DIR$/examples/wanandroid" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

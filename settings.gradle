@@ -1,2 +1,22 @@
-include ':demo', ':andkit-lifecycle', ':andkit-repository', ':andkit-mvvm', /**':andkit-core', ':andkit-runtime', **/':andkit-mvp', ':andkit'
 rootProject.name='Andkit'
+include ':demo',
+        ':wanandroid',
+        ':andkit-lifecycle',
+        ':andkit-repository',
+        ':andkit-mvvm',
+//      ':andkit-core',
+//      ':andkit-runtime',
+        ':andkit-mvp',
+        ':andkit'
+
+
+project(':demo').projectDir = file('examples/demo')
+project(':wanandroid').projectDir = file('examples/wanandroid')
+
+project(':andkit-lifecycle').projectDir = file('andkit-libs/andkit-lifecycle')
+project(':andkit-repository').projectDir = file('andkit-libs/andkit-repository')
+project(':andkit-mvvm').projectDir = file('andkit-libs/andkit-mvvm')
+//project(':andkit-core').projectDir = file('andkit-libs/andkit-core')
+//project(':andkit-runtime').projectDir = file('andkit-libs/andkit-runtime')
+project(':andkit-mvp').projectDir = file('andkit-libs/andkit-mvp')
+project(':andkit').projectDir = file('andkit-libs/andkit')
