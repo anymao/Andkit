@@ -1,5 +1,6 @@
-package com.anymore.andkit.lifecycle.application
+package com.anymore.andkit.annotations
 
+import com.anymore.andkit.lifecycle.application.AbsApplicationWrapper
 import kotlin.reflect.KClass
 
 /**

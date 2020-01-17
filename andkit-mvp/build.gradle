@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -32,16 +33,16 @@ android {
 }
 
 dependencies {
-
+    def lifecycle_version = "2.2.0-rc03"
     def dagger2_version = "2.25.2"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.1.0'
-
-    implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation "com.google.dagger:dagger:$dagger2_version"
     kapt "com.google.dagger:dagger-compiler:$dagger2_version"
@@ -49,8 +50,22 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger2_version" // if you use the support libraries
     kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+
+    implementation project(path: ':andkit-lifecycle')
+    implementation project(path: ':andkit-repository')
 }

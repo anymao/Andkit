@@ -1,4 +1,4 @@
-package com.anymore.andkit.lifecycle.application
+package com.anymore.andkit.annotations
 
 /**
  * Created by liuyuanmao on 2019/11/4.

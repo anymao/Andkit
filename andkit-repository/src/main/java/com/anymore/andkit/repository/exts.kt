@@ -13,9 +13,9 @@ val Context.repositoryComponent: RepositoryComponent
 
 val Application.repositoryComponent: RepositoryComponent
     get() {
-        if (this is RepositoryComponentProvider) {
+        if (this is IRepositoryComponentProvider) {
             return repositoryComponent
         } else {
-            throw RuntimeException("the Application must be Implementation class of RepositoryComponentProvider")
+            throw RuntimeException("the Application must be Implementation class of IRepositoryComponentProvider")
         }
     }

@@ -1,2 +1,2 @@
-include ':demo', ':andkit-lifecycle', ':andkit-repository', ':andkit-mvvm', ':andkit-core', ':andkit-runtime'
+include ':demo', ':andkit-lifecycle', ':andkit-repository', ':andkit-mvvm', /**':andkit-core', ':andkit-runtime', **/':andkit-mvp', ':andkit'
 rootProject.name='Andkit'

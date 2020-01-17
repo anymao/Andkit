@@ -24,7 +24,7 @@ internal object ManifestParser {
             context.packageName,
             PackageManager.GET_META_DATA
         )
-        if (applicationInfo != null && applicationInfo.metaData.keySet().isNotEmpty()){
+        if (applicationInfo != null && applicationInfo.metaData?.keySet()?.isNotEmpty() == true){
             for (dataKey in applicationInfo.metaData.keySet()){
                 if (TextUtils.equals(key,applicationInfo.metaData[dataKey] as String)){
                     result.add(createConfigByName(dataKey))

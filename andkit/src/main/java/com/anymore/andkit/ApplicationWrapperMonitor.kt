@@ -1,10 +1,17 @@
-package com.anymore.andkit.lifecycle.application
+package com.anymore.andkit
 
 import android.app.Application
 import android.content.res.Configuration
+import com.anymore.andkit.annotations.Kiss
+import com.anymore.andkit.annotations.Kisses
+import com.anymore.andkit.lifecycle.application.AbsApplicationWrapper
+import com.anymore.andkit.lifecycle.application.IApplicationLifecycle
 import timber.log.Timber
 
 /**
+ * 通过[Kiss]或者[Kisses]注解将它标记在真正的应用程序的
+ * [Application]上，[ApplicationWrapperMonitor]会在相应生命周期调用[IApplicationLifecycle]
+ * 的相应方法，
  * Created by liuyuanmao on 2019/11/4.
  */
 internal object ApplicationWrapperMonitor : IApplicationLifecycle {
@@ -72,7 +79,7 @@ internal object ApplicationWrapperMonitor : IApplicationLifecycle {
         val constructor = wrapperClazz.java.getConstructor(Application::class.java)
         val wrapperImpl = constructor.newInstance(application)
         mWrappers.add(PriorityApplicationWrapper(wrapperImpl, priority))
-        Timber.d("install ApplicationWrapper<${wrapperImpl.javaClass.name}> success!")
+        Timber.i("install ApplicationWrapper<${wrapperImpl.javaClass.name}> success!")
     }
 
     override fun attachBaseContext() {

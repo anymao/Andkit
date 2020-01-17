@@ -1,8 +1,9 @@
-package com.anymore.andkit.lifecycle.application
+package com.anymore.andkit
 
 import android.app.Application
 import androidx.multidex.MultiDex
 import com.anymore.andkit.lifecycle.activity.ActivityLifecycle
+import com.anymore.andkit.lifecycle.application.AbsApplicationWrapper
 
 /**
  * kit-lib内置实现的[AbsApplicationWrapper]
