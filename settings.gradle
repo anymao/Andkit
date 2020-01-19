@@ -1,9 +1,16 @@
 rootProject.name='Andkit'
+
+//模块单独运行的情况下，项目工程忽略 wanandroid 模块，这个模块是相当于 “壳模块”
+
+if(!isModule.toBoolean()){
+    include ':wanandroid'
+    project(':wanandroid').projectDir = file('examples/wanandroid')
+}
+
 include ':wa-contants',
         ':wa-common',
         ':wa-repository',
         ':wa-user',
-        ':wanandroid',
         ':andkit-lifecycle',
         ':andkit-repository',
         ':andkit-mvvm',
@@ -11,13 +18,10 @@ include ':wa-contants',
         ':andkit'
 
 //app
-project(':wanandroid').projectDir = file('examples/wanandroid')
 project(':wa-contants').projectDir = file('examples/wa-contants')
 project(':wa-common').projectDir = file('examples/wa-common')
 project(':wa-repository').projectDir = file('examples/wa-repository')
 project(':wa-user').projectDir = file('examples/wa-user')
-
-
 
 //andkit-libs
 project(':andkit-lifecycle').projectDir = file('andkit-libs/andkit-lifecycle')

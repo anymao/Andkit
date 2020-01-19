@@ -3,6 +3,7 @@ package com.anymore.wanandroid.mvvm.view
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.anymore.andkit.mvvm.BaseActivity
 import com.anymore.wanandroid.common.event.LoadState
 import com.anymore.wanandroid.common.ext.setupToolbar
@@ -15,6 +16,7 @@ import com.anymore.wanandroid.user.databinding.WuActivityLoginBinding
 /**
  * Created by liuyuanmao on 2019/3/29.
  */
+@Route(path = "/user/login")
 class LoginActivity : BaseActivity<WuActivityLoginBinding, LoginViewModel>() {
 
     private val mLoadingDialog by lazy { LoadingDialog(this) }

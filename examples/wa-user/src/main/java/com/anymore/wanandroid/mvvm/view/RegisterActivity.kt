@@ -2,6 +2,7 @@ package com.anymore.wanandroid.mvvm.view
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.anymore.andkit.mvvm.BaseActivity
 import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.common.ext.toast
@@ -12,6 +13,7 @@ import com.anymore.wanandroid.user.databinding.WuActivityRegisterBinding
 /**
  * Created by liuyuanmao on 2019/3/20.
  */
+@Route(path = "/user/register")
 class RegisterActivity : BaseActivity<WuActivityRegisterBinding, RegisterViewModel>() {
 
     override fun initView(savedInstanceState: Bundle?) = R.layout.wu_activity_register

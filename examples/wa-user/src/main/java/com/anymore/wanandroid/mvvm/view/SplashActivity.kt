@@ -1,7 +1,7 @@
 package com.anymore.wanandroid.mvvm.view
 
-import android.content.Intent
 import android.os.Bundle
+import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvvm.BindingActivity
 import com.anymore.wanandroid.user.R
 import com.anymore.wanandroid.user.databinding.WuActivitySplashBinding
@@ -17,10 +17,14 @@ class SplashActivity: BindingActivity<WuActivitySplashBinding>() {
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
         btnLogin.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            ARouter.getInstance()
+                .build("/user/login")
+                .navigation(this)
         }
         btnRegister.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            ARouter.getInstance()
+                .build("/user/register")
+                .navigation(this)
         }
     }
 

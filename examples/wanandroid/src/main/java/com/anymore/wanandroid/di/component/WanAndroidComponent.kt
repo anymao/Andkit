@@ -14,8 +14,7 @@ import dagger.android.support.AndroidSupportInjectionModule
     modules = [
         UserModule::class,
         AndroidSupportInjectionModule::class
-    ],
-    dependencies = [UserModuleComponent::class]
+    ]
 )
 interface WanAndroidComponent {
     fun inject(wanAndroidApplication: WanAndroidApplication)
