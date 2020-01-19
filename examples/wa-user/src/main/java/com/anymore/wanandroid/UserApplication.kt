@@ -9,6 +9,7 @@ import com.anymore.wanandroid.di.module.UserModule
  * Created by liuyuanmao on 2020/1/19.
  */
 class UserApplication :AndkitApplication(){
+
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         DaggerUserModuleComponent.builder()
@@ -16,4 +17,5 @@ class UserApplication :AndkitApplication(){
             .build().inject(this)
 
     }
+
 }

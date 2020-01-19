@@ -16,6 +16,6 @@ interface LoginViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
-    fun bindDiscoveryFragmentViewModel(viewModel: LoginViewModel): ViewModel
+    fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
 
 }

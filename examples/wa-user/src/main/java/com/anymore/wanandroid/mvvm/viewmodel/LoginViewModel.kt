@@ -40,18 +40,6 @@ class LoginViewModel @Inject constructor(application: Application,private val us
                 }
 
             }
-//            val disposable = mModel.login(username!!, pwd!!)
-//                .subscribeBy(onNext = {
-//                    if (it.errorCode == ResponseCode.OK) {
-//                        toastEvent.value = "登录成功!"
-//                        mLoginEvent.value = true
-//                    } else {
-//                        toastEvent.value = it.errorMsg
-//                    }
-//                }, onError = {
-//                    toastEvent.value = it.message
-//                })
-//            addToCompositeDisposable(disposable)
         }
     }
 

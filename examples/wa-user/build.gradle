@@ -31,6 +31,16 @@ android {
             multiDexEnabled true
         }
 
+        sourceSets {
+            main {
+                if (isModule.toBoolean()) {
+                    manifest.srcFile 'src/debug/AndroidManifest.xml'
+                }else {
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                }
+            }
+        }
+
         resourcePrefix "wu_" //给 Module 内的资源名增加前缀, 避免资源名冲突
 
     }

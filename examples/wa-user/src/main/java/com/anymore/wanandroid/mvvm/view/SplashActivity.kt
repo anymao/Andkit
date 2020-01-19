@@ -16,8 +16,11 @@ class SplashActivity: BindingActivity<WuActivitySplashBinding>() {
 
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
-        btn_login.setOnClickListener {
+        btnLogin.setOnClickListener {
             startActivity(Intent(this,LoginActivity::class.java))
+        }
+        btnRegister.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
         }
     }
 

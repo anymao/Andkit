@@ -14,6 +14,6 @@ class UserModelModule {
 
     @Provides
     @ActivityScope
-    fun provideUserModel(model: UserModel): BaseModel =model
+    fun provideUserModel(model: UserModel): BaseModel = model
 
 }

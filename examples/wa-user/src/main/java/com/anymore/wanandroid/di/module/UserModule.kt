@@ -8,10 +8,16 @@ import dagger.Provides
 /**
  * Created by liuyuanmao on 2020/1/18.
  */
-@Module(includes = [ViewModelFactoryModule::class, LoginActivityModule::class])
-class UserModule(private val application: Application){
+@Module(
+    includes = [
+        ViewModelFactoryModule::class,
+        LoginActivityModule::class,
+        RegisterActivityModule::class
+    ]
+)
+class UserModule(private val application: Application) {
 
     @Provides
-    fun provideApplication():Application = application
+    fun provideApplication(): Application = application
 
 }

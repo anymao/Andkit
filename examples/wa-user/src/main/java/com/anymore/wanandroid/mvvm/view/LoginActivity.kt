@@ -12,7 +12,6 @@ import com.anymore.wanandroid.mvvm.viewmodel.LoginViewModel
 import com.anymore.wanandroid.user.R
 import com.anymore.wanandroid.user.databinding.WuActivityLoginBinding
 
-
 /**
  * Created by liuyuanmao on 2019/3/29.
  */
