@@ -10,7 +10,9 @@ import dagger.Provides
  */
 @Module(includes = [
     ViewModelFactoryModule::class,
-    LoginActivityModule::class]
+    LoginActivityModule::class,
+    RegisterActivityModule::class
+]
 )
 class WanAndroidModule(private val application: Application) {
 

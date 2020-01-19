@@ -2,7 +2,7 @@ package com.anymore.wanandroid.di.component
 
 import com.anymore.andkit.lifecycle.scope.ApplicationScope
 import com.anymore.wanandroid.WanAndroidApplication
-import com.anymore.wanandroid.di.module.WanAndroidModule
+import com.anymore.wanandroid.di.module.UserModule
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 
@@ -12,7 +12,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 @ApplicationScope
 @Component(
     modules = [
-        WanAndroidModule::class,
+        UserModule::class,
         AndroidSupportInjectionModule::class
     ],
     dependencies = [UserModuleComponent::class]

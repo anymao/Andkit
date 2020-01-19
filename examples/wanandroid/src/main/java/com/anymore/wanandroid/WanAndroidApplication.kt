@@ -5,7 +5,6 @@ import com.anymore.andkit.AndkitApplication
 import com.anymore.wanandroid.di.component.DaggerUserModuleComponent
 import com.anymore.wanandroid.di.component.DaggerWanAndroidComponent
 import com.anymore.wanandroid.di.module.UserModule
-import com.anymore.wanandroid.di.module.WanAndroidModule
 
 /**
  * Created by liuyuanmao on 2020/1/17.
@@ -16,7 +15,7 @@ class WanAndroidApplication : AndkitApplication() {
         super.attachBaseContext(base)
         DaggerWanAndroidComponent.builder()
             .userModuleComponent(DaggerUserModuleComponent.builder().userModule(UserModule(this)).build())
-            .wanAndroidModule(WanAndroidModule(this))
+            .userModule(UserModule(this))
             .build()
             .inject(this)
     }
