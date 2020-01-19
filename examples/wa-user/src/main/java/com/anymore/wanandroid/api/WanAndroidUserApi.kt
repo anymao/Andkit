@@ -1,4 +1,4 @@
-package com.anymore.wanandroid.user.api
+package com.anymore.wanandroid.api
 
 import com.anymore.wanandroid.repository.base.WanAndroidResponse
 import com.anymore.wanandroid.repository.database.entry.UserInfo
