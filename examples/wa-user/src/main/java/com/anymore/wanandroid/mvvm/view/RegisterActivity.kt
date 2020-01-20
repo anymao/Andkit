@@ -7,13 +7,14 @@ import com.anymore.andkit.mvvm.BaseActivity
 import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.mvvm.viewmodel.RegisterViewModel
+import com.anymore.wanandroid.route.USER_REGISTER
 import com.anymore.wanandroid.user.R
 import com.anymore.wanandroid.user.databinding.WuActivityRegisterBinding
 
 /**
  * Created by liuyuanmao on 2019/3/20.
  */
-@Route(path = "/user/register")
+@Route(path = USER_REGISTER)
 class RegisterActivity : BaseActivity<WuActivityRegisterBinding, RegisterViewModel>() {
 
     override fun initView(savedInstanceState: Bundle?) = R.layout.wu_activity_register

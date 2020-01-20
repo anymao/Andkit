@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/examples/wa-common" />
             <option value="$PROJECT_DIR$/examples/wa-contants" />
             <option value="$PROJECT_DIR$/examples/wa-repository" />
+            <option value="$PROJECT_DIR$/examples/wa-route" />
             <option value="$PROJECT_DIR$/examples/wa-user" />
             <option value="$PROJECT_DIR$/examples/wanandroid" />
           </set>

@@ -1,4 +1,4 @@
-if(isModule.toBoolean()){
+if(moduleRunning.toBoolean()){
     apply plugin: 'com.android.application'
 }else {
     apply plugin: 'com.android.library'
@@ -27,13 +27,13 @@ android {
             }
         }
 
-        if (isModule.toBoolean()){
+        if (moduleRunning.toBoolean()){
             multiDexEnabled true
         }
 
         sourceSets {
             main {
-                if (isModule.toBoolean()) {
+                if (moduleRunning.toBoolean()) {
                     manifest.srcFile 'src/profile/AndroidManifest.xml'
                 }else {
                     manifest.srcFile 'src/main/AndroidManifest.xml'
@@ -126,6 +126,7 @@ dependencies {
     implementation project(':andkit-mvvm')
     implementation project(':andkit-repository')
     implementation project(':wa-common')
+    implementation project(':wa-route')
     implementation project(':wa-repository')
 
     testImplementation 'junit:junit:4.12'

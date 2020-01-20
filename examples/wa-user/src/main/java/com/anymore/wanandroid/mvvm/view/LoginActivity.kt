@@ -10,13 +10,14 @@ import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.common.widget.LoadingDialog
 import com.anymore.wanandroid.mvvm.viewmodel.LoginViewModel
+import com.anymore.wanandroid.route.USER_LOGIN
 import com.anymore.wanandroid.user.R
 import com.anymore.wanandroid.user.databinding.WuActivityLoginBinding
 
 /**
  * Created by liuyuanmao on 2019/3/29.
  */
-@Route(path = "/user/login")
+@Route(path = USER_LOGIN)
 class LoginActivity : BaseActivity<WuActivityLoginBinding, LoginViewModel>() {
 
     private val mLoadingDialog by lazy { LoadingDialog(this) }
