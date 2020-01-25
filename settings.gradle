@@ -12,6 +12,7 @@ include ':wa-contants',
         ':wa-common',
         ':wa-repository',
         ':wa-user',
+        ':wa-articles',
         ':andkit-lifecycle',
         ':andkit-repository',
         ':andkit-mvvm',
@@ -24,6 +25,8 @@ project(':wa-route').projectDir = file('examples/wa-route')
 project(':wa-common').projectDir = file('examples/wa-common')
 project(':wa-repository').projectDir = file('examples/wa-repository')
 project(':wa-user').projectDir = file('examples/wa-user')
+project(':wa-articles').projectDir = file('examples/wa-articles')
+
 
 //andkit-libs
 project(':andkit-lifecycle').projectDir = file('andkit-libs/andkit-lifecycle')

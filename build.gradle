@@ -22,7 +22,7 @@ allprojects {
         mavenLocal()
         google()
         jcenter()
-        maven { url "https://bintray.com/anymore0503/maven" }
+        maven { url "https://dl.bintray.com/anymore0503/maven/" }
 
     }
 }
