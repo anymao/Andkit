@@ -1,4 +1,4 @@
-package com.anymore.wanandroid.entry
+package com.anymore.wanandroid.common.entry
 
 import androidx.fragment.app.Fragment
 

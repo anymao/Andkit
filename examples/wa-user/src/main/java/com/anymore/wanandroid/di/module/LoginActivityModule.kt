@@ -1,6 +1,6 @@
 package com.anymore.wanandroid.di.module
 
-import com.anymore.andkit.lifecycle.scope.ActivityScope
+import com.anymore.andkit.dagger.scope.ActivityScope
 import com.anymore.wanandroid.mvvm.view.LoginActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

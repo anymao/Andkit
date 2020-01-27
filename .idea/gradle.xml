@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/andkit-libs/andkit" />
+            <option value="$PROJECT_DIR$/andkit-libs/andkit-dagger" />
             <option value="$PROJECT_DIR$/andkit-libs/andkit-lifecycle" />
             <option value="$PROJECT_DIR$/andkit-libs/andkit-mvp" />
             <option value="$PROJECT_DIR$/andkit-libs/andkit-mvvm" />

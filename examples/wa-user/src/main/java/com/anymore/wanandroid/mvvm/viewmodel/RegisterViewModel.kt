@@ -2,7 +2,7 @@ package com.anymore.wanandroid.mvvm.viewmodel
 
 import android.app.Application
 import android.text.TextUtils
-import com.anymore.andkit.lifecycle.scope.ActivityScope
+import com.anymore.andkit.dagger.scope.ActivityScope
 import com.anymore.andkit.mvvm.BaseViewModel
 import com.anymore.andkit.mvvm.SingleLiveEvent
 import com.anymore.wanandroid.mvvm.model.UserModel

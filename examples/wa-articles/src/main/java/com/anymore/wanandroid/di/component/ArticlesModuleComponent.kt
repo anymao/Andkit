@@ -1,6 +1,6 @@
 package com.anymore.wanandroid.di.component
 
-import com.anymore.andkit.lifecycle.di.module.ApplicationModule
+import com.anymore.andkit.dagger.module.ApplicationModule
 import com.anymore.wanandroid.ArticlesApplication
 import com.anymore.wanandroid.di.module.ArticlesModule
 import dagger.Component

@@ -42,26 +42,25 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
 
 
-    implementation "com.google.dagger:dagger:$dagger2_version"
+    api "com.google.dagger:dagger:$dagger2_version"
     kapt "com.google.dagger:dagger-compiler:$dagger2_version"
 
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    api 'com.jakewharton.timber:timber:4.7.1'
 
     //http network
-    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
-    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    api 'com.squareup.retrofit2:retrofit:2.7.0'
+    api 'com.squareup.retrofit2:converter-gson:2.7.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+    api 'com.squareup.okhttp3:okhttp:4.2.2'
+    api 'com.squareup.okhttp3:logging-interceptor:4.2.2'
 
     //Room Database
-    implementation "androidx.room:room-runtime:$room_version"
+    api "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
-    testImplementation "androidx.room:room-testing:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
+    api "androidx.room:room-rxjava2:$room_version"
 
     //CacheKit
-    implementation 'com.anymore:cachekit:1.0.0'
+    api 'com.anymore:cachekit:1.0.0'
 
 
     testImplementation 'junit:junit:4.12'

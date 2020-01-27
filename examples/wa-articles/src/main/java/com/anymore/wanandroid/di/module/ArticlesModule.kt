@@ -9,7 +9,9 @@ import dagger.Module
 @Module(
     includes = [
         ViewModelFactoryModule::class,
-        HomePageFragmentModule::class
+        HomePageFragmentModule::class,
+        DiscoveryFragmentModule::class,
+        KnowledgesArticlesFragmentModule::class
     ]
 )
 class ArticlesModule

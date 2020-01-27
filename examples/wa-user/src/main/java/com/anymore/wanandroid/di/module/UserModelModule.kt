@@ -1,6 +1,6 @@
 package com.anymore.wanandroid.di.module
 
-import com.anymore.andkit.lifecycle.scope.ActivityScope
+import com.anymore.andkit.dagger.scope.ActivityScope
 import com.anymore.andkit.mvvm.BaseModel
 import com.anymore.wanandroid.mvvm.model.UserModel
 import dagger.Module

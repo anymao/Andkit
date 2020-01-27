@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
-import com.anymore.andkit.lifecycle.scope.FragmentScope
+import com.anymore.andkit.dagger.scope.FragmentScope
 import com.anymore.andkit.mvvm.BaseViewModel
 import com.anymore.andkit.mvvm.SingleLiveEvent
 import com.anymore.wanandroid.entry.Banner

@@ -1,4 +1,4 @@
-package com.anymore.andkit.lifecycle.key
+package com.anymore.andkit.dagger.key
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

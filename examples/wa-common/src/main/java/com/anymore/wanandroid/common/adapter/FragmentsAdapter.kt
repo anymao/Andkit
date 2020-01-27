@@ -1,8 +1,8 @@
-package com.anymore.wanandroid.adapter
+package com.anymore.wanandroid.common.adapter
 
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.anymore.wanandroid.entry.FragmentItem
+import com.anymore.wanandroid.common.entry.FragmentItem
 
 class FragmentsAdapter(fm: FragmentManager, private val fragments: List<FragmentItem>) :
     FragmentPagerAdapter(

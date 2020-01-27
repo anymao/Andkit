@@ -1,4 +1,4 @@
-package com.anymore.andkit.lifecycle.scope
+package com.anymore.andkit.dagger.scope
 
 import javax.inject.Scope
 

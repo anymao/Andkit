@@ -1,18 +1,18 @@
-package com.anymore.wanandroid.mvvm.view
+package com.anymore.wanandroid.mvvm.view.fragment
 
-import androidx.lifecycle.Observer
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvvm.BaseFragment
 import com.anymore.wanandroid.adapter.ArticlesPagingAdapter
-import com.anymore.wanandroid.mvvm.viewmodel.HomePageViewModel
 import com.anymore.wanandroid.articles.R
 import com.anymore.wanandroid.articles.databinding.WaFragmentHomepageBinding
 import com.anymore.wanandroid.entry.Article
 import com.anymore.wanandroid.entry.Banner
 import com.anymore.wanandroid.loader.BannerLoader
+import com.anymore.wanandroid.mvvm.viewmodel.HomePageViewModel
 import com.anymore.wanandroid.route.BROWSE_URL
 
 class HomePageFragment : BaseFragment<WaFragmentHomepageBinding, HomePageViewModel>() {

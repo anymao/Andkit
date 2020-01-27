@@ -26,3 +26,9 @@ const val MAIN_GROUP = "main"
 const val MAIN = "main"
 
 const val MAIN_PAGE = "/$MAIN_GROUP/$MAIN"
+
+/////WanAndroid Articles Module
+const val ARTICLES_GROUP = "articles"
+const val KNOWLEDGE = "main"
+
+const val ARTICLES_KNOWLEDGE = "/$ARTICLES_GROUP/$KNOWLEDGE"

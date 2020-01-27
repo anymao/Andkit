@@ -1,6 +1,6 @@
 package com.anymore.wanandroid.di.module
 
-import com.anymore.andkit.lifecycle.scope.FragmentScope
+import com.anymore.andkit.dagger.scope.FragmentScope
 import com.anymore.andkit.mvvm.BaseModel
 import com.anymore.wanandroid.mvvm.model.ArticlesModel
 import dagger.Module

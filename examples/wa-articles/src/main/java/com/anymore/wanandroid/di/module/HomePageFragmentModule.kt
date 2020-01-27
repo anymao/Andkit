@@ -1,7 +1,7 @@
 package com.anymore.wanandroid.di.module
 
-import com.anymore.andkit.lifecycle.scope.FragmentScope
-import com.anymore.wanandroid.mvvm.view.HomePageFragment
+import com.anymore.andkit.dagger.scope.FragmentScope
+import com.anymore.wanandroid.mvvm.view.fragment.HomePageFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

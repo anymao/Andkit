@@ -1,15 +1,16 @@
 package com.anymore.wanandroid.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.anymore.andkit.lifecycle.activity.IActivity
 import com.anymore.wanandroid.R
-import com.anymore.wanandroid.adapter.FragmentsAdapter
-import com.anymore.wanandroid.entry.FragmentItem
-import com.anymore.wanandroid.mvvm.view.HomePageFragment
+import com.anymore.wanandroid.common.adapter.FragmentsAdapter
+import com.anymore.wanandroid.common.entry.FragmentItem
+import com.anymore.wanandroid.mvvm.view.fragment.DiscoveryFragment
+import com.anymore.wanandroid.mvvm.view.fragment.HomePageFragment
 import com.anymore.wanandroid.route.MAIN_PAGE
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity(), IActivity {
     private fun setupViewPager() {
         val fragments = listOf(
             FragmentItem(HomePageFragment(), getString(R.string.home)),
-            FragmentItem(Fragment(), getString(R.string.discovery)),
+            FragmentItem(DiscoveryFragment(), getString(R.string.discovery)),
             FragmentItem(Fragment(), getString(R.string.my))
         )
         val adapter = FragmentsAdapter(supportFragmentManager, fragments)

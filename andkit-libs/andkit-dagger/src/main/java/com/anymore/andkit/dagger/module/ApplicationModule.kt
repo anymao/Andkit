@@ -1,4 +1,4 @@
-package com.anymore.andkit.lifecycle.di.module
+package com.anymore.andkit.dagger.module
 
 import android.app.Application
 import dagger.Module

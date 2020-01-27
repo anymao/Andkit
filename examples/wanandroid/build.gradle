@@ -82,6 +82,8 @@ dependencies {
     implementation project(':wa-articles')
     implementation project(':wa-route')
     implementation project(':wa-resources')
+    implementation project(':wa-common')
+
 
 
 

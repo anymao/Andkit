@@ -3,7 +3,7 @@ package com.anymore.wanandroid
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.AndkitApplication
-import com.anymore.andkit.lifecycle.di.module.ApplicationModule
+import com.anymore.andkit.dagger.module.ApplicationModule
 import com.anymore.wanandroid.di.component.DaggerUserModuleComponent
 import com.anymore.wanandroid.user.BuildConfig
 

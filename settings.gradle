@@ -14,6 +14,7 @@ include ':wa-resources',
         ':wa-user',
         ':wa-articles',
         ':wa-browse',
+        ':andkit-dagger',
         ':andkit-lifecycle',
         ':andkit-repository',
         ':andkit-mvvm',
@@ -32,6 +33,7 @@ project(':wa-browse').projectDir = file('examples/wa-browse')
 
 
 //andkit-libs
+project(':andkit-dagger').projectDir = file('andkit-libs/andkit-dagger')
 project(':andkit-lifecycle').projectDir = file('andkit-libs/andkit-lifecycle')
 project(':andkit-repository').projectDir = file('andkit-libs/andkit-repository')
 project(':andkit-mvvm').projectDir = file('andkit-libs/andkit-mvvm')
