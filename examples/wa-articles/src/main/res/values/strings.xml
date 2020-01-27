@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">wa-articles</string>
+    <string name="wa_app_name">wa-articles</string>
+    <string name="wa_home">主页</string>
 </resources>

@@ -3,8 +3,8 @@ package com.anymore.wanandroid
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.AndkitApplication
+import com.anymore.andkit.lifecycle.di.module.ApplicationModule
 import com.anymore.wanandroid.di.component.DaggerWanAndroidComponent
-import com.anymore.wanandroid.di.module.UserModule
 import com.anymore.wanandroid.user.BuildConfig
 
 /**
@@ -15,7 +15,7 @@ class WanAndroidApplication : AndkitApplication() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         DaggerWanAndroidComponent.builder()
-            .userModule(UserModule(this))
+            .applicationModule(ApplicationModule(this))
             .build()
             .inject(this)
     }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+		<dimen name="wa_activity_vertical_padding">16dp</dimen>
+		<dimen name="wa_activity_horizontal_padding">16dp</dimen>
+		<dimen name="wa_item_vertical_padding">8dp</dimen>
+
+</resources>

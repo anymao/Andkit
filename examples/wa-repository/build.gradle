@@ -56,6 +56,11 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
 
+    //Paging的依赖
+    implementation 'androidx.paging:paging-runtime:2.1.0'
+    //Paging对RxJava2的原生支持
+    implementation 'androidx.paging:paging-rxjava2:2.1.0'
+
     implementation project(':wa-common')
     implementation project(':andkit-repository')
 

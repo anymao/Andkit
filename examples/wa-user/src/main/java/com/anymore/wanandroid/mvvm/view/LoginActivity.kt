@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
+import com.anymore.andkit.lifecycle.ActivityStackManager
 import com.anymore.andkit.mvvm.BaseActivity
 import com.anymore.wanandroid.common.event.LoadState
 import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.common.widget.LoadingDialog
 import com.anymore.wanandroid.mvvm.viewmodel.LoginViewModel
+import com.anymore.wanandroid.route.MAIN_PAGE
 import com.anymore.wanandroid.route.USER_LOGIN
 import com.anymore.wanandroid.user.R
 import com.anymore.wanandroid.user.databinding.WuActivityLoginBinding
@@ -39,8 +42,10 @@ class LoginActivity : BaseActivity<WuActivityLoginBinding, LoginViewModel>() {
         })
         mViewModel.mLoginEvent.observe(this, Observer {
             Toast.makeText(this,"登陆成功!",Toast.LENGTH_LONG).show()
-//            ActivityStackManager.finishUntil(MainActivity::class.java.name)
-//            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            ActivityStackManager.finishAll()
+            ARouter.getInstance()
+                .build(MAIN_PAGE)
+                .navigation(this)
         })
         mBinding.btnLogin.setOnClickListener {
             mViewModel.login(

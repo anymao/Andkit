@@ -81,6 +81,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.youth.banner:banner:1.4.10'
 
 
     implementation 'com.alibaba:arouter-api:1.5.0'
@@ -120,13 +122,25 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
 
+
+    //Paging的依赖
+    implementation 'androidx.paging:paging-runtime:2.1.0'
+    //Paging对RxJava2的原生支持
+    implementation 'androidx.paging:paging-rxjava2:2.1.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+
+
     implementation project(':andkit')
     implementation project(':andkit-lifecycle')
     implementation project(':andkit-mvvm')
     implementation project(':andkit-repository')
     implementation project(':wa-common')
+    implementation project(':wa-browse')
     implementation project(':wa-route')
     implementation project(':wa-repository')
+    implementation project(':wa-resources')
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

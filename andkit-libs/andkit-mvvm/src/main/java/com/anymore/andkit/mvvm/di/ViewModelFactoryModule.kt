@@ -9,7 +9,7 @@ import javax.inject.Singleton
 @Module
 interface ViewModelFactoryModule {
 
-    @Singleton
+//    @Singleton
     @Binds
     fun provideViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory
 
