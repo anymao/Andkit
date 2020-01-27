@@ -40,7 +40,4 @@ dependencies {
     api "com.google.dagger:dagger-android:$dagger2_version"
     api "com.google.dagger:dagger-android-support:$dagger2_version" // if you use the support libraries
     kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
