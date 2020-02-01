@@ -32,3 +32,7 @@ const val ARTICLES_GROUP = "articles"
 const val KNOWLEDGE = "main"
 
 const val ARTICLES_KNOWLEDGE = "/$ARTICLES_GROUP/$KNOWLEDGE"
+
+const val MINE_GROUP = "mine"
+const val TODO = "todo"
+const val MINE_TODO = "/$MINE_GROUP/$TODO"

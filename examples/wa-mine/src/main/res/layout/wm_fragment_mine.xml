@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:theme="@style/wa_ToolbarTheme"
+        app:title="@string/wm_mine"
+        app:titleTextColor="@android:color/white" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="168dp">
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_launcher" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvTodo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_todo"
+                android:drawableLeft="@drawable/ic_todo"
+                android:drawablePadding="15dp"
+                android:paddingLeft="@dimen/wa_activity_horizontal_padding"
+                android:paddingTop="@dimen/wa_item_vertical_padding"
+                android:paddingRight="@dimen/wa_activity_horizontal_padding"
+                android:paddingBottom="@dimen/wa_item_vertical_padding"
+                android:text="@string/wm_todo" />
+
+            <TextView
+                android:id="@+id/tvCollected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_collected"
+                android:drawableLeft="@drawable/ic_collected"
+                android:drawablePadding="15dp"
+                android:paddingLeft="@dimen/wa_activity_horizontal_padding"
+                android:paddingTop="@dimen/wa_item_vertical_padding"
+                android:paddingRight="@dimen/wa_activity_horizontal_padding"
+                android:paddingBottom="@dimen/wa_item_vertical_padding"
+                android:text="@string/wm_collected" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/wa_activity_horizontal_padding"
+                android:paddingTop="@dimen/wa_item_vertical_padding"
+                android:paddingRight="@dimen/wa_activity_horizontal_padding"
+                android:paddingBottom="@dimen/wa_item_vertical_padding"
+                android:text="@string/wm_todo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/wa_activity_horizontal_padding"
+                android:paddingTop="@dimen/wa_item_vertical_padding"
+                android:paddingRight="@dimen/wa_activity_horizontal_padding"
+                android:paddingBottom="@dimen/wa_item_vertical_padding"
+                android:text="@string/wm_todo" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
+

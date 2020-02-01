@@ -13,6 +13,7 @@ include ':wa-resources',
         ':wa-repository',
         ':wa-user',
         ':wa-articles',
+        ':wa-mine',
         ':wa-browse',
         ':andkit-dagger',
         ':andkit-lifecycle',
@@ -28,6 +29,7 @@ project(':wa-common').projectDir = file('examples/wa-common')
 project(':wa-repository').projectDir = file('examples/wa-repository')
 project(':wa-user').projectDir = file('examples/wa-user')
 project(':wa-articles').projectDir = file('examples/wa-articles')
+project(':wa-mine').projectDir = file('examples/wa-mine')
 project(':wa-browse').projectDir = file('examples/wa-browse')
 
 

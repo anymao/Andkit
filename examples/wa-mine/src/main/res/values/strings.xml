@@ -1,0 +1,14 @@
+<resources>
+    <string name="wm_app_name">wa-mine</string>
+    <string name="wm_mine">我的</string>
+    <string name="wm_todo">待办</string>
+    <string name="wm_collected">收藏</string>
+    <string name="wm_more">更多</string>
+    <string name="wm_type_undo">未办事项</string>
+    <string name="wm_type_done">已办事项</string>
+    <string name="wm_todo_only_use">只用这一个</string>
+    <string name="wm_todo_study">学习</string>
+    <string name="wm_todo_work">工作</string>
+    <string name="wm_todo_life">生活</string>
+
+</resources>

@@ -75,11 +75,16 @@ dependencies {
     implementation project(':andkit-lifecycle')
     implementation project(':andkit-repository')
     implementation project(':andkit-mvvm')
+    implementation project(':andkit-mvp')
+    implementation project(':andkit-dagger')
+
 
 
 
     implementation project(':wa-user')
     implementation project(':wa-articles')
+    implementation project(':wa-mine')
+    implementation project(':wa-browse')
     implementation project(':wa-route')
     implementation project(':wa-resources')
     implementation project(':wa-common')

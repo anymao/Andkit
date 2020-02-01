@@ -80,6 +80,7 @@ dependencies {
     implementation 'com.just.agentweb:download:4.0.2'
     implementation 'com.just.agentweb:filechooser:4.0.2'
 
+    implementation project(':andkit')
     implementation project(':andkit-lifecycle')
     implementation project(':wa-common')
     implementation project(':wa-route')
