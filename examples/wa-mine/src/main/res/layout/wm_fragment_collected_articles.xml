@@ -11,5 +11,4 @@
         android:layout_height="match_parent"
         android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

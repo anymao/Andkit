@@ -34,5 +34,7 @@ const val KNOWLEDGE = "main"
 const val ARTICLES_KNOWLEDGE = "/$ARTICLES_GROUP/$KNOWLEDGE"
 
 const val MINE_GROUP = "mine"
+const val TODO_LIST = "todolist"
 const val TODO = "todo"
 const val MINE_TODO = "/$MINE_GROUP/$TODO"
+const val MINE_TODO_LIST = "/$MINE_GROUP/$TODO_LIST"

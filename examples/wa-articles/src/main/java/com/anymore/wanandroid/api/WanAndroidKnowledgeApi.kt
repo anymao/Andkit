@@ -1,7 +1,8 @@
 package com.anymore.wanandroid.api
 
-import com.anymore.wanandroid.entry.Articles
+import com.anymore.wanandroid.entry.Article
 import com.anymore.wanandroid.entry.Knowledge
+import com.anymore.wanandroid.repository.base.PagedData
 import com.anymore.wanandroid.repository.base.WanAndroidResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -18,5 +19,5 @@ interface WanAndroidKnowledgeApi{
     //获取某个知识体系下的所有文章
 //    @Headers("Cache-Control:public,max-age=6000000")
     @GET("/article/list/{page}/json")
-    fun getSubKnowledges(@Path("page") page:Int, @Query("cid") cid:Int):Observable<WanAndroidResponse<Articles>>
+    fun getSubKnowledges(@Path("page") page:Int, @Query("cid") cid:Int):Observable<WanAndroidResponse<PagedData<Article>>>
 }

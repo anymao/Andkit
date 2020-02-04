@@ -48,7 +48,7 @@ class FragmentActivity : AppCompatActivity(), IActivity {
         ARouter.getInstance().inject(this)
         setContentView(R.layout.wb_activity_fragment)
         setupToolbar(toolbar)
-        toolbar.title = title ?: ""
+        setTitle(title?:"")
         injectFragment()
     }
 

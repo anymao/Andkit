@@ -3,7 +3,6 @@ package com.anymore.wanandroid.mvvm.view.fragment
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvvm.BaseFragment
 import com.anymore.wanandroid.adapter.ArticlesPagingAdapter
@@ -60,8 +59,6 @@ class KnowledgesArticlesFragment :
                 DividerItemDecoration.VERTICAL
             )
         )
-        mBinding.rvArticles.layoutManager =
-            LinearLayoutManager(context)
         mAdapter.mItemEventHandler = object : ArticlesPagingAdapter.OnItemEventHandler {
             override fun onClick(item: Article) {
                 ARouter.getInstance()

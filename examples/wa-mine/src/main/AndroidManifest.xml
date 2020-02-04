@@ -3,5 +3,6 @@
 
     <application>
         <activity android:name="com.anymore.wanandroid.mvp.view.activity.TodoTabActivity" />
+        <activity android:name="com.anymore.wanandroid.mvp.view.activity.TodoActivity"/>
     </application>
 </manifest>

@@ -2,7 +2,8 @@ package com.anymore.wanandroid.api
 
 import androidx.annotation.IntRange
 import androidx.annotation.NonNull
-import com.anymore.wanandroid.entry.TodoData
+import com.anymore.wanandroid.entry.Todo
+import com.anymore.wanandroid.repository.base.PagedData
 import com.anymore.wanandroid.repository.base.WanAndroidResponse
 import io.reactivex.Observable
 import retrofit2.http.*
@@ -10,7 +11,6 @@ import retrofit2.http.*
 /**
  * Created by anymore on 2020/2/1.
  */
-
 interface WanAndroidTodoApi {
     //新建一条todo
     @FormUrlEncoded
@@ -47,5 +47,5 @@ interface WanAndroidTodoApi {
     fun getTodoList(
         @Path("page") page: Int,
         @QueryMap map: MutableMap<String, Any>
-    ): Observable<WanAndroidResponse<TodoData>>
+    ): Observable<WanAndroidResponse<PagedData<Todo>>>
 }

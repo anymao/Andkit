@@ -1,6 +1,7 @@
 package com.anymore.wanandroid.paging
 
-import com.anymore.wanandroid.entry.Articles
+import com.anymore.wanandroid.entry.Article
+import com.anymore.wanandroid.repository.base.PagedData
 import com.anymore.wanandroid.repository.paging.PagingProvider
 
 /**
@@ -8,4 +9,4 @@ import com.anymore.wanandroid.repository.paging.PagingProvider
  * 抽象玩Android文章列表获取接口
  * Created by liuyuanmao on 2019/4/22.
  */
-interface ArticlesProvider :PagingProvider<Articles>
+interface ArticlesProvider :PagingProvider<PagedData<Article>>

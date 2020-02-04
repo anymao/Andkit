@@ -1,8 +1,10 @@
 package com.anymore.wanandroid.di.module
 
-import com.anymore.wanandroid.mvp.contract.TodoListContract
+import com.anymore.wanandroid.mvp.contract.CollectedArticlesContract
+import com.anymore.wanandroid.mvp.contract.TodoContract
 import com.anymore.wanandroid.mvp.contract.TodoTabContract
-import com.anymore.wanandroid.mvp.model.TodoListModel
+import com.anymore.wanandroid.mvp.model.CollectedArticlesModel
+import com.anymore.wanandroid.mvp.model.TodoModel
 import com.anymore.wanandroid.mvp.model.TodoTabModel
 import dagger.Binds
 import dagger.Module
@@ -16,6 +18,10 @@ abstract class ModelsModule {
     @Binds
     abstract fun bindTodoTabModel(model:TodoTabModel):TodoTabContract.ITodoTabModel
 
+
     @Binds
-    abstract fun bindTodoListModel(model:TodoListModel):TodoListContract.ITodoListModel
+    abstract fun bindTodoModel(model:TodoModel):TodoContract.ITodoModel
+
+    @Binds
+    abstract fun bindCollectedArticlesModek(model: CollectedArticlesModel):CollectedArticlesContract.ICollectedArticlesModel
 }

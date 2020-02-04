@@ -6,7 +6,6 @@ import com.anymore.andkit.repository.di.module.RepositoryConfigsModule
 import com.anymore.wanandroid.repository.cookies.PersistentCookieJar
 import com.anymore.wanandroid.repository.cookies.SharedPreferencesCookieStore
 import com.anymore.wanandroid.repository.interceptor.CacheControlInterceptor
-import com.anymore.wanandroid.repository.interceptor.HeadersInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -34,12 +33,13 @@ class WanAndroidRepositoryConfig : RepositoryConfigsModule.RepositoryConfig {
                     builder.cookieJar(PersistentCookieJar(cookieStore))
                     val okLogger = HttpLoggingInterceptor().apply {
                         level = if (BuildConfig.DEBUG) {
-                            HttpLoggingInterceptor.Level.HEADERS
+                            HttpLoggingInterceptor.Level.BODY
                         } else {
                             HttpLoggingInterceptor.Level.NONE
                         }
                     }
-                    builder.addNetworkInterceptor(HeadersInterceptor())//为请求添加Headers
+                    builder
+//                        .addNetworkInterceptor(HeadersInterceptor())//为请求添加Headers
                         .addNetworkInterceptor(CacheControlInterceptor(context))
                         .addNetworkInterceptor(okLogger)
                 }

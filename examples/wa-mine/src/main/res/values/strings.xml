@@ -10,5 +10,10 @@
     <string name="wm_todo_study">学习</string>
     <string name="wm_todo_work">工作</string>
     <string name="wm_todo_life">生活</string>
+    <string name="wm_create_new_todo">创建新待办</string>
+    <string name="wm_todo_title">待办详情</string>
+    <string name="wm_todo_edit">编辑待办</string>
+    <string name="wm_text_save">保存</string>
+    <string name="wm_text_edit">编辑</string>
 
 </resources>

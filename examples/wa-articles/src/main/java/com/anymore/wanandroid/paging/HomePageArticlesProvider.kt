@@ -1,7 +1,8 @@
 package com.anymore.wanandroid.paging
 
 import com.anymore.wanandroid.api.WanAndroidArticlesApi
-import com.anymore.wanandroid.entry.Articles
+import com.anymore.wanandroid.entry.Article
+import com.anymore.wanandroid.repository.base.PagedData
 import com.anymore.wanandroid.repository.base.ResponseCode
 import com.anymore.wanandroid.repository.exception.WanAndroidException
 import io.reactivex.Observable
@@ -12,7 +13,7 @@ import io.reactivex.Observable
 class HomePageArticlesProvider(private val api: WanAndroidArticlesApi) :
     ArticlesProvider {
 
-    override fun loadInitial(page: Int): Observable<Articles> {
+    override fun loadInitial(page: Int): Observable<PagedData<Article>> {
         return api.getHomePageArticles(page)
             .map {
                 if (it.errorCode == ResponseCode.OK) {
@@ -23,7 +24,7 @@ class HomePageArticlesProvider(private val api: WanAndroidArticlesApi) :
             }
     }
 
-    override fun loadAfter(page: Int): Observable<Articles> {
+    override fun loadAfter(page: Int): Observable<PagedData<Article>> {
         return api.getHomePageArticles(page)
             .map {
                 if (it.errorCode == ResponseCode.OK) {
@@ -34,7 +35,7 @@ class HomePageArticlesProvider(private val api: WanAndroidArticlesApi) :
             }
     }
 
-    override fun loadBefore(page: Int): Observable<Articles> {
+    override fun loadBefore(page: Int): Observable<PagedData<Article>> {
         return api.getHomePageArticles(page)
             .map {
                 if (it.errorCode == ResponseCode.OK) {
