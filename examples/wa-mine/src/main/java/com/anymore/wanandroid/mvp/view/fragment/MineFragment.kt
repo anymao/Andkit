@@ -29,5 +29,9 @@ class MineFragment : BaseFragment() {
                 .withString("fragmentName", CollectedArticlesFragment::class.java.name)
                 .navigation(requireContext())
         }
+        tvAbout.setOnClickListener {
+
+
+        }
     }
 }
