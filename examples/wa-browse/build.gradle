@@ -1,8 +1,4 @@
-if(moduleRunning.toBoolean()){
-    apply plugin: 'com.android.application'
-}else {
-    apply plugin: 'com.android.library'
-}
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -26,21 +22,6 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.name]
             }
         }
-
-        if (moduleRunning.toBoolean()){
-            multiDexEnabled true
-        }
-
-        sourceSets {
-            main {
-                if (moduleRunning.toBoolean()) {
-                    manifest.srcFile 'src/profile/AndroidManifest.xml'
-                }else {
-                    manifest.srcFile 'src/main/AndroidManifest.xml'
-                }
-            }
-        }
-
 
         resourcePrefix "wb_" //给 Module 内的资源名增加前缀, 避免资源名冲突
 

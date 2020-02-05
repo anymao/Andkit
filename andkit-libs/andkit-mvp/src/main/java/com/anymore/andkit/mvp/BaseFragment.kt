@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -99,7 +100,7 @@ abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView{
     }
 
     override fun showSuccess(message: String) {
-//        toast(message)
+        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
     }
 
     override fun showError(stringId: Int) {
@@ -107,6 +108,6 @@ abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView{
     }
 
     override fun showError(message: String) {
-//        toast(message)
+        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
     }
 }

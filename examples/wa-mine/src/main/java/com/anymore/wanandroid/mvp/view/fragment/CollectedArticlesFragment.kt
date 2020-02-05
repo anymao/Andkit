@@ -34,7 +34,8 @@ class CollectedArticlesFragment :
     }
 
     private var mCurrentPage = firstPage
-    companion object{
+
+    companion object {
         const val firstPage = 0
     }
 
@@ -53,7 +54,7 @@ class CollectedArticlesFragment :
     }
 
     override fun showCollectedArticles(data: List<Article1>, pageNum: Int, hasMore: Boolean) {
-        if (pageNum == firstPage+1) {
+        if (pageNum == firstPage + 1) {
             adapter.setData(data)
             srl.finishRefresh()
 //            if (todos.isNullOrEmpty()){
@@ -67,11 +68,20 @@ class CollectedArticlesFragment :
         srl.setNoMoreData(!hasMore)
     }
 
-    override fun remove(index: Int) {
-       adapter.remove(index)
+    override fun refreshOrLoadFailed(refresh: Boolean) {
+        if (refresh) {
+            srl.finishRefresh(false)
+        } else {
+            srl.finishLoadMore(false)
+        }
+        showError("收藏列表加载失败!")
     }
 
-    private fun refreshList(){
+    override fun remove(index: Int) {
+        adapter.remove(index)
+    }
+
+    private fun refreshList() {
         mPresenter.refreshCollectedArticles()
     }
 }

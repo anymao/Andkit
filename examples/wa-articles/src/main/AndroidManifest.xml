@@ -2,6 +2,7 @@
     package="com.anymore.wanandroid.articles" >
 
     <application>
-        <activity android:name="com.anymore.wanandroid.mvvm.view.activity.KnowledgesTabActivity" />
+        <activity android:name="com.anymore.wanandroid.mvvm.view.activity.KnowledgesTabActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

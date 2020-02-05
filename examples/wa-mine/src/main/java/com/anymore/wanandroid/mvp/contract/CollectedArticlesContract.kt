@@ -11,6 +11,7 @@ import io.reactivex.Observable
 interface CollectedArticlesContract {
     interface ICollectedArticlesView:BaseContract.IBaseView{
         fun showCollectedArticles(data:List<Article1>,pageNum:Int,hasMore:Boolean = true)
+        fun refreshOrLoadFailed(refresh:Boolean)
         fun remove(index:Int)
     }
 

@@ -9,6 +9,7 @@ import com.anymore.wanandroid.entry.Todo
 interface TodoListContract {
     interface ITodoListView : BaseContract.IBaseView {
         fun showTodoList(todos:List<Todo>,pageNumber:Int,hasMore:Boolean = true)
+        fun refreshOrLoadFailed(refresh:Boolean)
         fun remove(index:Int)
     }
 

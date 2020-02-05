@@ -31,7 +31,7 @@ internal object ApplicationWrapperMonitor : IApplicationLifecycle {
             } else {
                 0
             }
-            return priority - p
+            return p - priority
         }
 
     }

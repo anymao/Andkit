@@ -2,8 +2,14 @@
     package="com.anymore.wanandroid.mine">
 
     <application>
-        <activity android:name="com.anymore.wanandroid.mvp.view.activity.TodoTabActivity" />
-        <activity android:name="com.anymore.wanandroid.mvp.view.activity.TodoActivity"/>
-        <activity android:name="com.anymore.wanandroid.mvp.view.activity.FlutterActivity"/>
+        <activity
+            android:name="com.anymore.wanandroid.mvp.view.activity.TodoTabActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.anymore.wanandroid.mvp.view.activity.TodoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.anymore.wanandroid.mvp.view.activity.FlutterActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

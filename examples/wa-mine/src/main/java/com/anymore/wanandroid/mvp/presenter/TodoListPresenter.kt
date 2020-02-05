@@ -36,7 +36,8 @@ class TodoListPresenter @Inject constructor(
                     mView.showTodoList(list,currentPage,hasMore)
                 },
                 onError = {
-                    mView.showError(it.message?:"加载待办列表失败！")
+                    Timber.e(it)
+                    mView.refreshOrLoadFailed(true)
                 }
             )
         addDisposable(disposable)
@@ -54,7 +55,8 @@ class TodoListPresenter @Inject constructor(
                     mView.showTodoList(list,currentPage,hasMore)
                 },
                 onError = {
-                    mView.showError(it.message?:"加载待办列表失败！")
+                    Timber.e(it)
+                    mView.refreshOrLoadFailed(false)
                 }
             )
         addDisposable(disposable)

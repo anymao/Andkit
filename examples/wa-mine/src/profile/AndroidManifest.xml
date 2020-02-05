@@ -8,11 +8,26 @@
         android:name="com.anymore.wanandroid.MineApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/wm_module_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/wa_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.anymore.wanandroid.mvp.view.activity.TodoTabActivity" />
+        <activity android:name="com.anymore.wanandroid.mvp.view.activity.MineHostActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.anymore.wanandroid.mvp.view.activity.TodoTabActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.anymore.wanandroid.mvp.view.activity.TodoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.anymore.wanandroid.mvp.view.activity.FlutterActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

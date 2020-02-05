@@ -1,4 +1,5 @@
 <resources>
+    <string name="wm_module_name">我的</string>
     <string name="wm_app_name">wa-mine</string>
     <string name="wm_mine">我的</string>
     <string name="wm_todo">待办</string>

@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.anymore.wanandroid.browse">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.anymore.andkit.AndkitApplication"
@@ -12,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/wa_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.anymore.wanandroid.view.FragmentActivity" />
-        <activity android:name="com.anymore.wanandroid.view.WebActivity"/>
+        <activity
+            android:name="com.anymore.wanandroid.view.FragmentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.anymore.wanandroid.view.WebActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

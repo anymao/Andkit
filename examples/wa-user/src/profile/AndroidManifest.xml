@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.anymore.wanandroid.user">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.anymore.wanandroid.UserApplication"
@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/wu_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.anymore.wanandroid.mvvm.view.SplashActivity">
+        <activity
+            android:name="com.anymore.wanandroid.mvvm.view.SplashActivity"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +24,12 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.anymore.wanandroid.mvvm.view.LoginActivity"/>
-        <activity android:name="com.anymore.wanandroid.mvvm.view.RegisterActivity"/>
+        <activity
+            android:name="com.anymore.wanandroid.mvvm.view.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.anymore.wanandroid.mvvm.view.RegisterActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

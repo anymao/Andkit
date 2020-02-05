@@ -5,6 +5,7 @@ import com.anymore.andkit.mvp.BasePresenter
 import com.anymore.wanandroid.common.ext.network2Main
 import com.anymore.wanandroid.mvp.contract.CollectedArticlesContract
 import io.reactivex.rxkotlin.subscribeBy
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -28,7 +29,8 @@ class CollectedArticlesPresenter @Inject constructor(
                     mView.showCollectedArticles(list, currentPage, hasMore)
                 },
                 onError = {
-                    mView.showError(it.message ?: "加载收藏列表失败！")
+                    Timber.e(it)
+                    mView.refreshOrLoadFailed(true)
                 }
             )
         addDisposable(disposable)
@@ -46,7 +48,8 @@ class CollectedArticlesPresenter @Inject constructor(
                     mView.showCollectedArticles(list, currentPage, hasMore)
                 },
                 onError = {
-                    mView.showError(it.message ?: "加载收藏列表失败！")
+                    Timber.e(it)
+                    mView.refreshOrLoadFailed(false)
                 }
             )
         addDisposable(disposable)

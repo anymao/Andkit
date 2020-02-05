@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">wa-browse</string>
+    <string name="wb_module_name">浏览</string>
+    <string name="wb_app_name">wa-browse</string>
 </resources>

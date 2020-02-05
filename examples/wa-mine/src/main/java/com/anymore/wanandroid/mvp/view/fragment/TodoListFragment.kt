@@ -102,6 +102,15 @@ class TodoListFragment : BaseMvpFragment<TodoListContract.ITodoListPresenter>(),
         srl.setNoMoreData(!hasMore)
     }
 
+    override fun refreshOrLoadFailed(refresh: Boolean) {
+        if(refresh){
+            srl.finishRefresh(false)
+        }else{
+            srl.finishLoadMore(false)
+        }
+        showError("加载失败!")
+    }
+
     override fun remove(index: Int) {
         adapter.remove(index)
         EventBus.getDefault().post(TodoChangedEvent("remove"))

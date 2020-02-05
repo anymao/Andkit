@@ -4,6 +4,7 @@ import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.AndkitApplication
 import com.anymore.andkit.annotations.Kiss
+import com.anymore.andkit.annotations.Kisses
 import com.anymore.andkit.dagger.module.ApplicationModule
 import com.anymore.wanandroid.di.component.DaggerWanAndroidComponent
 import com.anymore.wanandroid.user.BuildConfig
@@ -15,10 +16,16 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader
 /**
  * Created by liuyuanmao on 2020/1/17.
  */
-@Kiss(MineApplicationWrapper::class,priority = 99)
+@Kisses(
+    value = [
+        Kiss(MineApplicationWrapper::class, priority = 99),
+        Kiss(UserApplicationWrapper::class, priority = 98),
+        Kiss(ArticlesApplicationWrapper::class, priority = 97)
+    ]
+)
 class WanAndroidApplication : AndkitApplication() {
 
-    companion object{
+    companion object {
         init {
             //设置全局的Header构建器
             SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
@@ -43,7 +50,7 @@ class WanAndroidApplication : AndkitApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             ARouter.openDebug()
             ARouter.openLog()
         }
