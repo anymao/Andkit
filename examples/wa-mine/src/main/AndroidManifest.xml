@@ -4,5 +4,6 @@
     <application>
         <activity android:name="com.anymore.wanandroid.mvp.view.activity.TodoTabActivity" />
         <activity android:name="com.anymore.wanandroid.mvp.view.activity.TodoActivity"/>
+        <activity android:name="com.anymore.wanandroid.mvp.view.activity.FlutterActivity"/>
     </application>
 </manifest>

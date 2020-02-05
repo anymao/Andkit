@@ -62,18 +62,25 @@
                 android:text="@string/wm_collected" />
 
             <TextView
+                android:id="@+id/tvGirls"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_girls"
+                android:drawableLeft="@drawable/ic_girls"
+                android:drawablePadding="15dp"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_item_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="@dimen/wa_item_vertical_padding"
-                android:text="@string/wm_todo" />
+                android:text="@string/wm_girls" />
 
             <TextView
                 android:id="@+id/tvAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_about"
+                android:drawableLeft="@drawable/ic_about"
+                android:drawablePadding="15dp"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_item_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"

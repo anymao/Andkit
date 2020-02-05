@@ -5,6 +5,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvp.BaseFragment
 import com.anymore.wanandroid.mine.R
 import com.anymore.wanandroid.route.BROWSE_FRAGMENT
+import com.anymore.wanandroid.route.MINE_FLUTTER
 import com.anymore.wanandroid.route.MINE_TODO_LIST
 import kotlinx.android.synthetic.main.wm_fragment_mine.*
 
@@ -29,8 +30,17 @@ class MineFragment : BaseFragment() {
                 .withString("fragmentName", CollectedArticlesFragment::class.java.name)
                 .navigation(requireContext())
         }
+        tvGirls.setOnClickListener {
+            ARouter.getInstance()
+                .build(MINE_FLUTTER)
+                .withString("initialRoute","/welfare")
+                .navigation(requireContext())
+        }
         tvAbout.setOnClickListener {
-
+            ARouter.getInstance()
+                .build(MINE_FLUTTER)
+                .withString("initialRoute","/about")
+                .navigation(requireContext())
 
         }
     }
