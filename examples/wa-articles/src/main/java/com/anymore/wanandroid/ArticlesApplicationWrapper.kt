@@ -9,14 +9,14 @@ import timber.log.Timber
  */
 class ArticlesApplicationWrapper(application: Application) : AbsApplicationWrapper(application) {
     override fun attachBaseContext() {
-        Timber.i("ArticlesApplicationWrapper===>attachBaseContext")
+        Timber.i("attachBaseContext")
     }
 
     override fun onCreate() {
-        Timber.i("ArticlesApplicationWrapper===>onCreate")
+        Timber.i("onCreate")
     }
 
     override fun onTerminate() {
-        Timber.i("ArticlesApplicationWrapper===>onTerminate")
+        Timber.i("onTerminate")
     }
 }

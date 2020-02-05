@@ -3,6 +3,7 @@ package com.anymore.wanandroid
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.AndkitApplication
+import com.anymore.andkit.annotations.Kiss
 import com.anymore.andkit.dagger.module.ApplicationModule
 import com.anymore.wanandroid.di.component.DaggerWanAndroidComponent
 import com.anymore.wanandroid.user.BuildConfig
@@ -14,6 +15,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader
 /**
  * Created by liuyuanmao on 2020/1/17.
  */
+@Kiss(MineApplicationWrapper::class,priority = 99)
 class WanAndroidApplication : AndkitApplication() {
 
     companion object{
