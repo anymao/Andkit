@@ -87,6 +87,23 @@
                 android:paddingBottom="@dimen/wa_item_vertical_padding"
                 android:text="@string/wm_about" />
 
+            <TextView
+                android:id="@+id/tvLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:drawablePadding="15dp"
+                android:background="#9B3A5B"
+                android:textColor="@android:color/white"
+                android:paddingLeft="@dimen/wa_activity_horizontal_padding"
+                android:paddingTop="@dimen/wa_item_vertical_padding"
+                android:paddingRight="@dimen/wa_activity_horizontal_padding"
+                android:paddingBottom="@dimen/wa_item_vertical_padding"
+                android:text="@string/wm_logout"
+                android:gravity="center"/>
+
         </LinearLayout>
 
 

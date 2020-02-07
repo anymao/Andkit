@@ -1,16 +1,15 @@
 package com.anymore.wanandroid.mvvm.model
 
 import android.app.Application
+import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvvm.BaseModel
 import com.anymore.wanandroid.api.WanAndroidUserApi
-import com.anymore.wanandroid.common.delegates.SharedPreferenceHelper
 import com.anymore.wanandroid.repository.WAN_ANDROID_KEY
 import com.anymore.wanandroid.repository.base.ResponseCode
-import com.anymore.wanandroid.repository.base.WanAndroidResponse
 import com.anymore.wanandroid.repository.database.AppDatabase
 import com.anymore.wanandroid.repository.database.entry.UserInfo
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.anymore.wanandroid.route.service.UserService
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -37,19 +36,40 @@ class UserModel @Inject constructor(application: Application) : BaseModel(applic
     }
     private val mUserDao by lazy { mAppDatabase.userInfoDao() }
 
-    fun register(
-        username: String,
-        pwd: String,
-        rePwd: String
-    ): Observable<WanAndroidResponse<UserInfo>> = mUserApi
-        .register(username, pwd, rePwd)
-        .subscribeOn(Schedulers.io())
-        .doOnNext {
-            if (it.errorCode == ResponseCode.OK && it.data != null) {
-                mUserDao.insert(it.data!!)
+    @Autowired
+    lateinit var mUserService: UserService
+
+    init {
+        ARouter.getInstance().inject(this)
+    }
+
+    suspend fun register(username: String, pwd: String, rePwd: String): UserInfo? {
+        return withContext(Dispatchers.IO) {
+            val response = mUserApi.register(username, pwd, rePwd)
+            var user: UserInfo? = null
+            if (response.errorCode == ResponseCode.OK && response.data != null) {
+                user = response.data
+                user?.online = true
+                mUserDao.insert(user!!)
+                mUserService.setLoginStatus(true)
             }
+            user
         }
-        .observeOn(AndroidSchedulers.mainThread())
+    }
+
+//    fun register(
+//        username: String,
+//        pwd: String,
+//        rePwd: String
+//    ): Observable<WanAndroidResponse<UserInfo>> = mUserApi
+//        .register(username, pwd, rePwd)
+//        .subscribeOn(Schedulers.io())
+//        .doOnNext {
+//            if (it.errorCode == ResponseCode.OK && it.data != null) {
+//                mUserDao.insert(it.data!!)
+//            }
+//        }
+//        .observeOn(AndroidSchedulers.mainThread())
 
     suspend fun login(username: String, pwd: String): UserInfo? {
         return withContext(Dispatchers.IO) {
@@ -59,8 +79,8 @@ class UserModel @Inject constructor(application: Application) : BaseModel(applic
             if (response.errorCode == ResponseCode.OK && response.data != null) {
                 user = response.data
                 user?.online = true
-                val helper = SharedPreferenceHelper()
-                helper.put("is_login", true)
+                mUserDao.insert(user!!)
+                mUserService.setLoginStatus(true)
             }
             user
         }
@@ -78,15 +98,29 @@ class UserModel @Inject constructor(application: Application) : BaseModel(applic
 //        }
 //        .observeOn(AndroidSchedulers.mainThread())
 
-    fun logout(): Observable<WanAndroidResponse<String>> = mUserApi
-        .logout()
-        .subscribeOn(Schedulers.io())
-        .doOnNext {
-            if (it.errorCode == ResponseCode.OK && it.data != null) {
-                mUserDao.updateOnlineStatus(false)
+    suspend fun logout(): Pair<Int, String> {
+        return withContext(Dispatchers.IO) {
+            val response = mUserApi.logout()
+            val code = response.errorCode
+            if (code == ResponseCode.OK) {
+                mUserDao.deleteAll()
+                return@withContext Pair(0, "注销成功")
+            } else {
+                return@withContext Pair(code, response.errorMsg ?: "注销失败")
             }
+
         }
-        .observeOn(AndroidSchedulers.mainThread())
+    }
+
+//    fun logout(): Observable<WanAndroidResponse<String>> = mUserApi
+//        .logout()
+//        .subscribeOn(Schedulers.io())
+//        .doOnNext {
+//            if (it.errorCode == ResponseCode.OK && it.data != null) {
+//                mUserDao.updateOnlineStatus(false)
+//            }
+//        }
+//        .observeOn(AndroidSchedulers.mainThread())
 
     fun getCurrentUser() = mUserDao.getCurrentUser().subscribeOn(Schedulers.io())
 

@@ -11,7 +11,7 @@ import io.reactivex.Maybe
 @Dao
 interface UserInfoDao {
     @Query("SELECT * FROM UserInfo WHERE online LIMIT 1")
-    fun getCurrentUser():Maybe<UserInfo>
+    fun getCurrentUser(): Maybe<UserInfo>
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(userInfo: UserInfo)
@@ -23,5 +23,8 @@ interface UserInfoDao {
     fun delete(userInfo: UserInfo)
 
     @Query("UPDATE UserInfo SET online=:newStatus WHERE online")
-    fun updateOnlineStatus(newStatus:Boolean)
+    fun updateOnlineStatus(newStatus: Boolean)
+
+    @Query("DELETE FROM UserInfo")
+    fun deleteAll()
 }

@@ -2,13 +2,14 @@ package com.anymore.wanandroid.mvvm.viewmodel
 
 import android.app.Application
 import android.text.TextUtils
+import androidx.lifecycle.viewModelScope
 import com.anymore.andkit.dagger.scope.ActivityScope
 import com.anymore.andkit.mvvm.BaseViewModel
 import com.anymore.andkit.mvvm.SingleLiveEvent
+import com.anymore.wanandroid.common.event.LoadEvent
+import com.anymore.wanandroid.common.event.LoadState
 import com.anymore.wanandroid.mvvm.model.UserModel
-import com.anymore.wanandroid.repository.base.ResponseCode
-import io.reactivex.rxkotlin.subscribeBy
-
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -19,19 +20,34 @@ class RegisterViewModel @Inject constructor(application: Application, private va
     BaseViewModel(application) {
     val mErrorMessage = SingleLiveEvent<String>()
     val mMessage = SingleLiveEvent<String>()
+    val mLoadStateEvent by lazy { SingleLiveEvent<LoadEvent>() }
+    val mRegisterEvent by lazy { SingleLiveEvent<Boolean>() }
+
     fun register(username: String?, pwd: String?, rePwd: String?) {
         if (checkUser(username, pwd, rePwd)) {
-            val disposable = userModel.register(username!!, pwd!!, rePwd!!)
-                .subscribeBy(onNext = {
-                    if (it.errorCode == ResponseCode.OK) {
-                        mMessage.value = "注册成功!"
-                    } else {
-                        mErrorMessage.value = it.errorMsg
-                    }
-                }, onError = {
-                    mErrorMessage.value = it.message
-                })
-            addToCompositeDisposable(disposable)
+            viewModelScope.launch {
+                mLoadStateEvent.postValue(LoadEvent(LoadState.START,"正在注册..."))
+                val userinfo = userModel.register(username!!,pwd!!,rePwd!!)
+                mLoadStateEvent.postValue(LoadEvent(LoadState.COMPLETED))
+                if (userinfo != null){
+                    mMessage.value = "登录成功!"
+                    mRegisterEvent.value = true
+                }else{
+                    mMessage.value = "登陆失败"
+                }
+
+            }
+//            val disposable = userModel.register(username!!, pwd!!, rePwd!!)
+//                .subscribeBy(onNext = {
+//                    if (it.errorCode == ResponseCode.OK) {
+//                        mMessage.value = "注册成功!"
+//                    } else {
+//                        mErrorMessage.value = it.errorMsg
+//                    }
+//                }, onError = {
+//                    mErrorMessage.value = it.message
+//                })
+//            addToCompositeDisposable(disposable)
         }
     }
 

@@ -8,9 +8,11 @@ const val USER_GROUP = "user"
 
 const val LOGIN = "login"
 const val REGISTER = "register"
+const val SERVICE = "service"
 
 const val USER_LOGIN = "/$USER_GROUP/$LOGIN"
 const val USER_REGISTER = "/$USER_GROUP/$REGISTER"
+const val USER_SERVICE = "/$USER_GROUP/$SERVICE"
 
 /////WanAndroid Browse Group
 

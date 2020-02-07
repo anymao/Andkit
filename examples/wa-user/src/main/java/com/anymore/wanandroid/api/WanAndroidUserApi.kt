@@ -2,7 +2,6 @@ package com.anymore.wanandroid.api
 
 import com.anymore.wanandroid.repository.base.WanAndroidResponse
 import com.anymore.wanandroid.repository.database.entry.UserInfo
-import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -18,7 +17,11 @@ interface WanAndroidUserApi {
      */
     @FormUrlEncoded
     @POST("/user/register")
-    fun register(@Field("username") username: String, @Field("password") password: String, @Field("repassword") repassword: String): Observable<WanAndroidResponse<UserInfo>>
+    suspend fun register(
+        @Field("username") username: String, @Field("password") password: String, @Field(
+            "repassword"
+        ) repassword: String
+    ): WanAndroidResponse<UserInfo>
 
     /**
      * 登陆
@@ -30,7 +33,7 @@ interface WanAndroidUserApi {
     /**
      * 注销
      */
-    @GET("/logout/json")
-    fun logout(): Observable<WanAndroidResponse<String>>
+    @GET("/user/logout/json")
+    suspend fun logout(): WanAndroidResponse<String>
 
 }
