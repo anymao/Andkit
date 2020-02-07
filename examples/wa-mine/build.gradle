@@ -136,7 +136,6 @@ dependencies {
     implementation project(':andkit-repository')
     implementation project(':wa-common')
     implementation project(':wa-route')
-    implementation project(':wa-browse')
     implementation project(':wa-repository')
     implementation project(':wa-resources')
     implementation project(':flutter')

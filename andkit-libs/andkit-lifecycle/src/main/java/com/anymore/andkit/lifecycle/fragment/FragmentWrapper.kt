@@ -28,7 +28,6 @@ class FragmentWrapper(
 
     override fun onActivityCreate(savedInstanceState: Bundle?) {
         Timber.i("onActivityCreate")
-        iFragment.initData(savedInstanceState)
     }
 
     override fun onResume() {

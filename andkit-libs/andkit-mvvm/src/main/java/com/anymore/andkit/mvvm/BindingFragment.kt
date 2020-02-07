@@ -28,10 +28,17 @@ abstract class BindingFragment<BD : ViewDataBinding> : Fragment(), IFragment {
         return mBinding.root
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initData(savedInstanceState)
+    }
+
     @LayoutRes
     abstract fun getLayoutRes():Int
 
     open fun initView(savedInstanceState: Bundle?){}
+
+    open fun initData(savedInstanceState: Bundle?){}
 
     override fun onResume() {
         Timber.tag(TAG).w("==>onResume()")

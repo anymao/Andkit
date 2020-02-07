@@ -10,6 +10,7 @@
             <option value="D:/Android/flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.4.0+12/android" />
             <option value="D:/Android/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.5.0/android" />
             <option value="D:/Android/flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.8/android" />
+            <option value="D:/Android/flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.2.7/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/andkit-libs/andkit" />
             <option value="$PROJECT_DIR$/andkit-libs/andkit-dagger" />
@@ -25,6 +26,7 @@
             <option value="$PROJECT_DIR$/examples/wa-resources" />
             <option value="$PROJECT_DIR$/examples/wa-route" />
             <option value="$PROJECT_DIR$/examples/wa-user" />
+            <option value="$PROJECT_DIR$/examples/wanandroid" />
             <option value="$PROJECT_DIR$/flutter/wa_about" />
             <option value="$PROJECT_DIR$/flutter/wa_about/.android/Flutter" />
           </set>

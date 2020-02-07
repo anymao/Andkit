@@ -14,7 +14,7 @@ const val USER_REGISTER = "/$USER_GROUP/$REGISTER"
 
 /////WanAndroid Browse Group
 
-const val BROWSE_GROUP = "browe"
+const val BROWSE_GROUP = "browse"
 const val URL = "url"
 const val FRAGMENT = "fragment"
 
@@ -40,3 +40,5 @@ const val FLUTTER = "flutter"
 const val MINE_TODO = "/$MINE_GROUP/$TODO"
 const val MINE_TODO_LIST = "/$MINE_GROUP/$TODO_LIST"
 const val MINE_FLUTTER = "/$MINE_GROUP/$FLUTTER"
+
+const val INTERCEPTOR_LOGIN = "login"

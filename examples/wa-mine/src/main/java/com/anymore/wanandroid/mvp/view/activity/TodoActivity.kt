@@ -13,6 +13,7 @@ import com.anymore.wanandroid.event.TodoChangedEvent
 import com.anymore.wanandroid.mine.R
 import com.anymore.wanandroid.mvp.contract.TodoContract
 import com.anymore.wanandroid.mvp.view.widget.DatePickerDialog
+import com.anymore.wanandroid.route.NEED_LOGIN_FLAG
 import com.anymore.wanandroid.route.MINE_TODO
 
 import kotlinx.android.synthetic.main.wm_activity_todo.*
@@ -23,7 +24,7 @@ import java.util.*
 /**
  * Created by anymore on 2020/2/2.
  */
-@Route(path = MINE_TODO)
+@Route(path = MINE_TODO,extras = NEED_LOGIN_FLAG)
 class TodoActivity : BaseMvpActivity<TodoContract.ITodoPresenter>(), TodoContract.ITodoView,
     DatePickerDialog.OnButtonClickListener {
 

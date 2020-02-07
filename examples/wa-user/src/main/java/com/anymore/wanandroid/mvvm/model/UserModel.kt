@@ -3,6 +3,7 @@ package com.anymore.wanandroid.mvvm.model
 import android.app.Application
 import com.anymore.andkit.mvvm.BaseModel
 import com.anymore.wanandroid.api.WanAndroidUserApi
+import com.anymore.wanandroid.common.delegates.SharedPreferenceHelper
 import com.anymore.wanandroid.repository.WAN_ANDROID_KEY
 import com.anymore.wanandroid.repository.base.ResponseCode
 import com.anymore.wanandroid.repository.base.WanAndroidResponse
@@ -58,6 +59,8 @@ class UserModel @Inject constructor(application: Application) : BaseModel(applic
             if (response.errorCode == ResponseCode.OK && response.data != null) {
                 user = response.data
                 user?.online = true
+                val helper = SharedPreferenceHelper()
+                helper.put("is_login", true)
             }
             user
         }
