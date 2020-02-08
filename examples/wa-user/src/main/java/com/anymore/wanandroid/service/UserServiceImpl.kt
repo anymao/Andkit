@@ -77,6 +77,7 @@ class UserServiceImpl : UserService {
             val code = response.errorCode
             if (code == ResponseCode.OK) {
                 setLoginStatus(false)
+                userDao.deleteAll()
                 return@withContext Pair(0, "注销成功")
             } else {
                 return@withContext Pair(code, response.errorMsg ?: "注销失败")

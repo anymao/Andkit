@@ -95,6 +95,7 @@ dependencies {
     implementation project(':wa-browse')
     implementation project(':wa-route')
     implementation project(':wa-resources')
+    implementation project(':wa-repository')
     implementation project(':wa-common')
 
 

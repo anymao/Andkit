@@ -1,13 +1,7 @@
 package com.anymore.wanandroid.di.module
 
-import com.anymore.wanandroid.mvp.contract.CollectedArticlesContract
-import com.anymore.wanandroid.mvp.contract.TodoContract
-import com.anymore.wanandroid.mvp.contract.TodoListContract
-import com.anymore.wanandroid.mvp.contract.TodoTabContract
-import com.anymore.wanandroid.mvp.presenter.CollectedArticlesPresenter
-import com.anymore.wanandroid.mvp.presenter.TodoListPresenter
-import com.anymore.wanandroid.mvp.presenter.TodoPresenter
-import com.anymore.wanandroid.mvp.presenter.TodoTabPresenter
+import com.anymore.wanandroid.mvp.contract.*
+import com.anymore.wanandroid.mvp.presenter.*
 import dagger.Binds
 import dagger.Module
 
@@ -28,4 +22,7 @@ abstract class PresentersModule {
 
     @Binds
     abstract fun bindCollectedArticlesPresenter(presenter:CollectedArticlesPresenter):CollectedArticlesContract.ICollectedArticlesPresenter
+
+    @Binds
+    abstract fun bindMinePresenter(presenter:MinePresenter):MineContract.IMinePresenter
 }

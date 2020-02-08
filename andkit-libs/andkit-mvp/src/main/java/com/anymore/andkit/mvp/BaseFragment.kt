@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.anymore.andkit.lifecycle.fragment.IFragment
+import com.anymore.andkit.mvp.widget.LoadingDialog
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -17,15 +18,19 @@ import java.util.concurrent.atomic.AtomicBoolean
  * 如无必需，无需重复实现其接口
  * Created by liuyuanmao on 2019/7/16.
  */
-abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView{
+abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView {
 
     private val TAG = "BaseFragment@${hashCode()}"
     //用于存储当前Fragment的前一个可见状态
     private var mPreviousVisibleState = AtomicBoolean(false)
     protected lateinit var mLoadingDialog: AlertDialog
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(getLayoutRes(),container,false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(getLayoutRes(), container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,11 +44,11 @@ abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView{
     }
 
     @LayoutRes
-    abstract fun getLayoutRes():Int
+    abstract fun getLayoutRes(): Int
 
-    open fun initView(savedInstanceState: Bundle?){}
+    open fun initView(savedInstanceState: Bundle?) {}
 
-    open fun initData(savedInstanceState: Bundle?){}
+    open fun initData(savedInstanceState: Bundle?) {}
 
     override fun onResume() {
         Timber.tag(TAG).w("${hashCode()}:onResume()")
@@ -74,30 +79,24 @@ abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView{
         setFragmentVisibleState(!hidden)
     }
 
-    private fun setFragmentVisibleState(newState:Boolean){
-        if (mPreviousVisibleState.compareAndSet(!newState,newState)){
+    private fun setFragmentVisibleState(newState: Boolean) {
+        if (mPreviousVisibleState.compareAndSet(!newState, newState)) {
             onVisibleStateChanged(newState)
         }
     }
 
-    protected open fun onVisibleStateChanged(visible:Boolean){
+    protected open fun onVisibleStateChanged(visible: Boolean) {
         Timber.tag(TAG).w("Fragment(${this.hashCode()})可见性：$visible")
     }
 
-    override fun provideLifecycleOwner()=this
+    override fun provideLifecycleOwner() = this
 
     override fun showProgressBar(message: String, cancelable: Boolean) {
-//        if (!this::mLoadingDialog.isInitialized){
-//            mLoadingDialog = LoadingDialog(context!!,message,cancelable)
-//        }else{
-//            mLoadingDialog.title = message
-//            mLoadingDialog.setCancelable(cancelable)
-//        }
-        mLoadingDialog.show()
+        showDefaultLoadingDialog(message, cancelable)
     }
 
     override fun hideProgressBar() {
-        if (this::mLoadingDialog.isInitialized && mLoadingDialog.isShowing){
+        if (this::mLoadingDialog.isInitialized && mLoadingDialog.isShowing) {
             mLoadingDialog.dismiss()
         }
     }
@@ -107,7 +106,7 @@ abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView{
     }
 
     override fun showSuccess(message: String) {
-        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun showError(stringId: Int) {
@@ -115,6 +114,15 @@ abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView{
     }
 
     override fun showError(message: String) {
-        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showDefaultLoadingDialog(message: String, cancelable: Boolean) {
+        hideProgressBar()
+        mLoadingDialog = LoadingDialog(requireContext(), message, cancelable).also {
+            it.title = message
+        }
+        mLoadingDialog.setCancelable(cancelable)
+        mLoadingDialog.show()
     }
 }

@@ -33,14 +33,14 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, BaseContract.IBase
         super.onDestroy()
     }
 
-    override fun provideLifecycleOwner()=this
+    override fun provideLifecycleOwner() = this
 
     override fun showProgressBar(message: String, cancelable: Boolean) {
-        showDefaultLoadingDialog(message,cancelable)
+        showDefaultLoadingDialog(message, cancelable)
     }
 
     override fun hideProgressBar() {
-        if (this::mLoadingDialog.isInitialized && mLoadingDialog.isShowing){
+        if (this::mLoadingDialog.isInitialized && mLoadingDialog.isShowing) {
             mLoadingDialog.dismiss()
         }
     }
@@ -50,7 +50,7 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, BaseContract.IBase
     }
 
     override fun showSuccess(message: String) {
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun showError(stringId: Int) {
@@ -58,16 +58,15 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, BaseContract.IBase
     }
 
     override fun showError(message: String) {
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-    private fun showDefaultLoadingDialog(message: String, cancelable: Boolean){
-        if (!this::mLoadingDialog.isInitialized){
-            mLoadingDialog = LoadingDialog(this,message,cancelable)
-        }else{
-            mLoadingDialog.setTitle(message)
-            mLoadingDialog.setCancelable(cancelable)
+    private fun showDefaultLoadingDialog(message: String, cancelable: Boolean) {
+        hideProgressBar()
+        mLoadingDialog = LoadingDialog(this, message, cancelable).also {
+            it.title = message
         }
+        mLoadingDialog.setCancelable(cancelable)
         mLoadingDialog.show()
     }
 

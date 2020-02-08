@@ -1,10 +1,10 @@
 package com.anymore.wanandroid.repository.database.entry
 
 
+import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import androidx.annotation.NonNull
 import com.anymore.wanandroid.repository.database.converters.UserInfoConverter
 
 /**
@@ -17,13 +17,16 @@ data class UserInfo(
     @NonNull
     @PrimaryKey
     val id: Int,
-    val username: String,
-    val password: String,
-    val token: String,
-    val type: Int,
+    val admin: Boolean,
+    val chapterTops: List<String>,
+    val collectIds: List<Int>,
     val email: String,
     val icon: String,
-    val chapterTops: List<String>,
-    val collectIds: List<String>,
+    val nickname: String,
+    val password: String,
+    val publicName: String,
+    val token: String,
+    val type: Int,
+    val username: String,
     var online:Boolean = false
 )

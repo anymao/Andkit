@@ -14,6 +14,7 @@ import com.anymore.wanandroid.common.widget.LoadingDialog
 import com.anymore.wanandroid.mvvm.viewmodel.LoginViewModel
 import com.anymore.wanandroid.route.MAIN_PAGE
 import com.anymore.wanandroid.route.USER_LOGIN
+import com.anymore.wanandroid.route.USER_REGISTER
 import com.anymore.wanandroid.user.R
 import com.anymore.wanandroid.user.databinding.WuActivityLoginBinding
 
@@ -31,17 +32,17 @@ class LoginActivity : BaseActivity<WuActivityLoginBinding, LoginViewModel>() {
         super.initData(savedInstanceState)
         setupToolbar(mBinding.toolbar)
         mViewModel.toastEvent.observe(this, Observer { toast(it, Toast.LENGTH_LONG) })
-        mViewModel.mLoadStateEvent.observe(this, Observer{
-            when(it.state){
-                LoadState.START->mLoadingDialog.apply {
+        mViewModel.mLoadStateEvent.observe(this, Observer {
+            when (it.state) {
+                LoadState.START -> mLoadingDialog.apply {
                     title = it.message
                     show()
                 }
-                LoadState.COMPLETED->mLoadingDialog.dismiss()
+                LoadState.COMPLETED -> mLoadingDialog.dismiss()
             }
         })
         mViewModel.mLoginEvent.observe(this, Observer {
-            Toast.makeText(this,"登陆成功!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "登陆成功!", Toast.LENGTH_LONG).show()
             ActivityStackManager.finishAll()
             ARouter.getInstance()
                 .build(MAIN_PAGE)
@@ -52,6 +53,11 @@ class LoginActivity : BaseActivity<WuActivityLoginBinding, LoginViewModel>() {
                 mBinding.etUserName.text.toString(),
                 mBinding.etPwd.text.toString()
             )
+        }
+        mBinding.tvToRegister.setOnClickListener {
+            ARouter.getInstance()
+                .build(USER_REGISTER)
+                .navigation(this)
         }
     }
 }

@@ -14,4 +14,10 @@ class UserInfoConverter{
 
     @TypeConverter
     fun json2StringList(json: String)=Gson().toList<String>(json)
+
+    @TypeConverter
+    fun intList2Json(list: List<Int>):String=Gson().toJson(list)
+
+    @TypeConverter
+    fun json2IntList(json: String)=Gson().toList<Int>(json)
 }

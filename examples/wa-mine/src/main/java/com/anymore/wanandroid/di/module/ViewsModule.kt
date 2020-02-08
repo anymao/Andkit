@@ -1,12 +1,10 @@
 package com.anymore.wanandroid.di.module
 
-import com.anymore.wanandroid.mvp.contract.CollectedArticlesContract
-import com.anymore.wanandroid.mvp.contract.TodoContract
-import com.anymore.wanandroid.mvp.contract.TodoListContract
-import com.anymore.wanandroid.mvp.contract.TodoTabContract
+import com.anymore.wanandroid.mvp.contract.*
 import com.anymore.wanandroid.mvp.view.activity.TodoActivity
 import com.anymore.wanandroid.mvp.view.activity.TodoTabActivity
 import com.anymore.wanandroid.mvp.view.fragment.CollectedArticlesFragment
+import com.anymore.wanandroid.mvp.view.fragment.MineFragment
 import com.anymore.wanandroid.mvp.view.fragment.TodoListFragment
 import dagger.Binds
 import dagger.Module
@@ -28,4 +26,7 @@ abstract class ViewsModule{
 
     @Binds
     abstract fun bindCollectedArticlesFragment(fragment: CollectedArticlesFragment):CollectedArticlesContract.ICollectedArticlesView
+
+    @Binds
+    abstract fun bindMineFragment(fragment: MineFragment):MineContract.IMineView
 }

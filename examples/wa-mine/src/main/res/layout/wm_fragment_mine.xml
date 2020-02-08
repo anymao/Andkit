@@ -23,17 +23,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="168dp">
 
-                <ImageView
-                    android:id="@+id/iv_head"
-                    android:layout_width="58dp"
-                    android:layout_height="58dp"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/ic_launcher" />
-            </FrameLayout>
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="@dimen/wa_activity_vertical_padding"
+                android:src="@mipmap/ic_launcher" />
+            <TextView
+                android:id="@+id/tvUserInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_marginBottom="56dp"/>
 
             <TextView
                 android:id="@+id/tvTodo"
@@ -91,18 +96,18 @@
                 android:id="@+id/tvLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="32dp"
-                android:drawablePadding="15dp"
+                android:layout_marginRight="32dp"
                 android:background="#9B3A5B"
-                android:textColor="@android:color/white"
+                android:drawablePadding="15dp"
+                android:gravity="center"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_item_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="@dimen/wa_item_vertical_padding"
                 android:text="@string/wm_logout"
-                android:gravity="center"/>
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 

@@ -1,37 +1,30 @@
 package com.anymore.wanandroid.mvp.view.fragment
 
 import android.os.Bundle
-import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
-import com.anymore.andkit.mvp.BaseFragment
+import com.anymore.andkit.mvp.BaseMvpFragment
 import com.anymore.wanandroid.mine.R
+import com.anymore.wanandroid.mvp.contract.MineContract
+import com.anymore.wanandroid.repository.database.entry.UserInfo
 import com.anymore.wanandroid.route.*
-import com.anymore.wanandroid.route.service.UserService
 import kotlinx.android.synthetic.main.wm_fragment_mine.*
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
 
 /**
  * Created by anymore on 2020/1/29.
  */
-class MineFragment : BaseFragment(),CoroutineScope {
+class MineFragment : BaseMvpFragment<MineContract.IMinePresenter>(), MineContract.IMineView {
 
-    @JvmField
-    @Autowired
-    var mUserService: UserService? = null
-
-
-    private lateinit var mJob: Job
-    override val coroutineContext: CoroutineContext
-        get() = SupervisorJob() + Dispatchers.Main.immediate
-
-    override fun getLayoutRes(): Int {
-        ARouter.getInstance().inject(this)
-        return R.layout.wm_fragment_mine
-    }
+    override fun getLayoutRes() = R.layout.wm_fragment_mine
 
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
+        tvUserInfo.setOnClickListener {
+            if (!mPresenter.getLoginStatus()) {
+                ARouter.getInstance()
+                    .build(USER_LOGIN)
+                    .navigation(requireContext())
+            }
+        }
         tvTodo.setOnClickListener {
             ARouter.getInstance()
                 .build(MINE_TODO_LIST)
@@ -60,21 +53,21 @@ class MineFragment : BaseFragment(),CoroutineScope {
         }
 
         tvLogout.setOnClickListener {
-            mJob = launch {
-                showSuccess("正在注销...")
-                val response = mUserService?.logout()
-                showSuccess("注销成功")
-                if (response != null){
-                    showSuccess(response.second)
-                }
-            }
+            mPresenter.logout()
+        }
+        mPresenter.loadCurrentUserInfo()
+    }
+
+    override fun showUserInfo(user: UserInfo?) {
+        if (user != null) {
+            tvUserInfo.text = user.nickname
+        } else {
+            tvUserInfo.text = "未登录（点击登录）"
         }
     }
 
-    override fun onDestroy() {
-        if (this::mJob.isInitialized){
-            mJob.cancel()
-        }
-        super.onDestroy()
+    override fun logoutSuccess() {
+        showSuccess("注销成功")
+        mPresenter.loadCurrentUserInfo()
     }
 }

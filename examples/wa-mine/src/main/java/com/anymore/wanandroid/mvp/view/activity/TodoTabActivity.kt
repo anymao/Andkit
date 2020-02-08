@@ -11,9 +11,9 @@ import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.mine.R
 import com.anymore.wanandroid.mvp.contract.TodoTabContract
 import com.anymore.wanandroid.mvp.view.fragment.TodoListFragment
-import com.anymore.wanandroid.route.NEED_LOGIN_FLAG
 import com.anymore.wanandroid.route.MINE_TODO
 import com.anymore.wanandroid.route.MINE_TODO_LIST
+import com.anymore.wanandroid.route.NEED_LOGIN_FLAG
 import kotlinx.android.synthetic.main.wm_activity_todo_tab.*
 import org.jetbrains.anko.selector
 
@@ -55,7 +55,7 @@ class TodoTabActivity : BaseMvpActivity<TodoTabContract.ITodoTabPresenter>(),
                 }
             )
         }
-        facAddTodo.setOnClickListener {
+        fabAddTodo.setOnClickListener {
             ARouter.getInstance()
                 .build(MINE_TODO)
                 .withInt("mType", TodoActivity.TYPE_CREATE)
