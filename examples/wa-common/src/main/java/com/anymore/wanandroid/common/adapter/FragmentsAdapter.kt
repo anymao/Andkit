@@ -15,6 +15,7 @@ class FragmentsAdapter(fm: FragmentManager, private val fragments: List<Fragment
     override fun getCount() = fragments.size
 
     override fun getPageTitle(position: Int): CharSequence? {
+
         return fragments[position].title
     }
 

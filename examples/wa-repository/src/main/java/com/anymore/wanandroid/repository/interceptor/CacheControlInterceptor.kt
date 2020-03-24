@@ -20,8 +20,8 @@ class CacheControlInterceptor(private val applicationContext: Context) : Interce
         return if (applicationContext.isNetworkConnected()) {//网络可用，按照请求的缓存策略缓存
             val cacheControl = request.cacheControl
             response.newBuilder()
-//                .header("Cache-Control", cacheControl.toString())
-//                .removeHeader("Pragma")
+                .header("Cache-Control", cacheControl.toString())
+                .removeHeader("Pragma")
                 .build()
         } else {//网络不可用，将缓存策略设置为30天超时失效
             val maxStale = 60 * 60 * 24 * 30

@@ -6,6 +6,7 @@ import com.anymore.andkit.repository.di.module.RepositoryConfigsModule
 import com.anymore.wanandroid.repository.cookies.PersistentCookieJar
 import com.anymore.wanandroid.repository.cookies.SharedPreferencesCookieStore
 import com.anymore.wanandroid.repository.interceptor.CacheControlInterceptor
+import com.anymore.wanandroid.repository.interceptor.HeadersInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,7 +40,7 @@ class WanAndroidRepositoryConfig : RepositoryConfigsModule.RepositoryConfig {
                         }
                     }
                     builder
-//                        .addNetworkInterceptor(HeadersInterceptor())//为请求添加Headers
+                        .addNetworkInterceptor(HeadersInterceptor())//为请求添加Headers
                         .addNetworkInterceptor(CacheControlInterceptor(context))
                         .addNetworkInterceptor(okLogger)
                 }

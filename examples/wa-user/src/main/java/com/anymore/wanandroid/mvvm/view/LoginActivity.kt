@@ -1,11 +1,11 @@
 package com.anymore.wanandroid.mvvm.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.anymore.andkit.lifecycle.ActivityStackManager
 import com.anymore.andkit.mvvm.BaseActivity
 import com.anymore.wanandroid.common.event.LoadState
 import com.anymore.wanandroid.common.ext.setupToolbar
@@ -43,9 +43,9 @@ class LoginActivity : BaseActivity<WuActivityLoginBinding, LoginViewModel>() {
         })
         mViewModel.mLoginEvent.observe(this, Observer {
             Toast.makeText(this, "登陆成功!", Toast.LENGTH_LONG).show()
-            ActivityStackManager.finishAll()
             ARouter.getInstance()
                 .build(MAIN_PAGE)
+                .withFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 .navigation(this)
         })
         mBinding.btnLogin.setOnClickListener {
