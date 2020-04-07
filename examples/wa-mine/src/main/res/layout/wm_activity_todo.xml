@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/wa_color_page_bg">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -12,7 +13,6 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/wa_ToolbarTheme"
-        app:layout_constraintTop_toTopOf="parent"
         app:title=""
         app:titleTextColor="@android:color/white">
 
@@ -47,60 +47,56 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <com.anymore.wanandroid.resources.widget.FormItemView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
-                android:paddingTop="@dimen/wa_activity_vertical_padding"
+                android:paddingTop="8dp"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
-                android:paddingBottom="@dimen/wa_activity_vertical_padding">
+                android:paddingBottom="8dp"
+                android:background="@android:color/white"
+                app:formWeight="0.23"
+                app:isNecessary="true"
+                app:key="标题"
+                app:keyTextColor="#666666"
+                app:keyTextGravity="start"
+                app:valueEditable="true"
+                app:valueInputType="text"
+                app:valueMaxLength="32"
+                app:valueMultipleEnable="false"
+                app:valueTextGravity="end" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="标题:" />
+            <include layout="@layout/wa_vertical_divider" />
 
-                <EditText
-                    android:id="@+id/etTodoTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/input_bg"
-                    android:lines="1"
-                    android:maxLines="1" />
-            </LinearLayout>
+            <include layout="@layout/wa_vertical_divider"
+                android:layout_marginTop="8dp"
+                android:layout_height="1dp"
+                android:layout_width="match_parent" />
 
-            <LinearLayout
+            <com.anymore.wanandroid.resources.widget.FloatingLabelEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
-                android:paddingTop="@dimen/wa_activity_vertical_padding"
+                android:paddingTop="8dp"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
-                android:paddingBottom="@dimen/wa_activity_vertical_padding">
+                android:paddingBottom="8dp"
+                android:background="@android:color/white"
+                app:isNecessary="true"
+                app:label="内容" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="内容:" />
+            <include layout="@layout/wa_vertical_divider" />
 
-                <EditText
-                    android:id="@+id/etTodoContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/input_bg"
-                    android:minLines="4" />
-            </LinearLayout>
+            <include layout="@layout/wa_vertical_divider"
+                android:layout_marginTop="8dp"
+                android:layout_height="1dp"
+                android:layout_width="match_parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:background="@android:color/white"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_activity_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
@@ -121,8 +117,8 @@
                         android:id="@+id/rbOnlyOne"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/wm_todo_only_use"
-                        android:checked="true"/>
+                        android:checked="true"
+                        android:text="@string/wm_todo_only_use" />
 
                     <RadioButton
                         android:id="@+id/rbStudy"
@@ -144,29 +140,29 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <LinearLayout
+            <include layout="@layout/wa_vertical_divider" />
+
+            <com.anymore.wanandroid.resources.widget.FormItemView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
-                android:paddingTop="@dimen/wa_activity_vertical_padding"
+                android:paddingTop="8dp"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
-                android:paddingBottom="@dimen/wa_activity_vertical_padding">
+                android:paddingBottom="8dp"
+                android:background="@android:color/white"
+                app:formWeight="0.23"
+                app:isNecessary="true"
+                app:key="日期"
+                app:keyTextColor="#666666"
+                app:keyTextGravity="start"
+                app:valueEditable="true"
+                app:valueInputType="text"
+                app:valueMaxLength="32"
+                app:valueMultipleEnable="false"
+                app:valueTextGravity="end" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="日期:" />
+            <include layout="@layout/wa_vertical_divider" />
 
-                <TextView
-                    android:id="@+id/tvTodoDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/input_bg"
-                    android:gravity="center"/>
-            </LinearLayout>
 
             <Button
                 android:id="@+id/btnDelete"

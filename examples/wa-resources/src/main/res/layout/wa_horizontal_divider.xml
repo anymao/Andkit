@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--水平方向View的分割线 分割线为垂直的-->
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="1dp"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2"/>

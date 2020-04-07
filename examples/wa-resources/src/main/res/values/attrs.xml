@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <attr name="key" format="string" tools:ignore="ResourceName" />
+    <attr name="keyTextSize" format="dimension" tools:ignore="ResourceName" />
+    <attr name="keyTextColor" format="color" tools:ignore="ResourceName" />
+    <attr name="keyTextGravity" tools:ignore="ResourceName">
+        <flag name="start" value="0x00800003" />
+        <flag name="end" value="0x00800005" />
+    </attr>
+
+    <attr name="value" format="string" tools:ignore="ResourceName" />
+    <attr name="valueTextSize" format="dimension" tools:ignore="ResourceName" />
+    <attr name="valueTextColor" format="color" tools:ignore="ResourceName" />
+    <attr name="valueHintColor" format="color" tools:ignore="ResourceName" />
+    <attr name="valueTextHint" format="string" tools:ignore="ResourceName" />
+    <attr name="valueTextMinLines" format="integer" tools:ignore="ResourceName" />
+    <attr name="valueEditable" format="boolean" tools:ignore="ResourceName" />
+    <attr name="valueMultipleEnable" format="boolean" tools:ignore="ResourceName" />
+    <attr name="valueInputType" tools:ignore="ResourceName">
+        <flag name="none" value="0x00000000" />
+        <flag name="text" value="0x00000001" />
+        <flag name="textCapCharacters" value="0x00001001" />
+        <flag name="textCapWords" value="0x00002001" />
+        <flag name="textCapSentences" value="0x00004001" />
+        <flag name="textAutoCorrect" value="0x00008001" />
+        <flag name="textAutoComplete" value="0x00010001" />
+        <flag name="textMultiLine" value="0x00020001" />
+        <flag name="textImeMultiLine" value="0x00040001" />
+        <flag name="textNoSuggestions" value="0x00080001" />
+        <flag name="textUri" value="0x00000011" />
+        <flag name="textEmailAddress" value="0x00000021" />
+        <flag name="textEmailSubject" value="0x00000031" />
+        <flag name="textShortMessage" value="0x00000041" />
+        <flag name="textLongMessage" value="0x00000051" />
+        <flag name="textPersonName" value="0x00000061" />
+        <flag name="textPostalAddress" value="0x00000071" />
+        <flag name="textPassword" value="0x00000081" />
+        <flag name="textVisiblePassword" value="0x00000091" />
+        <flag name="textWebEditText" value="0x000000a1" />
+        <flag name="textFilter" value="0x000000b1" />
+        <flag name="textPhonetic" value="0x000000c1" />
+        <flag name="textWebEmailAddress" value="0x000000d1" />
+        <flag name="textWebPassword" value="0x000000e1" />
+        <flag name="number" value="0x00000002" />
+        <flag name="numberSigned" value="0x00001002" />
+        <flag name="numberDecimal" value="0x00002002" />
+        <flag name="numberPassword" value="0x00000012" />
+        <flag name="phone" value="0x00000003" />
+        <flag name="datetime" value="0x00000004" />
+        <flag name="date" value="0x00000014" />
+        <flag name="time" value="0x00000024" />
+    </attr>
+    <attr name="valueTextGravity" tools:ignore="ResourceName">
+        <flag name="start" value="0x00800003" />
+        <flag name="end" value="0x00800005" />
+    </attr>
+    <attr name="formWeight" format="float" tools:ignore="ResourceName" />
+    <attr name="isNecessary" format="boolean" tools:ignore="ResourceName" />
+
+    <declare-styleable name="FloatingLabelEditText" tools:ignore="ResourceName">
+        <attr name="label" format="string" />
+        <attr name="labelTextSize" format="dimension" />
+        <attr name="labelTextColor" format="color" />
+        <attr name="labelFloatTextSize" format="dimension" />
+        <attr name="labelFloatTextColor" format="color" />
+        <attr name="words" format="integer" />
+        <attr name="wordsTextSize" format="dimension" />
+        <attr name="wordsTextColor" format="color" />
+        <attr name="value" />
+        <attr name="valueTextColor" />
+        <attr name="valueTextSize" />
+        <attr name="valueTextHint" />
+        <attr name="valueEditable" />
+        <attr name="isNecessary" />
+    </declare-styleable>
+
+    <declare-styleable name="FormItemView" tools:ignore="ResourceName">
+        <attr name="key" />
+        <attr name="keyTextSize" />
+        <attr name="keyTextColor" />
+        <attr name="keyTextGravity" />
+        <attr name="value" />
+        <attr name="valueTextSize" />
+        <attr name="valueTextColor" />
+        <attr name="valueTextHint" />
+        <attr name="valueTextMinLines" />
+        <attr name="valueEditable" />
+        <attr name="valueInputType" />
+        <attr name="valueMultipleEnable" />
+        <attr name="valueTextGravity" />
+        <attr name="valueDigits" format="string" />
+        <attr name="valueMaxLength" format="integer" min="0" />
+        <attr name="formWeight" />
+        <attr name="isNecessary" />
+    </declare-styleable>
+
+</resources>

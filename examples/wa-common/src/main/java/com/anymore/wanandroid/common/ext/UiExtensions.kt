@@ -148,6 +148,7 @@ fun Activity.setMIUIStatusBarLightMode(dark: Boolean): Boolean {
  * 设置toolbar状态
  */
 fun AppCompatActivity.setupToolbar(toolbar: Toolbar, click: ((view: View) -> Unit)? = null) {
+    title = ""
     setSupportActionBar(toolbar)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     supportActionBar?.setDisplayShowHomeEnabled(true)

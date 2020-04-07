@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="wa_tv_fle_label" type="id" />
+    <item name="wa_tv_fle_remain_words" type="id" />
+    <item name="wa_et_fle_value" type="id" />
+</resources>
