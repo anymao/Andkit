@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="wa_colorPrimary">#008577</color>
-    <color name="wa_colorPrimaryDark">#00574B</color>
-    <color name="wa_colorAccent">#f576a5</color>
+    <color name="wa_colorPrimary">#529AFC</color>
+    <color name="wa_colorPrimaryDark">#529AFC</color>
+    <color name="wa_colorAccent">#529AFC</color>
     <color name="wa_nbv_background">#E7E7E7</color>
     <color name="wa_color_white">#FFFFFF</color>
     <color name="wa_color_page_bg">#F5F5F5</color>
+    <color name="wa_color_dark">#333333</color>
+    <color name="wa_color_gray">#DDD9D9</color>
+
+    <color name="wa_mdialog_line_color">#adadad</color>
+    <color name="wa_mdialog_btn_negative">#666666</color>
+    <color name="wa_mdialog_btn_positive">#599BF8</color>
+    <color name="wa_mdialog_title_color">#1d1d1d</color>
+    <color name="wa_mdialog_message_color">#333333</color>
+    <color name="wa_dialog_bg_color">#ffffff</color>
+    <color name="wa_dialog_bg_pressed_color">#f5f5f5</color>
+    <color name="wa_dialog_bg_normal_color">#ffffff</color>
+
 </resources>

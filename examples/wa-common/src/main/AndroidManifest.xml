@@ -6,8 +6,5 @@
             android:name=".ContextProvider"
             android:authorities="${applicationId}.andkit.ContextProvider"
             android:exported="false" />
-        <meta-data
-            android:name="com.anymore.wanandroid.common.glide.WanAndroidGlideModule"
-            android:value="AppGlideModule"/>
     </application>
 </manifest>

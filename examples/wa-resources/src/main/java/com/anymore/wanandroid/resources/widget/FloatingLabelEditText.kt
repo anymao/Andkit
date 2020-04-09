@@ -2,7 +2,6 @@ package com.anymore.wanandroid.resources.widget
 
 import android.content.Context
 import android.graphics.Color
-import android.os.Build
 import android.text.*
 import android.text.style.ForegroundColorSpan
 import android.util.AttributeSet
@@ -12,9 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.core.view.ViewCompat
 import com.anymore.wanandroid.resources.R
-import com.anymore.wanandroid.resources.exts.dp2px
 import java.util.*
 
 /**
@@ -115,54 +112,58 @@ class FloatingLabelEditText @JvmOverloads constructor(
     }
 
     private fun placeViews() {
+        View.inflate(context,R.layout.wa_layout_floating_label_edit_text,this)
+        mTvLabel = findViewById(R.id.wa_tv_fle_label)
+        mTvRemainingWords = findViewById(R.id.wa_tv_fle_remain_words)
+        mEtValue = findViewById(R.id.wa_et_fle_value)
         setOnClickListener(this)
-        mTvLabel = TextView(context)
-        mTvLabel.id = R.id.wa_tv_fle_label
-        mTvRemainingWords = TextView(context)
-        mTvRemainingWords.id = R.id.wa_tv_fle_remain_words
-        mEtValue = EditText(context)
-        mEtValue.id = R.id.wa_et_fle_value
-        ViewCompat.setBackground(mEtValue, null)
-        val params2 = LayoutParams(
-            LayoutParams.WRAP_CONTENT,
-            LayoutParams.WRAP_CONTENT
-        )
-        params2.addRule(ALIGN_PARENT_RIGHT)
-        params2.addRule(ALIGN_BASELINE, R.id.wa_tv_fle_label)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            params2.addRule(ALIGN_PARENT_END)
-        }
-
-        val params1 = LayoutParams(
-            LayoutParams.MATCH_PARENT,
-            LayoutParams.WRAP_CONTENT
-        )
-        params1.addRule(ALIGN_PARENT_LEFT)
-        params1.addRule(ALIGN_PARENT_TOP)
-        params1.addRule(LEFT_OF, R.id.wa_tv_fle_remain_words)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            params1.addRule(ALIGN_PARENT_START)
-        }
-
-        val params3 = LayoutParams(
-            LayoutParams.MATCH_PARENT,
-            LayoutParams.WRAP_CONTENT
-        )
-        params3.addRule(BELOW, R.id.wa_tv_fle_label)
-        params3.addRule(ALIGN_LEFT, R.id.wa_tv_fle_label)
-        params3.addRule(ALIGN_RIGHT, R.id.wa_tv_fle_remain_words)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            params3.addRule(ALIGN_START, R.id.wa_tv_fle_label)
-            params3.addRule(ALIGN_END, R.id.wa_tv_fle_remain_words)
-        }
-
-
-        mEtValue.addTextChangedListener(this)
-        mEtValue.setPadding(0, context.dp2px(8), 0, 0)
-
-        addView(mTvRemainingWords, params2)
-        addView(mTvLabel, params1)
-        addView(mEtValue, params3)
+//        mTvLabel = TextView(context)
+//        mTvLabel.id = R.id.wa_tv_fle_label
+//        mTvRemainingWords = TextView(context)
+//        mTvRemainingWords.id = R.id.wa_tv_fle_remain_words
+//        mEtValue = EditText(context)
+//        mEtValue.id = R.id.wa_et_fle_value
+//        ViewCompat.setBackground(mEtValue, null)
+//        val params2 = LayoutParams(
+//            LayoutParams.WRAP_CONTENT,
+//            LayoutParams.WRAP_CONTENT
+//        )
+//        params2.addRule(ALIGN_PARENT_RIGHT)
+//        params2.addRule(ALIGN_BASELINE, R.id.wa_tv_fle_label)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            params2.addRule(ALIGN_PARENT_END)
+//        }
+//
+//        val params1 = LayoutParams(
+//            LayoutParams.MATCH_PARENT,
+//            LayoutParams.WRAP_CONTENT
+//        )
+//        params1.addRule(ALIGN_PARENT_LEFT)
+//        params1.addRule(ALIGN_PARENT_TOP)
+//        params1.addRule(LEFT_OF, R.id.wa_tv_fle_remain_words)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            params1.addRule(ALIGN_PARENT_START)
+//        }
+//
+//        val params3 = LayoutParams(
+//            LayoutParams.MATCH_PARENT,
+//            LayoutParams.WRAP_CONTENT
+//        )
+//        params3.addRule(BELOW, R.id.wa_tv_fle_label)
+//        params3.addRule(ALIGN_LEFT, R.id.wa_tv_fle_label)
+//        params3.addRule(ALIGN_RIGHT, R.id.wa_tv_fle_remain_words)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            params3.addRule(ALIGN_START, R.id.wa_tv_fle_label)
+//            params3.addRule(ALIGN_END, R.id.wa_tv_fle_remain_words)
+//        }
+//
+//
+//        mEtValue.addTextChangedListener(this)
+//        mEtValue.setPadding(0, context.dp2px(8), 0, 0)
+//
+//        addView(mTvRemainingWords, params2)
+//        addView(mTvLabel, params1)
+//        addView(mEtValue, params3)
 
         mEtValue.onFocusChangeListener = this
     }

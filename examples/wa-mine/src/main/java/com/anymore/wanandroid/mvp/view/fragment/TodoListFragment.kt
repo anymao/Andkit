@@ -1,6 +1,7 @@
 package com.anymore.wanandroid.mvp.view.fragment
 
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvp.BaseMvpFragment
 import com.anymore.wanandroid.common.ContextProvider
@@ -78,6 +79,12 @@ class TodoListFragment : BaseMvpFragment<TodoListContract.ITodoListPresenter>(),
             containerActivity.addOnTodoTypeSelectedListener(this)
         }
         rvList.adapter = adapter
+        rvList.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         srl.setOnRefreshListener {
             refreshTodoList()
         }

@@ -1,6 +1,7 @@
 package com.anymore.wanandroid.mvp.view.activity
 
 import android.os.Bundle
+import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -14,6 +15,7 @@ import com.anymore.wanandroid.mvp.view.widget.DatePickerDialog
 import com.anymore.wanandroid.route.MINE_TODO
 import com.anymore.wanandroid.route.NEED_LOGIN_FLAG
 import kotlinx.android.synthetic.main.wm_activity_todo.*
+import kotlinx.android.synthetic.main.wm_public_include_submit.*
 import org.greenrobot.eventbus.EventBus
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,7 +23,7 @@ import java.util.*
 /**
  * Created by anymore on 2020/2/2.
  */
-@Route(path = MINE_TODO,extras = NEED_LOGIN_FLAG)
+@Route(path = MINE_TODO, extras = NEED_LOGIN_FLAG)
 class TodoActivity : BaseMvpActivity<TodoContract.ITodoPresenter>(), TodoContract.ITodoView,
     DatePickerDialog.OnButtonClickListener {
 
@@ -59,7 +61,36 @@ class TodoActivity : BaseMvpActivity<TodoContract.ITodoPresenter>(), TodoContrac
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
         setupToolbar(toolbar)
-
+        rgTodoType.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.rbOnlyOne -> todoType = 0
+                R.id.rbStudy -> todoType = 1
+                R.id.rbWork -> todoType = 2
+                R.id.rbLife -> todoType = 3
+            }
+        }
+        tvDate.setOnClickListener {
+            datePickDialog.show()
+        }
+        if (mTodo != null) {
+            fleContent.setValue(mTodo!!.content)
+            fivTitle.valueText = mTodo!!.title
+            tvDate.text = mTodo!!.completeDateStr
+        } else {
+            mType = TYPE_CREATE
+        }
+        showSubmitButtonFunction(mType)
+        btnSubmit.setOnClickListener {
+            if (mType == TYPE_CREATE || mType == TYPE_EDIT) {
+                submitTodo()
+            } else {
+                mType = TYPE_EDIT
+                showSubmitButtonFunction(mType)
+            }
+        }
+        btnDelete.setOnClickListener {
+            deleteTodo()
+        }
     }
 
     override fun success(type: Int, message: String) {
@@ -69,13 +100,51 @@ class TodoActivity : BaseMvpActivity<TodoContract.ITodoPresenter>(), TodoContrac
     }
 
     override fun onSelected(date: Date) {
+        tvDate.text = sdf.format(date)
     }
 
     override fun onClear() {
+        tvDate.text = ""
     }
 
     override fun onCancel() {
 
+    }
+
+    private fun showSubmitButtonFunction(type: Int) {
+        val title = when(type){
+            TYPE_CREATE->R.string.wm_create_new_todo
+            TYPE_BROWSE->R.string.wm_todo_title
+            TYPE_EDIT->R.string.wm_todo_edit
+            else->0
+        }
+        tvTitle.setText(title)
+        btnDelete.visibility = if (type == TYPE_CREATE) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
+        when (type) {
+            TYPE_BROWSE -> btnSubmit.text = "编辑"
+            else -> btnSubmit.text = "提交"
+        }
+    }
+
+    private fun submitTodo() {
+        val title = fivTitle.valueText
+        val content = fleContent.valueText
+        val date = tvDate.text?.toString()?:""
+        if (mTodo != null){
+            mPresenter.updateTodo(mTodo!!.id,title,content,date,todoType)
+        }else{
+            mPresenter.saveTodo(title,content,date,todoType)
+        }
+    }
+
+    private fun deleteTodo(){
+        mTodo?.let {
+            mPresenter.deleteTodo(it.id)
+        }
     }
 
 }

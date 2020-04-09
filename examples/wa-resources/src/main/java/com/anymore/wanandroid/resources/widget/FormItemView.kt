@@ -48,8 +48,8 @@ class FormItemView @JvmOverloads constructor(
      *
      * @param text
      */
-    var keyText: String?
-        get() = mTvKey.text.toString()
+    var keyText: String
+        get() = mTvKey.text?.toString() ?: ""
         set(text) {
             mTvKey.text = getDecoratedKeyText(text)
         }
@@ -60,7 +60,7 @@ class FormItemView @JvmOverloads constructor(
      * @param text
      */
     var valueText: String
-        get() = mEtValue.text!!.toString()
+        get() = mEtValue.text?.toString() ?: ""
         set(text) = mEtValue.setText(text)
 
     val valueEditText: EditText?
@@ -81,7 +81,7 @@ class FormItemView @JvmOverloads constructor(
 
     private fun initView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) {
         val ta = context.obtainStyledAttributes(attrs, R.styleable.FormItemView, defStyleAttr, 0)
-        var keyText = ta.getString(R.styleable.FormItemView_key)
+        val keyText = ta.getString(R.styleable.FormItemView_key)
         val keyTextSize =
             ta.getDimensionPixelSize(R.styleable.FormItemView_keyTextSize, DEFAULT_KEY_TEXT_SIZE)
         val keyTextColor =
@@ -110,7 +110,7 @@ class FormItemView @JvmOverloads constructor(
         ta.recycle()
         mTvKey = TextView(getContext())
         mEtValue = ClearEditText(getContext(), null)
-        this.keyText = keyText
+        this.keyText = keyText ?: ""
         mTvKey.setPadding(0, 0, 0, 0)
         mTvKey.setTextColor(keyTextColor)
         mTvKey.setTextSize(TypedValue.COMPLEX_UNIT_SP, keyTextSize.toFloat())
@@ -123,8 +123,8 @@ class FormItemView @JvmOverloads constructor(
         mEtValue.minLines = valueTextMinLines
         mEtValue.inputType = valueInputType
         setValueMaxLength(valueMaxLength)
-        if (!TextUtils.isEmpty(valueDigits)) {
-            mEtValue.keyListener = DigitsKeyListener.getInstance(valueDigits!!)
+        if (!valueDigits.isNullOrEmpty()) {
+            mEtValue.keyListener = DigitsKeyListener.getInstance(valueDigits)
         }
 
         if (!valueMultipleEnable) {

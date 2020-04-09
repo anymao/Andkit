@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/wa_dialog_bg_shape"
+    android:minHeight="@dimen/wa_mdialog_min_height"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/mDialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="@color/wa_mdialog_title_color"
+        android:textSize="@dimen/wa_mdialog_title_text_size"
+        android:visibility="gone"
+        tools:text="提示" />
+
+    <LinearLayout
+        android:id="@+id/mDialog_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/mDialog_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:maxLines="3"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/wa_mdialog_message_color"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/wa_mdialog_message_text_size"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mDialog_btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/wa_mdialog_bottom_btn_shape"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="30dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/mDialog_negative"
+            android:layout_width="@dimen/wa_mdialog_btn_width"
+            android:layout_height="@dimen/wa_mdialog_btn_height"
+            android:layout_weight="1"
+            android:background="@drawable/wa_mdialog_negative_btn_bg_selector"
+            android:gravity="center"
+            android:textColor="@color/wa_mdialog_btn_negative"
+            android:textSize="@dimen/wa_mdialog_btn_text_size"
+            android:visibility="gone"
+            tools:text="@string/wa_cancel" />
+
+        <View
+            android:id="@+id/view_space"
+            android:layout_width="20dp"
+            android:layout_height="@dimen/wa_mdialog_btn_height"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mDialog_positive"
+            android:layout_width="@dimen/wa_mdialog_btn_width"
+            android:layout_height="@dimen/wa_mdialog_btn_height"
+            android:layout_weight="1"
+            android:background="@drawable/wa_mdialog_positive_btn_bg_selector"
+            android:gravity="center"
+            android:textColor="@color/wa_mdialog_btn_positive"
+            android:textSize="@dimen/wa_mdialog_btn_text_size"
+            android:visibility="gone"
+            tools:text="@string/wa_sure" />
+
+
+        <TextView
+            android:id="@+id/mDialog_neutral"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/wa_mdialog_btn_height"
+            android:background="@drawable/wa_mdialog_neutral_btn_bg_selector"
+            android:gravity="center"
+            android:minWidth="120dp"
+            android:textColor="@color/wa_mdialog_btn_positive"
+            android:textSize="@dimen/wa_mdialog_btn_text_size"
+            android:visibility="gone"
+            tools:text="我知道了" />
+
+    </LinearLayout>
+
+</LinearLayout>

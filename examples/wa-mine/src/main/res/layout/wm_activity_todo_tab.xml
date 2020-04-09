@@ -40,8 +40,8 @@
         app:tabIndicatorColor="@color/wa_colorPrimaryDark"
         app:tabIndicatorHeight="3dp"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/wa_colorAccent"
-        app:tabTextColor="@android:color/white" />
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabTextColor="@color/wa_color_gray" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

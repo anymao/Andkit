@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/wa_color_page_bg">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/wa_color_page_bg"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -26,20 +27,23 @@
             app:titleTextColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/btnSave"
+            android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
             android:layout_marginEnd="@dimen/wa_activity_horizontal_padding"
             android:layout_marginRight="@dimen/wa_activity_horizontal_padding"
-            android:text="@string/wm_text_save" />
+            android:text="删除"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="gone" />
 
 
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/llTodoRoot"
@@ -48,13 +52,14 @@
             android:orientation="vertical">
 
             <com.anymore.wanandroid.resources.widget.FormItemView
+                android:id="@+id/fivTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:background="@android:color/white"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="8dp"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="8dp"
-                android:background="@android:color/white"
                 app:formWeight="0.23"
                 app:isNecessary="true"
                 app:key="标题"
@@ -68,35 +73,39 @@
 
             <include layout="@layout/wa_vertical_divider" />
 
-            <include layout="@layout/wa_vertical_divider"
-                android:layout_marginTop="8dp"
+            <include
+                layout="@layout/wa_vertical_divider"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_width="match_parent" />
+                android:layout_marginTop="8dp" />
 
             <com.anymore.wanandroid.resources.widget.FloatingLabelEditText
+                android:id="@+id/fleContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:background="@android:color/white"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="8dp"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="8dp"
-                android:background="@android:color/white"
                 app:isNecessary="true"
                 app:label="内容" />
 
             <include layout="@layout/wa_vertical_divider" />
 
-            <include layout="@layout/wa_vertical_divider"
-                android:layout_marginTop="8dp"
+            <include
+                layout="@layout/wa_vertical_divider"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_width="match_parent" />
+                android:layout_marginTop="8dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:background="@android:color/white"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_activity_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
@@ -142,44 +151,40 @@
 
             <include layout="@layout/wa_vertical_divider" />
 
-            <com.anymore.wanandroid.resources.widget.FormItemView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="8dp"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="8dp"
-                android:background="@android:color/white"
-                app:formWeight="0.23"
-                app:isNecessary="true"
-                app:key="日期"
-                app:keyTextColor="#666666"
-                app:keyTextGravity="start"
-                app:valueEditable="true"
-                app:valueInputType="text"
-                app:valueMaxLength="32"
-                app:valueMultipleEnable="false"
-                app:valueTextGravity="end" />
+                android:background="@android:color/white">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="日期"
+                    android:textColor="#666666"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="2019-12-23"
+                    android:gravity="end"/>
+            </LinearLayout>
+
 
             <include layout="@layout/wa_vertical_divider" />
 
-
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="56dp"
-                android:background="@drawable/wm_btn_delete_bg"
-                android:paddingLeft="56dp"
-                android:paddingRight="56dp"
-                android:text="删除"
-                android:textColor="@android:color/white"
-                android:visibility="gone" />
         </LinearLayout>
 
 
     </ScrollView>
+
+    <include layout="@layout/wm_public_include_submit" />
 
 
 </LinearLayout>

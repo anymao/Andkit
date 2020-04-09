@@ -8,7 +8,6 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.view.animation.Animation
 import android.view.animation.CycleInterpolator
 import android.view.animation.TranslateAnimation
@@ -19,12 +18,11 @@ import androidx.core.content.ContextCompat
 import com.anymore.wanandroid.resources.R
 import com.anymore.wanandroid.resources.exts.dp2px
 
-
 class ClearEditText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyle: Int = 0
-) : AppCompatEditText(context, attrs, defStyle), OnFocusChangeListener, TextWatcher {
+    defStyle: Int = android.R.attr.editTextStyle
+) : AppCompatEditText(context, attrs, defStyle), View.OnFocusChangeListener, TextWatcher {
 
     /**
      * 删除按钮的引用
@@ -89,6 +87,7 @@ class ClearEditText @JvmOverloads constructor(
                 }
             }
         }
+
         return super.onTouchEvent(event)
     }
 
@@ -126,7 +125,10 @@ class ClearEditText @JvmOverloads constructor(
         }
     }
 
-    override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+    override fun beforeTextChanged(
+        s: CharSequence, start: Int, count: Int,
+        after: Int
+    ) {
 
     }
 
@@ -159,11 +161,11 @@ class ClearEditText @JvmOverloads constructor(
          * @param counts 1秒钟晃动多少下
          * @return
          */
-        private fun shakeAnimation(counts: Int): Animation {
+        fun shakeAnimation(counts: Int): Animation {
             val translateAnimation = TranslateAnimation(0f, 10f, 0f, 0f)
             translateAnimation.interpolator = CycleInterpolator(counts.toFloat())
             translateAnimation.duration = 1000
             return translateAnimation
         }
     }
-}
+}// 这里构造方法也很重要，不加这个很多属性不能再XML里面定义

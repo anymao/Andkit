@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/wa_mdialog_btn_radius" />
+    <solid android:color="@color/wa_dialog_bg_normal_color" />
+    <stroke
+        android:width="@dimen/wa_mdialog_stroke_size"
+        android:color="#CCCCCC" />
+    <size android:height="@dimen/wa_mdialog_btn_height" />
+</shape>

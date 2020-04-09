@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">wa-resources</string>
+    <string name="wa_cancel">取消</string>
+    <string name="wa_sure">确认</string>
+    <string name="wa_know">知道了</string>
 </resources>

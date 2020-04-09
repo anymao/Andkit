@@ -6,5 +6,8 @@
         <meta-data
             android:name="com.anymore.wanandroid.repository.WanAndroidRepositoryConfig"
             android:value="repositoryModuleConfig" />
+        <meta-data
+            android:name="com.anymore.wanandroid.repository.glide.WanAndroidGlideModule"
+            android:value="AppGlideModule"/>
     </application>
 </manifest>

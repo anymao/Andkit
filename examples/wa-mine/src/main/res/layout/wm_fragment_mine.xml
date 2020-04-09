@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/wa_color_page_bg"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -21,6 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:orientation="vertical">
 
 
@@ -32,65 +34,87 @@
                 android:layout_marginTop="100dp"
                 android:layout_marginBottom="@dimen/wa_activity_vertical_padding"
                 android:src="@mipmap/ic_launcher" />
+
             <TextView
                 android:id="@+id/tvUserInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="56dp"
                 android:gravity="center"
-                android:textSize="16sp"
-                android:layout_marginBottom="56dp"/>
+                android:textSize="16sp" />
+
+            <include layout="@layout/wa_vertical_divider" />
 
             <TextView
                 android:id="@+id/tvTodo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:background="@android:color/white"
                 android:drawableStart="@drawable/ic_todo"
                 android:drawableLeft="@drawable/ic_todo"
                 android:drawablePadding="15dp"
+                android:gravity="center_vertical"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_item_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="@dimen/wa_item_vertical_padding"
                 android:text="@string/wm_todo" />
 
+            <include layout="@layout/wa_vertical_divider" />
+
+
             <TextView
                 android:id="@+id/tvCollected"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:background="@android:color/white"
                 android:drawableStart="@drawable/ic_collected"
                 android:drawableLeft="@drawable/ic_collected"
                 android:drawablePadding="15dp"
+                android:gravity="center_vertical"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_item_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="@dimen/wa_item_vertical_padding"
                 android:text="@string/wm_collected" />
 
+            <include layout="@layout/wa_vertical_divider" />
+
+
             <TextView
                 android:id="@+id/tvGirls"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:background="@android:color/white"
                 android:drawableStart="@drawable/ic_girls"
                 android:drawableLeft="@drawable/ic_girls"
                 android:drawablePadding="15dp"
+                android:gravity="center_vertical"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_item_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="@dimen/wa_item_vertical_padding"
                 android:text="@string/wm_girls" />
 
+            <include layout="@layout/wa_vertical_divider" />
+
+
             <TextView
                 android:id="@+id/tvAbout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:background="@android:color/white"
                 android:drawableStart="@drawable/ic_about"
                 android:drawableLeft="@drawable/ic_about"
                 android:drawablePadding="15dp"
+                android:gravity="center_vertical"
                 android:paddingLeft="@dimen/wa_activity_horizontal_padding"
                 android:paddingTop="@dimen/wa_item_vertical_padding"
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="@dimen/wa_item_vertical_padding"
                 android:text="@string/wm_about" />
+
+            <include layout="@layout/wa_vertical_divider" />
 
             <TextView
                 android:id="@+id/tvLogout"
@@ -99,6 +123,7 @@
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginRight="32dp"
+                android:layout_marginBottom="48dp"
                 android:background="#9B3A5B"
                 android:drawablePadding="15dp"
                 android:gravity="center"

@@ -17,7 +17,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:theme="@style/wa_ToolbarTheme"
-            app:title="@string/wa_home"
+            app:title="@string/wa_discovery"
             app:titleTextColor="@android:color/white" />
 
         <androidx.recyclerview.widget.RecyclerView

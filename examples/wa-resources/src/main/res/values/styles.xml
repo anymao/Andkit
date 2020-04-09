@@ -14,4 +14,20 @@
         <item name="actionMenuTextColor">@android:color/white</item>
         <item name="colorControlNormal">@android:color/white</item>
     </style>
+
+    <!--dialog去除黑边样式-->
+    <style name="wa_dialog_transparent" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+    <style name="wa_dialog_anim" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/wa_anim_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/wa_anim_dialog_out</item>
+    </style>
 </resources>
