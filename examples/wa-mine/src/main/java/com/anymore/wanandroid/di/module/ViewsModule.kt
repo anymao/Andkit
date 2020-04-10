@@ -13,20 +13,20 @@ import dagger.Module
  * Created by anymore on 2020/1/29.
  */
 @Module
-abstract class ViewsModule{
+abstract class ViewsModule {
 
     @Binds
-    abstract fun bindTodoTabActivity(activity: TodoTabActivity):TodoTabContract.ITodoTabView
+    abstract fun bindTodoTabActivity(activity: TodoTabActivity): TodoTabContract.ITodoTabView
 
     @Binds
-    abstract fun bindTodoListFragment(fragment:TodoListFragment):TodoListContract.ITodoListView
+    abstract fun bindTodoListFragment(fragment: TodoListFragment): TodoListContract.ITodoListView
 
     @Binds
-    abstract fun bindTodoActivity(activity:TodoActivity):TodoContract.ITodoView
+    abstract fun bindTodoActivity(activity: TodoActivity): TodoContract.ITodoView
 
     @Binds
-    abstract fun bindCollectedArticlesFragment(fragment: CollectedArticlesFragment):CollectedArticlesContract.ICollectedArticlesView
+    abstract fun bindCollectedArticlesFragment(fragment: CollectedArticlesFragment): CollectedArticlesContract.ICollectedArticlesView
 
     @Binds
-    abstract fun bindMineFragment(fragment: MineFragment):MineContract.IMineView
+    abstract fun bindMineFragment(fragment: MineFragment): MineContract.IMineView
 }

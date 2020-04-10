@@ -10,15 +10,15 @@ import javax.inject.Singleton
  * Created by liuyuanmao on 2020/1/16.
  */
 @Module
-class AppModule(private val application: Application){
+class AppModule(private val application: Application) {
 
     @Singleton
     @Provides
-    fun provideApplication():Application=application
+    fun provideApplication(): Application = application
 
 
     @Provides
-    fun provideAppName(application: Application):String{
+    fun provideAppName(application: Application): String {
         return application.getString(R.string.app_name)
     }
 }

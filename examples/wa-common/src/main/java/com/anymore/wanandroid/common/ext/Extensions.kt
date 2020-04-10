@@ -19,41 +19,42 @@ import com.google.gson.reflect.TypeToken
 inline fun <reified T> Gson.fromJson(json: String) = fromJson(json, T::class.java)
 
 
-inline fun <reified T> Gson.toList(json: String):List<T>{
+inline fun <reified T> Gson.toList(json: String): List<T> {
     return fromJson<List<T>>(json, object : TypeToken<List<T>>() {
     }.type)
 }
 
-inline fun CharSequence?.ifNotEmpty(block: () -> Unit){
-    if (!isNullOrBlank()){
+inline fun CharSequence?.ifNotEmpty(block: () -> Unit) {
+    if (!isNullOrBlank()) {
         block()
     }
 }
 
-fun Activity.toast(@StringRes id:Int,duration: Int = Toast.LENGTH_SHORT){
-    toast(getString(id),duration)
+fun Activity.toast(@StringRes id: Int, duration: Int = Toast.LENGTH_SHORT) {
+    toast(getString(id), duration)
 }
 
-fun Activity.toast(message:CharSequence?,duration: Int = Toast.LENGTH_SHORT){
-    Toast.makeText(this,message,duration).show()
+fun Activity.toast(message: CharSequence?, duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(this, message, duration).show()
 }
 
 
-fun Fragment.toast(@StringRes id:Int,duration: Int = Toast.LENGTH_SHORT){
-    toast(getString(id),duration)
+fun Fragment.toast(@StringRes id: Int, duration: Int = Toast.LENGTH_SHORT) {
+    toast(getString(id), duration)
 }
 
-fun Fragment.toast(message:CharSequence?,duration: Int = Toast.LENGTH_SHORT){
-    Toast.makeText(context,message,duration).show()
+fun Fragment.toast(message: CharSequence?, duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(context, message, duration).show()
 }
 
-fun runOnUiThread(block:()->Unit){
+fun runOnUiThread(block: () -> Unit) {
     AppExecutors.mainExecutor.execute(block)
 }
 
 @RequiresPermission(android.Manifest.permission.ACCESS_NETWORK_STATE)
-fun Context.isNetworkConnected():Boolean{
-    val networkService: ConnectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+fun Context.isNetworkConnected(): Boolean {
+    val networkService: ConnectivityManager =
+        getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val info: NetworkInfo? = networkService.activeNetworkInfo
-    return info?.isAvailable?:false
+    return info?.isAvailable ?: false
 }

@@ -30,10 +30,10 @@ class ArticlesModel @Inject constructor(mApplication: Application) : BaseModel(m
             .getBanner()
             .subscribeOn(Schedulers.io())
             .flatMap {
-                if (it.errorCode == ResponseCode.OK && it.data != null){
+                if (it.errorCode == ResponseCode.OK && it.data != null) {
                     Observable.just(it.data!!)
-                }else{
-                    Observable.error(WanAndroidException(it.errorMsg?:"获取首页Banner失败!"))
+                } else {
+                    Observable.error(WanAndroidException(it.errorMsg ?: "获取首页Banner失败!"))
                 }
             }
             .observeOn(AndroidSchedulers.mainThread())
@@ -43,16 +43,16 @@ class ArticlesModel @Inject constructor(mApplication: Application) : BaseModel(m
     /**
      * 获取导航页面所有知识体系列表
      */
-    fun getAllKnowledges():Observable<List<Knowledge>>{
+    fun getAllKnowledges(): Observable<List<Knowledge>> {
         Timber.d("mRepositoryComponent:${mRepositoryComponent.hashCode()}")
         return mRepositoryComponent.getRepository()
             .obtainRetrofitService(WAN_ANDROID_KEY, WanAndroidKnowledgeApi::class.java)
             .getAllKnowledges()
             .subscribeOn(Schedulers.io())
             .map {
-                if (it.errorCode == ResponseCode.OK && it.data != null){
+                if (it.errorCode == ResponseCode.OK && it.data != null) {
                     return@map it.data!!
-                }else{
+                } else {
                     throw WanAndroidException("获取知识体系时出错!")
                 }
             }.observeOn(AndroidSchedulers.mainThread())

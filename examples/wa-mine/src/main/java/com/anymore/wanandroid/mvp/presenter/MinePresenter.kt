@@ -23,10 +23,10 @@ class MinePresenter @Inject constructor(
     override val coroutineContext: CoroutineContext
         get() = SupervisorJob() + Dispatchers.Main.immediate
 
-    private var job:Job? = null
+    private var job: Job? = null
 
 
-    override fun getLoginStatus():Boolean {
+    override fun getLoginStatus(): Boolean {
         return mModel.getLoginStatus()
     }
 
@@ -48,13 +48,13 @@ class MinePresenter @Inject constructor(
     }
 
     override fun logout() {
-        job  = launch {
+        job = launch {
             mView.showProgressBar("正在注销...")
             val result = mModel.logout()
             mView.hideProgressBar()
-            if (result.first == 0){
+            if (result.first == 0) {
                 mView.logoutSuccess()
-            }else{
+            } else {
                 mView.showError(result.second)
             }
         }

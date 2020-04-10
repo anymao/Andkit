@@ -12,7 +12,7 @@ import retrofit2.http.Path
 /**
  * 收藏相关接口
  */
-interface WanAndroidCollectApi{
+interface WanAndroidCollectApi {
 
     //获取所有收藏的文章
     @GET("/lg/collect/list/{page}/json")
@@ -20,18 +20,18 @@ interface WanAndroidCollectApi{
 
     //收藏站内指定id文章
     @POST("/lg/collect/{id}/json")
-    fun collectWanAndroidArticle(@Path("id") id:Int):Observable<WanAndroidResponse<Any>>
+    fun collectWanAndroidArticle(@Path("id") id: Int): Observable<WanAndroidResponse<Any>>
 
     //收藏站外文章
     @POST("/lg/collect/add/json")
-    fun collectOtherArticle(@Field("title") title:String, @Field("author") author:String, @Field("link") link:String):Observable<WanAndroidResponse<Any>>
+    fun collectOtherArticle(@Field("title") title: String, @Field("author") author: String, @Field("link") link: String): Observable<WanAndroidResponse<Any>>
 
     //取消收藏方式1
     @POST("/lg/uncollect_originId/{id}/json")
-    fun uncollectWanAndroidArticle(@Path("id") id: Int):Observable<WanAndroidResponse<Any>>
+    fun uncollectWanAndroidArticle(@Path("id") id: Int): Observable<WanAndroidResponse<Any>>
 
     //取消收藏方式2
     @POST("/lg/uncollect/{id}/json")
-    fun uncollectArticle(@Path("id") id: Int,@Field("originId") originId:Int=-1):Observable<WanAndroidResponse<Any>>
+    fun uncollectArticle(@Path("id") id: Int, @Field("originId") originId: Int = -1): Observable<WanAndroidResponse<Any>>
 
 }

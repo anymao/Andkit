@@ -11,8 +11,8 @@ import com.anymore.wanandroid.mine.BuildConfig
 /**
  * Created by anymore on 2020/1/29.
  */
-@Kiss(MineApplicationWrapper::class,priority = 99)
-class MineApplication:AndkitApplication() {
+@Kiss(MineApplicationWrapper::class, priority = 99)
+class MineApplication : AndkitApplication() {
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)

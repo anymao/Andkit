@@ -21,18 +21,18 @@ abstract class MineModule {
     abstract fun contributesTodoTabActivity(): TodoTabActivity
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [PresentersModule::class,ViewsModule::class,ModelsModule::class])
-    abstract fun contributesTodoListFragment():TodoListFragment
+    @ContributesAndroidInjector(modules = [PresentersModule::class, ViewsModule::class, ModelsModule::class])
+    abstract fun contributesTodoListFragment(): TodoListFragment
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [PresentersModule::class,ViewsModule::class,ModelsModule::class])
+    @ContributesAndroidInjector(modules = [PresentersModule::class, ViewsModule::class, ModelsModule::class])
     abstract fun contributesTodoActivity(): TodoActivity
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [PresentersModule::class,ViewsModule::class,ModelsModule::class])
-    abstract fun contributesCollectedArticlesFragment():CollectedArticlesFragment
+    @ContributesAndroidInjector(modules = [PresentersModule::class, ViewsModule::class, ModelsModule::class])
+    abstract fun contributesCollectedArticlesFragment(): CollectedArticlesFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [PresentersModule::class,ViewsModule::class,ModelsModule::class])
-    abstract fun contributesMineFragment():MineFragment
+    @ContributesAndroidInjector(modules = [PresentersModule::class, ViewsModule::class, ModelsModule::class])
+    abstract fun contributesMineFragment(): MineFragment
 }

@@ -112,7 +112,7 @@ class FloatingLabelEditText @JvmOverloads constructor(
     }
 
     private fun placeViews() {
-        View.inflate(context,R.layout.wa_layout_floating_label_edit_text,this)
+        View.inflate(context, R.layout.wa_layout_floating_label_edit_text, this)
         mTvLabel = findViewById(R.id.wa_tv_fle_label)
         mTvRemainingWords = findViewById(R.id.wa_tv_fle_remain_words)
         mEtValue = findViewById(R.id.wa_et_fle_value)

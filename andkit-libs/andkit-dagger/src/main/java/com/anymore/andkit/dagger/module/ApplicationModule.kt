@@ -11,5 +11,5 @@ import dagger.Provides
 class ApplicationModule(private val application: Application) {
 
     @Provides
-    fun provideApplication():Application = application
+    fun provideApplication(): Application = application
 }

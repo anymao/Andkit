@@ -13,4 +13,4 @@ data class PagedData<T>(
     val pageCount: Int,
     val size: Int,
     val total: Int
-):Serializable
+) : Serializable

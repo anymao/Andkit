@@ -3,6 +3,7 @@ package com.anymore.wanandroid.mvvm.view.fragment
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvvm.BaseFragment
 import com.anymore.wanandroid.adapter.ArticlesPagingAdapter
@@ -12,8 +13,11 @@ import com.anymore.wanandroid.entry.Article
 import com.anymore.wanandroid.entry.Banner
 import com.anymore.wanandroid.loader.BannerLoader
 import com.anymore.wanandroid.mvvm.viewmodel.HomePageViewModel
+import com.anymore.wanandroid.route.ARTICLES_HOMEPAGE_FRAGMENT
 import com.anymore.wanandroid.route.BROWSE_URL
+import com.anymore.wanandroid.route.URL_VALUE
 
+@Route(path = ARTICLES_HOMEPAGE_FRAGMENT)
 class HomePageFragment : BaseFragment<WaFragmentHomepageBinding, HomePageViewModel>() {
     private lateinit var mBannerLoader: BannerLoader
     private val mAdapter by lazy {
@@ -22,7 +26,7 @@ class HomePageFragment : BaseFragment<WaFragmentHomepageBinding, HomePageViewMod
                 override fun onClick(item: Article) {
                     ARouter.getInstance()
                         .build(BROWSE_URL)
-                        .withString("url", item.link)
+                        .withString(URL_VALUE, item.link)
                         .navigation(requireContext())
                 }
 
@@ -62,7 +66,7 @@ class HomePageFragment : BaseFragment<WaFragmentHomepageBinding, HomePageViewMod
         mBannerLoader.initBanner {
             ARouter.getInstance()
                 .build(BROWSE_URL)
-                .withString("url", it.url)
+                .withString(URL_VALUE, it.url)
                 .navigation(requireContext())
         }
     }

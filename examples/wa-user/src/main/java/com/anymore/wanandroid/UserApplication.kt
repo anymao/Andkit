@@ -11,7 +11,7 @@ import com.anymore.wanandroid.user.BuildConfig
 /**
  * Created by liuyuanmao on 2020/1/19.
  */
-@Kiss(UserApplicationWrapper::class,priority = 99)
+@Kiss(UserApplicationWrapper::class, priority = 99)
 class UserApplication : AndkitApplication() {
 
     override fun attachBaseContext(base: Context?) {

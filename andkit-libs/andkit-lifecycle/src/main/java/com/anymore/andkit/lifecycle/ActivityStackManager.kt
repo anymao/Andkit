@@ -12,63 +12,63 @@ object ActivityStackManager {
 
     private val mActivityStack by lazy { LinkedList<Activity>() }
 
-    internal fun add(activity: Activity){
+    internal fun add(activity: Activity) {
         Timber.d("add activity:$activity")
         mActivityStack.add(activity)
     }
 
-    internal fun remove(activity: Activity){
+    internal fun remove(activity: Activity) {
         Timber.d("remove activity:$activity")
         mActivityStack.remove(activity)
     }
 
-    fun getTopActivity():Activity?{
-        if (mActivityStack.isNotEmpty()){
+    fun getTopActivity(): Activity? {
+        if (mActivityStack.isNotEmpty()) {
             return mActivityStack.last!!
         }
         return null
     }
 
-    fun finishActivity(activity: Activity){
-        if (!activity.isFinishing){
+    fun finishActivity(activity: Activity) {
+        if (!activity.isFinishing) {
             activity.finish()
         }
     }
 
-    fun finishActivity(activityName:String){
-        for (activity in mActivityStack){
-            if (TextUtils.equals(activityName,activity.javaClass.name)){
+    fun finishActivity(activityName: String) {
+        for (activity in mActivityStack) {
+            if (TextUtils.equals(activityName, activity.javaClass.name)) {
                 finishActivity(activity)
             }
         }
     }
 
-    fun finishUntil(activity: Activity){
-        val  iterator = mActivityStack.iterator()
-        while (iterator.hasNext()){
+    fun finishUntil(activity: Activity) {
+        val iterator = mActivityStack.iterator()
+        while (iterator.hasNext()) {
             val nextActivity = iterator.next()
-            if (nextActivity != activity){
+            if (nextActivity != activity) {
                 finishActivity(nextActivity)
-            }else{
+            } else {
                 continue
             }
         }
     }
 
-    fun finishUntil(activityName: String){
-        val  iterator = mActivityStack.iterator()
-        while (iterator.hasNext()){
+    fun finishUntil(activityName: String) {
+        val iterator = mActivityStack.iterator()
+        while (iterator.hasNext()) {
             val nextActivity = iterator.next()
-            if (!TextUtils.equals(nextActivity.javaClass.name,activityName)){
+            if (!TextUtils.equals(nextActivity.javaClass.name, activityName)) {
                 finishActivity(nextActivity)
-            }else{
+            } else {
                 continue
             }
         }
     }
 
-    fun finishAll(){
-        for (activity in mActivityStack){
+    fun finishAll() {
+        for (activity in mActivityStack) {
             finishActivity(activity)
         }
     }

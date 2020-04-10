@@ -161,19 +161,21 @@
                 android:paddingRight="@dimen/wa_activity_horizontal_padding"
                 android:paddingBottom="8dp"
                 android:background="@android:color/white">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="日期"
                     android:textColor="#666666"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     tools:text="2019-12-23"
-                    android:gravity="end"/>
+                    android:gravity="end" />
             </LinearLayout>
 
 

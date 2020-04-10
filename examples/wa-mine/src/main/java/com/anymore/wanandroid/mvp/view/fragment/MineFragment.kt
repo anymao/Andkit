@@ -1,6 +1,7 @@
 package com.anymore.wanandroid.mvp.view.fragment
 
 import android.os.Bundle
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvp.BaseMvpFragment
 import com.anymore.wanandroid.mine.R
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.wm_fragment_mine.*
 /**
  * Created by anymore on 2020/1/29.
  */
+@Route(path = MINE_MINE_FRAGMENT)
 class MineFragment : BaseMvpFragment<MineContract.IMinePresenter>(), MineContract.IMineView {
 
     override fun getLayoutRes() = R.layout.wm_fragment_mine
@@ -33,21 +35,21 @@ class MineFragment : BaseMvpFragment<MineContract.IMinePresenter>(), MineContrac
         tvCollected.setOnClickListener {
             ARouter.getInstance()
                 .build(BROWSE_FRAGMENT)
-                .withString("title", "收藏的文章")
-                .withString("fragmentName", CollectedArticlesFragment::class.java.name)
+                .withString(TITLE, "收藏的文章")
+                .withString(FRAGMENT_ROUTE, MINE_COLLECTED_ARTICLES_FRAGMENT)
                 .withInt(EXTRA_NEED_LOGIN, NEED_LOGIN_FLAG)
                 .navigation(requireContext())
         }
         tvGirls.setOnClickListener {
             ARouter.getInstance()
                 .build(MINE_FLUTTER)
-                .withString("initialRoute", "/welfare")
+                .withString(FLUTTER_INITIAL_ROUTE, "/welfare")
                 .navigation(requireContext())
         }
         tvAbout.setOnClickListener {
             ARouter.getInstance()
                 .build(MINE_FLUTTER)
-                .withString("initialRoute", "/about")
+                .withString(FLUTTER_INITIAL_ROUTE, "/about")
                 .navigation(requireContext())
 
         }

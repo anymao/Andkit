@@ -12,6 +12,8 @@ import com.anymore.wanandroid.mvp.contract.TodoListContract
 import com.anymore.wanandroid.mvp.view.activity.TodoTabActivity
 import com.anymore.wanandroid.mvp.view.adapter.TodoListAdapter
 import com.anymore.wanandroid.route.MINE_TODO
+import com.anymore.wanandroid.route.TODO_DATA
+import com.anymore.wanandroid.route.TODO_OPERATION
 import kotlinx.android.synthetic.main.wm_fragment_todo_list.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -20,6 +22,7 @@ import org.greenrobot.eventbus.ThreadMode
 /**
  * Created by anymore on 2020/1/30.
  */
+
 class TodoListFragment : BaseMvpFragment<TodoListContract.ITodoListPresenter>(),
     TodoListContract.ITodoListView, TodoTabActivity.OnTodoTypeSelectedListener {
 
@@ -34,14 +37,14 @@ class TodoListFragment : BaseMvpFragment<TodoListContract.ITodoListPresenter>(),
             it.setOnClickListener { _, todo ->
                 ARouter.getInstance()
                     .build(MINE_TODO)
-                    .withInt("mType", 1)
-                    .withSerializable("mTodo", todo)
+                    .withInt(TODO_OPERATION, 1)
+                    .withSerializable(TODO_DATA, todo)
                     .navigation(requireContext())
             }
             it.setOnDeleteClickListener { i, todo -> mPresenter.deleteTodo(i, todo.id) }
             it.setOnCompleteClickListener { i, todo ->
-                val newStatus = (todo.status+1)%2
-                mPresenter.updateTodoStatus(i,todo.id,newStatus)
+                val newStatus = (todo.status + 1) % 2
+                mPresenter.updateTodoStatus(i, todo.id, newStatus)
             }
         }
     }
@@ -110,9 +113,9 @@ class TodoListFragment : BaseMvpFragment<TodoListContract.ITodoListPresenter>(),
     }
 
     override fun refreshOrLoadFailed(refresh: Boolean) {
-        if(refresh){
+        if (refresh) {
             srl.finishRefresh(false)
-        }else{
+        } else {
             srl.finishLoadMore(false)
         }
         showError("加载失败!")

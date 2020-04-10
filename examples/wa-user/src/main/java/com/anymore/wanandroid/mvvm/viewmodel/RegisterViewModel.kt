@@ -16,7 +16,10 @@ import javax.inject.Inject
  * Created by liuyuanmao on 2019/3/28.
  */
 @ActivityScope
-class RegisterViewModel @Inject constructor(application: Application, private val userModel: UserModel) :
+class RegisterViewModel @Inject constructor(
+    application: Application,
+    private val userModel: UserModel
+) :
     BaseViewModel(application) {
     val mErrorMessage = SingleLiveEvent<String>()
     val mMessage = SingleLiveEvent<String>()
@@ -26,13 +29,13 @@ class RegisterViewModel @Inject constructor(application: Application, private va
     fun register(username: String?, pwd: String?, rePwd: String?) {
         if (checkUser(username, pwd, rePwd)) {
             viewModelScope.launch {
-                mLoadStateEvent.postValue(LoadEvent(LoadState.START,"正在注册..."))
-                val userinfo = userModel.register(username!!,pwd!!,rePwd!!)
+                mLoadStateEvent.postValue(LoadEvent(LoadState.START, "正在注册..."))
+                val userinfo = userModel.register(username!!, pwd!!, rePwd!!)
                 mLoadStateEvent.postValue(LoadEvent(LoadState.COMPLETED))
-                if (userinfo != null){
+                if (userinfo != null) {
                     mMessage.value = "登录成功!"
                     mRegisterEvent.value = true
-                }else{
+                } else {
                     mMessage.value = "登陆失败"
                 }
 

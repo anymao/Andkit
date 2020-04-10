@@ -12,17 +12,17 @@ import dagger.Module
 abstract class PresentersModule {
 
     @Binds
-    abstract fun bindTodoTabPresenter(presenter:TodoTabPresenter):TodoTabContract.ITodoTabPresenter
+    abstract fun bindTodoTabPresenter(presenter: TodoTabPresenter): TodoTabContract.ITodoTabPresenter
 
     @Binds
-    abstract fun bindTodoListPresenter(presenter: TodoListPresenter):TodoListContract.ITodoListPresenter
+    abstract fun bindTodoListPresenter(presenter: TodoListPresenter): TodoListContract.ITodoListPresenter
 
     @Binds
-    abstract fun bindTodoPresenter(presenter: TodoPresenter):TodoContract.ITodoPresenter
+    abstract fun bindTodoPresenter(presenter: TodoPresenter): TodoContract.ITodoPresenter
 
     @Binds
-    abstract fun bindCollectedArticlesPresenter(presenter:CollectedArticlesPresenter):CollectedArticlesContract.ICollectedArticlesPresenter
+    abstract fun bindCollectedArticlesPresenter(presenter: CollectedArticlesPresenter): CollectedArticlesContract.ICollectedArticlesPresenter
 
     @Binds
-    abstract fun bindMinePresenter(presenter:MinePresenter):MineContract.IMinePresenter
+    abstract fun bindMinePresenter(presenter: MinePresenter): MineContract.IMinePresenter
 }

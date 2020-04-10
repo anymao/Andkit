@@ -18,15 +18,15 @@ import dagger.Module
 abstract class ModelsModule {
 
     @Binds
-    abstract fun bindTodoTabModel(model:TodoTabModel):TodoTabContract.ITodoTabModel
+    abstract fun bindTodoTabModel(model: TodoTabModel): TodoTabContract.ITodoTabModel
 
 
     @Binds
-    abstract fun bindTodoModel(model:TodoModel):TodoContract.ITodoModel
+    abstract fun bindTodoModel(model: TodoModel): TodoContract.ITodoModel
 
     @Binds
-    abstract fun bindCollectedArticlesModel(model: CollectedArticlesModel):CollectedArticlesContract.ICollectedArticlesModel
+    abstract fun bindCollectedArticlesModel(model: CollectedArticlesModel): CollectedArticlesContract.ICollectedArticlesModel
 
     @Binds
-    abstract fun bindMineModel(model: MineModel):MineContract.IMineModel
+    abstract fun bindMineModel(model: MineModel): MineContract.IMineModel
 }

@@ -53,15 +53,18 @@ class ArticlesRepository(private val application: Application) {
     fun getKnowledgesArticlesListing(cid: Int): Listing<Article> {
         val api = application.repositoryComponent.getRepository().obtainRetrofitService(
             WAN_ANDROID_KEY,
-            WanAndroidKnowledgeApi::class.java)
+            WanAndroidKnowledgeApi::class.java
+        )
         val apiWrapper = KnowledgesArticlesProvider(api, cid)
         val factory = ArticlesSourceFactory(apiWrapper)
-        val data = LivePagedListBuilder<Int,Article>(factory,
+        val data = LivePagedListBuilder<Int, Article>(
+            factory,
             PagedList.Config
                 .Builder()
                 .setPageSize(20)
                 .setPrefetchDistance(20)
-                .build())
+                .build()
+        )
             .build()
 
         return Listing<Article>(
@@ -69,7 +72,7 @@ class ArticlesRepository(private val application: Application) {
             status = Transformations.switchMap(factory.source) {
                 it.mStatus
             },
-            retry = Transformations.switchMap(factory.source){
+            retry = Transformations.switchMap(factory.source) {
                 it.mRetry
             }
         )

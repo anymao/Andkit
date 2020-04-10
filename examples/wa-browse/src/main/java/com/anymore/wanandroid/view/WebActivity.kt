@@ -2,7 +2,6 @@ package com.anymore.wanandroid.view
 
 import android.os.Bundle
 import android.view.KeyEvent
-import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +12,9 @@ import com.anymore.andkit.lifecycle.activity.IActivity
 import com.anymore.wanandroid.browse.R
 import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.route.BROWSE_URL
+import com.anymore.wanandroid.route.URL_VALUE
 import com.just.agentweb.AgentWeb
+import com.just.agentweb.WebChromeClient
 import kotlinx.android.synthetic.main.wb_activity_web.*
 
 /**
@@ -25,7 +26,7 @@ class WebActivity : AppCompatActivity(), IActivity {
 
     protected lateinit var mAgentWeb: AgentWeb
 
-    @Autowired
+    @Autowired(name = URL_VALUE, required = true, desc = "访问的web地址")
     @JvmField
     var url: String? = ""
 

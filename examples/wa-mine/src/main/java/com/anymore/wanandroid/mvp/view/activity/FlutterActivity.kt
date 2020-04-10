@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.lifecycle.activity.IActivity
 import com.anymore.wanandroid.mvp.view.widget.FlutterLoadingView
+import com.anymore.wanandroid.route.FLUTTER_INITIAL_ROUTE
 import com.anymore.wanandroid.route.MINE_FLUTTER
 import io.flutter.facade.Flutter
 
@@ -19,7 +20,7 @@ import io.flutter.facade.Flutter
 class FlutterActivity : AppCompatActivity(), IActivity {
 
 
-    @Autowired
+    @Autowired(name = FLUTTER_INITIAL_ROUTE, required = true, desc = "Flutter界面的初始路由名称")
     @JvmField
     var initialRoute: String? = ""
 

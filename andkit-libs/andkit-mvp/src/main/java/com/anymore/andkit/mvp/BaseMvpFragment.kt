@@ -9,10 +9,10 @@ import javax.inject.Inject
  * 互不关心具体实现
  * Created by liuyuanmao on 2019/7/16.
  */
-abstract class BaseMvpFragment<P: BaseContract.IBasePresenter> : BaseFragment(){
+abstract class BaseMvpFragment<P : BaseContract.IBasePresenter> : BaseFragment() {
 
     @Inject
-    lateinit var mPresenter:P
+    lateinit var mPresenter: P
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,5 +24,5 @@ abstract class BaseMvpFragment<P: BaseContract.IBasePresenter> : BaseFragment(){
         lifecycle.removeObserver(mPresenter)
     }
 
-    override fun injectable()=true
+    override fun injectable() = true
 }

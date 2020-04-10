@@ -14,9 +14,10 @@ import java.util.*
 class DatePickerDialog(context: Context) : AlertDialog(context) {
 
     private var mListener: OnButtonClickListener? = null
-    private var mDate  = Date()
+    private var mDate = Date()
     private val sdf by lazy { SimpleDateFormat(DATE_FORMAT, Locale.getDefault()) }
-    companion object{
+
+    companion object {
         const val DATE_FORMAT = "yyyy-MM-dd"
     }
 
@@ -28,7 +29,7 @@ class DatePickerDialog(context: Context) : AlertDialog(context) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.wm_dialog_date_picker)
         calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            mDate = sdf.parse("$year-$month-$dayOfMonth")?:Date()
+            mDate = sdf.parse("$year-$month-$dayOfMonth") ?: Date()
         }
         tvEnsure.setOnClickListener {
             mListener?.onSelected(mDate)

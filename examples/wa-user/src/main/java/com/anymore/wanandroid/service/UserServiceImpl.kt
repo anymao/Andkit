@@ -25,7 +25,7 @@ import timber.log.Timber
 @Route(path = USER_SERVICE)
 class UserServiceImpl : UserService {
 
-    companion object{
+    companion object {
         const val extra_login_status = "extra_login_status_key"
     }
 

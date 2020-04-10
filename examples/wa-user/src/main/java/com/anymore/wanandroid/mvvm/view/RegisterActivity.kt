@@ -18,7 +18,6 @@ import com.anymore.wanandroid.user.R
 import com.anymore.wanandroid.user.databinding.WuActivityRegisterBinding
 
 
-
 /**
  * Created by liuyuanmao on 2019/3/20.
  */

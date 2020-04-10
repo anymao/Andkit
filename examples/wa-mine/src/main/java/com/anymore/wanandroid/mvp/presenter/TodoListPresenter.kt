@@ -20,20 +20,20 @@ class TodoListPresenter @Inject constructor(
     BasePresenter<TodoListContract.ITodoListView>(application, mView),
     TodoListContract.ITodoListPresenter {
 
-    companion object{
+    companion object {
         const val firstPage = 1
     }
 
     override fun refreshTodoList(type: Int, status: Int) {
-        val disposable = mModel.loadTodoList(page = firstPage,type = type,status = status)
+        val disposable = mModel.loadTodoList(page = firstPage, type = type, status = status)
             .network2Main()
             .subscribeBy(
                 onNext = {
                     val currentPage = it.curPage
                     val totalPage = it.pageCount
                     val list = it.datas
-                    val hasMore = currentPage<totalPage
-                    mView.showTodoList(list,currentPage,hasMore)
+                    val hasMore = currentPage < totalPage
+                    mView.showTodoList(list, currentPage, hasMore)
                 },
                 onError = {
                     Timber.e(it)
@@ -44,15 +44,15 @@ class TodoListPresenter @Inject constructor(
     }
 
     override fun loadTodoList(page: Int, type: Int, status: Int) {
-        val disposable = mModel.loadTodoList(page = page,type = type,status = status)
+        val disposable = mModel.loadTodoList(page = page, type = type, status = status)
             .network2Main()
             .subscribeBy(
                 onNext = {
                     val currentPage = it.curPage
                     val totalPage = it.pageCount
                     val list = it.datas
-                    val hasMore = currentPage<totalPage
-                    mView.showTodoList(list,currentPage,hasMore)
+                    val hasMore = currentPage < totalPage
+                    mView.showTodoList(list, currentPage, hasMore)
                 },
                 onError = {
                     Timber.e(it)
@@ -62,36 +62,37 @@ class TodoListPresenter @Inject constructor(
         addDisposable(disposable)
     }
 
-    override fun deleteTodo(index:Int,id: Int) {
+    override fun deleteTodo(index: Int, id: Int) {
         val disposable = mModel.deleteTodo(id)
             .network2Main()
             .subscribeBy(onError = {
                 Timber.e(it)
-                mView.showError(it.message?:"删除失败")
-            },onNext = {
-                if (it.first == 0){
+                mView.showError(it.message ?: "删除失败")
+            }, onNext = {
+                if (it.first == 0) {
                     mView.remove(index)
-                }else{
+                } else {
                     mView.showError("删除失败:${it.second}")
                 }
             })
         addDisposable(disposable)
     }
 
-    override fun updateTodoStatus(index: Int,id: Int, newStatus: Int) {
-        val disposable = mModel.updateTodoStatus(id,newStatus)
+    override fun updateTodoStatus(index: Int, id: Int, newStatus: Int) {
+        val disposable = mModel.updateTodoStatus(id, newStatus)
             .network2Main()
             .subscribeBy(onError = {
                 Timber.e(it)
-                mView.showError(it.message?:"更新失败")
-            },onNext = {
-                if (it.first == 0){
+                mView.showError(it.message ?: "更新失败")
+            }, onNext = {
+                if (it.first == 0) {
                     mView.remove(index)
-                }else{
+                } else {
                     mView.showError("更新失败:${it.second}")
                 }
             })
-        addDisposable(disposable)    }
+        addDisposable(disposable)
+    }
 
 
 }

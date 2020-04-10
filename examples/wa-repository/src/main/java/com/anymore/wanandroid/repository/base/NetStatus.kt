@@ -14,25 +14,26 @@ import java.text.ParseException
  */
 
 @Suppress("DataClassPrivateConstructor")
-data class NetStatus private constructor(val status: Status, val message:String?=null){
+data class NetStatus private constructor(val status: Status, val message: String? = null) {
     companion object {
-        val SUCCESS= NetStatus(Status.SUCCESS,"加载完成")
-        val DOING = NetStatus(Status.DOING,"正在加载,请稍候....")
-        fun failed(throwable: Throwable= Throwable("请求失败"))=
+        val SUCCESS = NetStatus(Status.SUCCESS, "加载完成")
+        val DOING = NetStatus(Status.DOING, "正在加载,请稍候....")
+        fun failed(throwable: Throwable = Throwable("请求失败")) =
             NetStatus(Status.FAILED, parseThrowable(throwable))
+
         private fun parseThrowable(e: Throwable): String {
-            return when(e){
-                is SocketTimeoutException,is ConnectException, is HttpException->"网络连接异常"
-                is JsonParseException,is JSONException,is ParseException->"数据解析异常"
-                is UnknownHostException->"连接不到服务器"
-                is IllegalArgumentException->"参数异常"
-                else->"发生了未知错误:${e.message}"
+            return when (e) {
+                is SocketTimeoutException, is ConnectException, is HttpException -> "网络连接异常"
+                is JsonParseException, is JSONException, is ParseException -> "数据解析异常"
+                is UnknownHostException -> "连接不到服务器"
+                is IllegalArgumentException -> "参数异常"
+                else -> "发生了未知错误:${e.message}"
             }
         }
     }
 }
 
-enum class Status{
+enum class Status {
     SUCCESS,
     FAILED,
     DOING

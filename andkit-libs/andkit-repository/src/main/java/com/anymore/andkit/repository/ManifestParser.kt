@@ -14,19 +14,22 @@ internal object ManifestParser {
     /**
      * 从Manifest 的mate-data中读取配置
      */
-    fun parseRepositoryConfig(context: Context):List<RepositoryConfigsModule.RepositoryConfig>{
+    fun parseRepositoryConfig(context: Context): List<RepositoryConfigsModule.RepositoryConfig> {
         return parse(context, REPOSITORY_MODULE_CONFIG)
     }
 
-    private fun parse(context: Context,key:String):List<RepositoryConfigsModule.RepositoryConfig>{
+    private fun parse(
+        context: Context,
+        key: String
+    ): List<RepositoryConfigsModule.RepositoryConfig> {
         val result = ArrayList<RepositoryConfigsModule.RepositoryConfig>()
         val applicationInfo: ApplicationInfo? = context.packageManager.getApplicationInfo(
             context.packageName,
             PackageManager.GET_META_DATA
         )
-        if (applicationInfo != null && applicationInfo.metaData?.keySet()?.isNotEmpty() == true){
-            for (dataKey in applicationInfo.metaData.keySet()){
-                if (TextUtils.equals(key,applicationInfo.metaData[dataKey] as String)){
+        if (applicationInfo != null && applicationInfo.metaData?.keySet()?.isNotEmpty() == true) {
+            for (dataKey in applicationInfo.metaData.keySet()) {
+                if (TextUtils.equals(key, applicationInfo.metaData[dataKey] as String)) {
                     result.add(createConfigByName(dataKey))
                 }
             }
@@ -34,7 +37,7 @@ internal object ManifestParser {
         return result
     }
 
-    private fun createConfigByName(className:String):RepositoryConfigsModule.RepositoryConfig{
+    private fun createConfigByName(className: String): RepositoryConfigsModule.RepositoryConfig {
         val clazz: Class<*>
         try {
             clazz = Class.forName(className)
@@ -46,9 +49,15 @@ internal object ManifestParser {
         try {
             config = clazz.newInstance()
         } catch (e: InstantiationException) {
-            throw RuntimeException("Unable to instantiate ConfigRepository implementation for $clazz", e)
+            throw RuntimeException(
+                "Unable to instantiate ConfigRepository implementation for $clazz",
+                e
+            )
         } catch (e: IllegalAccessException) {
-            throw RuntimeException("Unable to instantiate ConfigRepository implementation for $clazz", e)
+            throw RuntimeException(
+                "Unable to instantiate ConfigRepository implementation for $clazz",
+                e
+            )
         }
 
         if (config !is RepositoryConfigsModule.RepositoryConfig) {

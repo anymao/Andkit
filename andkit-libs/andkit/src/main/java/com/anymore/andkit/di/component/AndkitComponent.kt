@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Created by liuyuanmao on 2020/1/16.
  */
 @Singleton
-@Component(modules = [AndroidSupportInjectionModule::class,AppModule::class])
+@Component(modules = [AndroidSupportInjectionModule::class, AppModule::class])
 interface AndkitComponent {
     fun inject(andkitApplication: AndkitApplication)
 }

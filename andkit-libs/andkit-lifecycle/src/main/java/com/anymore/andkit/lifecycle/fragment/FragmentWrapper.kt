@@ -17,10 +17,10 @@ class FragmentWrapper(
     IFragmentLifecycle {
     override fun onAttach(context: Context) {
         Timber.i("onAttach")
-        if (iFragment.useEventBus()){
+        if (iFragment.useEventBus()) {
             EventBus.getDefault().register(mFragment)
         }
-        if (iFragment.injectable()){
+        if (iFragment.injectable()) {
             AndroidSupportInjection.inject(mFragment)
         }
     }
@@ -41,10 +41,10 @@ class FragmentWrapper(
     }
 
     override fun onDetach() {
-        if (iFragment.useEventBus()){
+        if (iFragment.useEventBus()) {
             EventBus.getDefault().unregister(mFragment)
         }
     }
 
-    override fun isAdded()= mFragment.isAdded
+    override fun isAdded() = mFragment.isAdded
 }

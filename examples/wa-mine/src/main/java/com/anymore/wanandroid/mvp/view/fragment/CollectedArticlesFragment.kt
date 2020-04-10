@@ -2,6 +2,7 @@ package com.anymore.wanandroid.mvp.view.fragment
 
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvp.BaseMvpFragment
 import com.anymore.wanandroid.entry.Article1
@@ -9,14 +10,14 @@ import com.anymore.wanandroid.mine.R
 import com.anymore.wanandroid.mvp.contract.CollectedArticlesContract
 import com.anymore.wanandroid.mvp.view.adapter.ArticlesListAdapter
 import com.anymore.wanandroid.route.BROWSE_URL
-import kotlinx.android.synthetic.main.wm_fragment_collected_articles.*
+import com.anymore.wanandroid.route.MINE_COLLECTED_ARTICLES_FRAGMENT
+import com.anymore.wanandroid.route.URL_VALUE
 import kotlinx.android.synthetic.main.wm_fragment_todo_list.*
-import kotlinx.android.synthetic.main.wm_fragment_todo_list.rvList
-import kotlinx.android.synthetic.main.wm_fragment_todo_list.srl
 
 /**
  * Created by anymore on 2020/2/4.
  */
+@Route(path = MINE_COLLECTED_ARTICLES_FRAGMENT)
 class CollectedArticlesFragment :
     BaseMvpFragment<CollectedArticlesContract.ICollectedArticlesPresenter>(),
     CollectedArticlesContract.ICollectedArticlesView {
@@ -28,7 +29,7 @@ class CollectedArticlesFragment :
                 it.setOnClickListener { i, article1 ->
                     ARouter.getInstance()
                         .build(BROWSE_URL)
-                        .withString("url", article1.link)
+                        .withString(URL_VALUE, article1.link)
                         .navigation(requireContext())
                 }
                 it.setOnUncollectedListener { i, article1 ->
@@ -49,11 +50,11 @@ class CollectedArticlesFragment :
         super.initData(savedInstanceState)
         rvList.adapter = adapter
         rvList.addItemDecoration(
-                DividerItemDecoration(
-                    context,
-                    DividerItemDecoration.VERTICAL
-                )
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
             )
+        )
         srl.setOnRefreshListener {
             refreshList()
         }

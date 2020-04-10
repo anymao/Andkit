@@ -13,8 +13,11 @@ import io.reactivex.disposables.Disposable
  * 获取仓储层管理器RepositoryComponent可以提供全局(与Model层为同一个)的Gson,OkHttp等对象
  * Created by liuyuanmao on 2019/7/16.
  */
-abstract class BasePresenter<V: BaseContract.IBaseView>(protected val application: Application, protected val mView:V):
-    BaseContract.IBasePresenter{
+abstract class BasePresenter<V : BaseContract.IBaseView>(
+    protected val application: Application,
+    protected val mView: V
+) :
+    BaseContract.IBasePresenter {
 
     protected val mCompositeDisposable by lazy { CompositeDisposable() }
 
@@ -23,7 +26,7 @@ abstract class BasePresenter<V: BaseContract.IBaseView>(protected val applicatio
         super.onCreate()
     }
 
-    protected fun addDisposable(disposable: Disposable){
+    protected fun addDisposable(disposable: Disposable) {
         mCompositeDisposable.add(disposable)
     }
 
@@ -33,5 +36,5 @@ abstract class BasePresenter<V: BaseContract.IBaseView>(protected val applicatio
         mCompositeDisposable.clear()
     }
 
-    protected fun getString(@StringRes stringId:Int):String=application.getString(stringId)
+    protected fun getString(@StringRes stringId: Int): String = application.getString(stringId)
 }

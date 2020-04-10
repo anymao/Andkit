@@ -1,6 +1,6 @@
-if(moduleRunning.toBoolean()){
+if (moduleRunning.toBoolean()) {
     apply plugin: 'com.android.application'
-}else {
+} else {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
@@ -27,7 +27,7 @@ android {
             }
         }
 
-        if (moduleRunning.toBoolean()){
+        if (moduleRunning.toBoolean()) {
             multiDexEnabled true
         }
 
@@ -35,7 +35,7 @@ android {
             main {
                 if (moduleRunning.toBoolean()) {
                     manifest.srcFile 'src/profile/AndroidManifest.xml'
-                }else {
+                } else {
                     manifest.srcFile 'src/main/AndroidManifest.xml'
                 }
             }
@@ -91,7 +91,8 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger2_version"
     kapt "com.google.dagger:dagger-compiler:$dagger2_version"
     implementation "com.google.dagger:dagger-android:$dagger2_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger2_version" // if you use the support libraries
+    implementation "com.google.dagger:dagger-android-support:$dagger2_version"
+    // if you use the support libraries
     kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
 
     implementation 'com.jakewharton.timber:timber:4.7.1'

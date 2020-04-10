@@ -13,7 +13,7 @@
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:background="@drawable/wm_selector_blue_corner_4px"
+        android:background="@drawable/wa_selector_blue_corner_4px"
         android:enabled="true"
         android:textColor="@android:color/white" />
 </LinearLayout>

@@ -59,6 +59,6 @@
         android:layout_margin="32dp"
         app:srcCompat="@drawable/wm_ic_action_add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

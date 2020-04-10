@@ -1,6 +1,7 @@
 package com.anymore.wanandroid.entry
 
 import java.io.Serializable
+
 /**
  * 每一条文章的信息
  */
@@ -28,4 +29,4 @@ data class Article1(
     var visible: Int,
     var zan: Int,
     var collect: Boolean = false
-):Serializable
+) : Serializable

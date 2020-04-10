@@ -19,14 +19,14 @@ class ArticlesListAdapter(private val context: Context) :
     private val data: MutableList<Article1> = mutableListOf()
 
     private var mOnClickListener: ((Int, Article1) -> Unit)? = null
-    private var mOnUncollectedListener:((Int,Article1)->Unit)?=null
+    private var mOnUncollectedListener: ((Int, Article1) -> Unit)? = null
 
 
     fun setOnClickListener(listener: (Int, Article1) -> Unit) {
         mOnClickListener = listener
     }
 
-    fun setOnUncollectedListener(listener: (Int, Article1) -> Unit){
+    fun setOnUncollectedListener(listener: (Int, Article1) -> Unit) {
         mOnUncollectedListener = listener
     }
 
@@ -61,10 +61,10 @@ class ArticlesListAdapter(private val context: Context) :
         holder.itemView.tvArticleAuthor.text = article.author
         holder.itemView.tvArticleTime.text = article.niceDate
         holder.itemView.clArticlesRoot.setOnClickListener {
-            mOnClickListener?.invoke(position,article)
+            mOnClickListener?.invoke(position, article)
         }
         holder.itemView.tvDelete.setOnClickListener {
-            mOnUncollectedListener?.invoke(position,article)
+            mOnUncollectedListener?.invoke(position, article)
         }
     }
 

@@ -14,13 +14,14 @@ import com.anymore.wanandroid.mvp.view.fragment.TodoListFragment
 import com.anymore.wanandroid.route.MINE_TODO
 import com.anymore.wanandroid.route.MINE_TODO_LIST
 import com.anymore.wanandroid.route.NEED_LOGIN_FLAG
+import com.anymore.wanandroid.route.TODO_OPERATION
 import kotlinx.android.synthetic.main.wm_activity_todo_tab.*
 import org.jetbrains.anko.selector
 
 /**
  * Created by anymore on 2020/1/29.
  */
-@Route(path = MINE_TODO_LIST,extras = NEED_LOGIN_FLAG)
+@Route(path = MINE_TODO_LIST, extras = NEED_LOGIN_FLAG)
 class TodoTabActivity : BaseMvpActivity<TodoTabContract.ITodoTabPresenter>(),
     TodoTabContract.ITodoTabView {
 
@@ -58,7 +59,7 @@ class TodoTabActivity : BaseMvpActivity<TodoTabContract.ITodoTabPresenter>(),
         fabAddTodo.setOnClickListener {
             ARouter.getInstance()
                 .build(MINE_TODO)
-                .withInt("mType", TodoActivity.TYPE_CREATE)
+                .withInt(TODO_OPERATION, TodoActivity.TYPE_CREATE)
                 .navigation(this)
         }
         val fragments = arrayListOf(

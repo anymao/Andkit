@@ -17,8 +17,8 @@ import androidx.appcompat.widget.Toolbar
  * 修改状态栏为全透明
  */
 @SuppressLint("NewApi")
-fun Activity.setTransparencyBar(){
-    if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+fun Activity.setTransparencyBar() {
+    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -26,7 +26,7 @@ fun Activity.setTransparencyBar(){
         window.statusBarColor = Color.TRANSPARENT
         return
     }
-    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT){
+    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
         window.setFlags(
             WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
             WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
@@ -45,9 +45,9 @@ fun Activity.setStatusBarLightMode(): Int {
     var result = 0
     if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
         when {
-            setMIUIStatusBarLightMode( true) -> //小米
+            setMIUIStatusBarLightMode(true) -> //小米
                 result = 1
-            setFlymeStatusBarLightMode( true) -> //魅族
+            setFlymeStatusBarLightMode(true) -> //魅族
                 result = 2
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> {
                 //6.0以上
@@ -118,7 +118,11 @@ fun Activity.setMIUIStatusBarLightMode(dark: Boolean): Boolean {
             val field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE")
             darkModeFlag = field.getInt(layoutParams)
             val extraFlagField =
-                clazz.getMethod("setExtraFlags", Int::class.javaPrimitiveType, Int::class.javaPrimitiveType)
+                clazz.getMethod(
+                    "setExtraFlags",
+                    Int::class.javaPrimitiveType,
+                    Int::class.javaPrimitiveType
+                )
             if (dark) {
                 extraFlagField.invoke(window, darkModeFlag, darkModeFlag)//状态栏透明且黑色字体
             } else {

@@ -9,7 +9,12 @@ import com.anymore.wanandroid.common.ContextProvider
  */
 class SharedPreferenceHelper(private val spName: String = "default") {
     private val application by lazy { ContextProvider.getApplicationContext() }
-    private val sharedPreferences by lazy { application.getSharedPreferences(spName, Context.MODE_PRIVATE) }
+    private val sharedPreferences by lazy {
+        application.getSharedPreferences(
+            spName,
+            Context.MODE_PRIVATE
+        )
+    }
 
 
     fun put(name: String, value: Any) = with(sharedPreferences.edit()) {
@@ -24,8 +29,8 @@ class SharedPreferenceHelper(private val spName: String = "default") {
         apply()
     }
 
-    fun putStrings(name: String, stringSet:Set<String>)= with(sharedPreferences.edit()){
-        putStringSet(name,stringSet)
+    fun putStrings(name: String, stringSet: Set<String>) = with(sharedPreferences.edit()) {
+        putStringSet(name, stringSet)
         apply()
     }
 
@@ -42,5 +47,6 @@ class SharedPreferenceHelper(private val spName: String = "default") {
     }
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-    fun getStings(name: String, default: MutableSet<String> = mutableSetOf()):MutableSet<String> = sharedPreferences.getStringSet(name,default)?:default
+    fun getStings(name: String, default: MutableSet<String> = mutableSetOf()): MutableSet<String> =
+        sharedPreferences.getStringSet(name, default) ?: default
 }

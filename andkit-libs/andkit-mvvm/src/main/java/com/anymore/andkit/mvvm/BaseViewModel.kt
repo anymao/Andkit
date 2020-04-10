@@ -39,7 +39,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun <L : LiveData<*>> setEventIfAbsent(tag: String, liveData: L): L {
         var previous: LiveData<*>?
-        synchronized(mLiveDataSet){
+        synchronized(mLiveDataSet) {
             previous = mLiveDataSet[tag]
             if (previous == null) {
                 mLiveDataSet[tag] = liveData
@@ -49,8 +49,8 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
         return previous as L? ?: liveData
     }
 
-    fun <L:LiveData<*>> getLiveDataByTag(tag: String):L?{
-        synchronized(mLiveDataSet){
+    fun <L : LiveData<*>> getLiveDataByTag(tag: String): L? {
+        synchronized(mLiveDataSet) {
             @Suppress("UNCHECKED_CAST")
             return mLiveDataSet[tag] as L?
         }

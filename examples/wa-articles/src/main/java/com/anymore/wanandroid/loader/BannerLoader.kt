@@ -8,12 +8,12 @@ import com.anymore.wanandroid.entry.Banner as BannerData
 class BannerLoader(private val mBanner: Banner) : OnBannerListener {
 
 
-    private var mData:List<BannerData>? = null
+    private var mData: List<BannerData>? = null
     private val mImages by lazy { ArrayList<String>() }
     private val mTitles by lazy { ArrayList<String>() }
-    var mListener:((banner:BannerData)->Unit)? = null
+    var mListener: ((banner: BannerData) -> Unit)? = null
 
-    fun initBanner(listener:((banner: BannerData)->Unit)?=null){
+    fun initBanner(listener: ((banner: BannerData) -> Unit)? = null) {
         //设置banner样式(显示圆形指示器)
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
         //设置指示器位置（指示器居右）
@@ -31,13 +31,13 @@ class BannerLoader(private val mBanner: Banner) : OnBannerListener {
         mListener = listener
     }
 
-    fun loadData(data:List<BannerData>){
+    fun loadData(data: List<BannerData>) {
         mData = data
         mImages.clear()
         mTitles.clear()
         mData?.let {
-            for (item in it){
-                if (item.isVisible == 1){
+            for (item in it) {
+                if (item.isVisible == 1) {
                     mImages.add(item.imagePath)
                     mTitles.add(item.title)
                 }
@@ -47,25 +47,24 @@ class BannerLoader(private val mBanner: Banner) : OnBannerListener {
     }
 
 
-
-    private fun load(){
+    private fun load() {
         mBanner.setImages(mImages)
         mBanner.setBannerTitles(mTitles)
         mBanner.setOnBannerListener(this)
         mBanner.start()
     }
 
-    fun startAutoPlay(){
+    fun startAutoPlay() {
         mBanner.startAutoPlay()
     }
 
-    fun stopAutoPlay(){
+    fun stopAutoPlay() {
         mBanner.stopAutoPlay()
     }
 
     override fun OnBannerClick(position: Int) {
         mListener?.run {
-            if (position <= mData?.size?:0){
+            if (position <= mData?.size ?: 0) {
                 invoke(mData?.get(position)!!)
             }
         }

@@ -2,7 +2,7 @@ package com.anymore.wanandroid.entry
 
 import java.io.Serializable
 
-class Todo :Serializable{
+class Todo : Serializable {
     var completeDate: Long = 0L
     var completeDateStr: String = ""
     var content: String = ""

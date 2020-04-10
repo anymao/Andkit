@@ -8,10 +8,10 @@ import javax.inject.Inject
  * 互不关心具体实现
  * Created by liuyuanmao on 2019/7/16.
  */
-abstract class BaseMvpActivity<P: BaseContract.IBasePresenter> : BaseActivity(){
+abstract class BaseMvpActivity<P : BaseContract.IBasePresenter> : BaseActivity() {
 
     @Inject
-    lateinit var mPresenter:P
+    lateinit var mPresenter: P
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,5 +23,5 @@ abstract class BaseMvpActivity<P: BaseContract.IBasePresenter> : BaseActivity(){
         lifecycle.removeObserver(mPresenter)
     }
 
-    override fun injectable()=true
+    override fun injectable() = true
 }

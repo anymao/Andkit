@@ -1,5 +1,5 @@
 package com.anymore.wanandroid.repository.base
 
-object ResponseCode{
+object ResponseCode {
     const val OK = 0
 }

@@ -2,7 +2,10 @@ package com.anymore.wanandroid.resources.widget
 
 import android.content.Context
 import android.graphics.Color
-import android.text.*
+import android.text.InputFilter
+import android.text.InputType
+import android.text.SpannableString
+import android.text.Spanned
 import android.text.method.DigitsKeyListener
 import android.text.style.ForegroundColorSpan
 import android.util.AttributeSet

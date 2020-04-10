@@ -11,7 +11,7 @@ import com.anymore.andkit.lifecycle.activity.IActivity
 import com.anymore.wanandroid.browse.R
 import com.anymore.wanandroid.common.ext.ifNotEmpty
 import com.anymore.wanandroid.common.ext.setupToolbar
-import com.anymore.wanandroid.route.BROWSE_FRAGMENT
+import com.anymore.wanandroid.route.*
 import kotlinx.android.synthetic.main.wb_activity_fragment.*
 import timber.log.Timber
 
@@ -24,22 +24,26 @@ class FragmentActivity : AppCompatActivity(), IActivity {
     /**
      * 界面标题
      */
-    @Autowired
+    @Autowired(name = TITLE, desc = "界面的标题")
     @JvmField
     var title: String? = ""
 
     /**
      * 界面中的Fragment的全路径
      */
-    @Autowired
+    @Autowired(name = FRAGMENT_NAME, desc = "界面容纳的Fragment的全路径")
     @JvmField
     var fragmentName: String? = ""
+
+    @Autowired(name = FRAGMENT_ROUTE, desc = "界面容纳的Fragment的路由名")
+    @JvmField
+    var fragmentRoute: String? = ""
 
 
     /**
      * 传递给fragment的参数
      */
-    @Autowired
+    @Autowired(name = PARAMS, desc = "传递给Fragment的参数")
     @JvmField
     var params: Bundle? = null
 
@@ -48,21 +52,31 @@ class FragmentActivity : AppCompatActivity(), IActivity {
         ARouter.getInstance().inject(this)
         setContentView(R.layout.wb_activity_fragment)
         setupToolbar(toolbar)
-        setTitle(title?:"")
+        setTitle(title ?: "")
         injectFragment()
     }
 
     private fun injectFragment() {
-        if (fragmentName.isNullOrEmpty()) {
+        val fragment = getFragmentFromArgs()
+        if (fragment == null) {
             Toast.makeText(this, "参数错误，启动界面失败！", Toast.LENGTH_LONG).show()
             finish()
             return
         }
-        val fragment = instantiateFragment<Fragment>(fragmentName!!, params)
-        fragment?.apply {
+        fragment.apply {
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, this)
                 .commit()
+        }
+    }
+
+    private fun getFragmentFromArgs(): Fragment? {
+        return if (!fragmentRoute.isNullOrEmpty()) {
+            ARouter.getInstance().build(fragmentRoute).with(params).navigation() as Fragment
+        } else if (!fragmentName.isNullOrEmpty()) {
+            instantiateFragment(fragmentName!!, params)
+        } else {
+            null
         }
     }
 

@@ -21,8 +21,13 @@ abstract class BindingFragment<BD : ViewDataBinding> : Fragment(), IFragment {
     private val TAG = "${this::class.simpleName}#${hashCode()}"
     //用于存储当前Fragment的前一个可见状态
     private var mPreviousVisibleState = AtomicBoolean(false)
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mBinding = DataBindingUtil.inflate(inflater,getLayoutRes(),container,false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        mBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         mBinding.lifecycleOwner = this
         initView(savedInstanceState)
         return mBinding.root
@@ -34,11 +39,11 @@ abstract class BindingFragment<BD : ViewDataBinding> : Fragment(), IFragment {
     }
 
     @LayoutRes
-    abstract fun getLayoutRes():Int
+    abstract fun getLayoutRes(): Int
 
-    open fun initView(savedInstanceState: Bundle?){}
+    open fun initView(savedInstanceState: Bundle?) {}
 
-    open fun initData(savedInstanceState: Bundle?){}
+    open fun initData(savedInstanceState: Bundle?) {}
 
     override fun onResume() {
         Timber.tag(TAG).w("==>onResume()")
@@ -64,13 +69,13 @@ abstract class BindingFragment<BD : ViewDataBinding> : Fragment(), IFragment {
         setFragmentVisibleState(!hidden)
     }
 
-    private fun setFragmentVisibleState(newState:Boolean){
-        if (mPreviousVisibleState.compareAndSet(!newState,newState)){
+    private fun setFragmentVisibleState(newState: Boolean) {
+        if (mPreviousVisibleState.compareAndSet(!newState, newState)) {
             onVisibleStateChanged(newState)
         }
     }
 
-    protected open fun onVisibleStateChanged(visible:Boolean){
+    protected open fun onVisibleStateChanged(visible: Boolean) {
         Timber.tag(TAG).w("==>可见性：$visible")
     }
 

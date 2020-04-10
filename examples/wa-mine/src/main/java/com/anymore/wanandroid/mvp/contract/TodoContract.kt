@@ -54,6 +54,6 @@ interface TodoContract {
             orderby: Int? = null
         ): Observable<PagedData<Todo>>
 
-        fun updateTodoStatus(id: Int,newStatus:Int): Observable<Pair<Int, String>>
+        fun updateTodoStatus(id: Int, newStatus: Int): Observable<Pair<Int, String>>
     }
 }

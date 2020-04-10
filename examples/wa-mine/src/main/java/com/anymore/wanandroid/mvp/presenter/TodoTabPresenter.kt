@@ -11,8 +11,9 @@ import javax.inject.Inject
 class TodoTabPresenter @Inject constructor(
     application: Application,
     mView: TodoTabContract.ITodoTabView,
-    private val mModel:TodoTabContract.ITodoTabModel
+    private val mModel: TodoTabContract.ITodoTabModel
 ) :
-    BasePresenter<TodoTabContract.ITodoTabView>(application, mView),TodoTabContract.ITodoTabPresenter {
+    BasePresenter<TodoTabContract.ITodoTabView>(application, mView),
+    TodoTabContract.ITodoTabPresenter {
 
 }

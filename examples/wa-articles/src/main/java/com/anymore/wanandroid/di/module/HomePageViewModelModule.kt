@@ -16,5 +16,5 @@ interface HomePageViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(HomePageViewModel::class)
-    fun bindHomePageViewModel(viewModel: HomePageViewModel):ViewModel
+    fun bindHomePageViewModel(viewModel: HomePageViewModel): ViewModel
 }

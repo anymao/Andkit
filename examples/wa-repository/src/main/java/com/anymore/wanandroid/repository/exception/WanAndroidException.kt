@@ -1,7 +1,5 @@
 package com.anymore.wanandroid.repository.exception
 
-import java.lang.RuntimeException
-
 /**
  * 后台数据接口异常类
  */

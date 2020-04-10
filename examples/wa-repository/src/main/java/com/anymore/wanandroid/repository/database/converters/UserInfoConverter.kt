@@ -7,17 +7,17 @@ import com.google.gson.Gson
 /**
  * Created by anymore on 2019/4/20.
  */
-class UserInfoConverter{
+class UserInfoConverter {
 
     @TypeConverter
-    fun stringList2Json(list: List<String>):String=Gson().toJson(list)
+    fun stringList2Json(list: List<String>): String = Gson().toJson(list)
 
     @TypeConverter
-    fun json2StringList(json: String)=Gson().toList<String>(json)
+    fun json2StringList(json: String) = Gson().toList<String>(json)
 
     @TypeConverter
-    fun intList2Json(list: List<Int>):String=Gson().toJson(list)
+    fun intList2Json(list: List<Int>): String = Gson().toJson(list)
 
     @TypeConverter
-    fun json2IntList(json: String)=Gson().toList<Int>(json)
+    fun json2IntList(json: String) = Gson().toList<Int>(json)
 }

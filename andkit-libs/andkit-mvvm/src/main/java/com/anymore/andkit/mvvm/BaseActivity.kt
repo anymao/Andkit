@@ -10,8 +10,8 @@ import javax.inject.Inject
 /**
  * Created by liuyuanmao on 2019/2/20.
  */
-abstract class BaseActivity<B:ViewDataBinding,VM: BaseViewModel>:
-    BindingActivity<B>(){
+abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> :
+    BindingActivity<B>() {
     protected lateinit var mViewModel: VM
 
     @Inject
@@ -37,9 +37,9 @@ abstract class BaseActivity<B:ViewDataBinding,VM: BaseViewModel>:
      * 初始化ViewModel操作，默认的Viewmodel周期与当前Activity一致
      */
     open fun initViewModel(clazz: Class<VM>) {
-        mViewModel = ViewModelProvider(this,mViewModelFactory).get(clazz)
+        mViewModel = ViewModelProvider(this, mViewModelFactory).get(clazz)
         mViewModel.let { lifecycle.addObserver(it) }
     }
 
-    override fun injectable()=true
+    override fun injectable() = true
 }

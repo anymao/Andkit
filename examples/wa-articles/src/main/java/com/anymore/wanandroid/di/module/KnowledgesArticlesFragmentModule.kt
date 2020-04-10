@@ -12,6 +12,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class KnowledgesArticlesFragmentModule {
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [KnowledgesArticlesViewModelModule::class,ArticlesModelModule::class])
+    @ContributesAndroidInjector(modules = [KnowledgesArticlesViewModelModule::class, ArticlesModelModule::class])
     abstract fun contributesKnowledgesArticlesFragment(): KnowledgesArticlesFragment
 }

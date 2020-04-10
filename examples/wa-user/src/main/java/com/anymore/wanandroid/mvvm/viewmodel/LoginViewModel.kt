@@ -19,7 +19,10 @@ import javax.inject.Inject
  * Created by liuyuanmao on 2019/3/29.
  */
 @ActivityScope
-class LoginViewModel @Inject constructor(application: Application,private val userModel: UserModel) :
+class LoginViewModel @Inject constructor(
+    application: Application,
+    private val userModel: UserModel
+) :
     BaseViewModel(application) {
 
     val mLoginEvent by lazy { SingleLiveEvent<Boolean>() }
@@ -29,13 +32,13 @@ class LoginViewModel @Inject constructor(application: Application,private val us
     fun login(username: String?, pwd: String?) {
         if (checkUser(username, pwd)) {
             viewModelScope.launch {
-                mLoadStateEvent.postValue(LoadEvent(LoadState.START,"正在登录..."))
-                val user = userModel.login(username!!,pwd!!)
+                mLoadStateEvent.postValue(LoadEvent(LoadState.START, "正在登录..."))
+                val user = userModel.login(username!!, pwd!!)
                 mLoadStateEvent.postValue(LoadEvent(LoadState.COMPLETED))
-                if (user != null){
+                if (user != null) {
                     toastEvent.value = "登录成功!"
                     mLoginEvent.value = true
-                }else{
+                } else {
                     toastEvent.value = "登陆失败"
                 }
 

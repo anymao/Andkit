@@ -28,8 +28,8 @@ class FlutterLoadingView @JvmOverloads constructor(
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                val parent = parent as ViewGroup
-                parent.removeView(this@FlutterLoadingView)
+                val parent = parent as ViewGroup?
+                parent?.removeView(this@FlutterLoadingView)
             }
 
             override fun onAnimationStart(animation: Animation?) {

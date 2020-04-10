@@ -3,6 +3,7 @@ package com.anymore.wanandroid.mvvm.view.fragment
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.mvvm.BaseFragment
 import com.anymore.wanandroid.adapter.KnowledgesAdapter
@@ -11,12 +12,12 @@ import com.anymore.wanandroid.articles.databinding.WaFragmentDiscoveryBinding
 import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.entry.Knowledge
 import com.anymore.wanandroid.mvvm.viewmodel.DiscoveryViewModel
-import com.anymore.wanandroid.route.ARTICLES_KNOWLEDGE
-import com.anymore.wanandroid.route.BROWSE_FRAGMENT
+import com.anymore.wanandroid.route.*
 
 /**
  * Created by anymore on 2020/1/27.
  */
+@Route(path = ARTICLES_DISCOVERY_FRAGMENT)
 class DiscoveryFragment : BaseFragment<WaFragmentDiscoveryBinding, DiscoveryViewModel>() {
 
     private val mAdapter by lazy {
@@ -26,18 +27,18 @@ class DiscoveryFragment : BaseFragment<WaFragmentDiscoveryBinding, DiscoveryView
                     if (item.children.size == 1) {
                         val onlyChild = item.children[0]
                         val bundle = Bundle()
-                        bundle.putInt(KnowledgesArticlesFragment.EXTRA_CID, onlyChild.id)
+                        bundle.putInt(CID, onlyChild.id)
                         ARouter.getInstance()
                             .build(BROWSE_FRAGMENT)
-                            .withString("title", onlyChild.name)
-                            .withString("fragmentName", KnowledgesArticlesFragment::class.java.name)
-                            .withBundle("params", bundle)
+                            .withString(TITLE, onlyChild.name)
+                            .withString(FRAGMENT_ROUTE, ARTICLES_KNOWLEDGES_ARTICLES_FRAGMENT)
+                            .withBundle(PARAMS, bundle)
                             .navigation(requireActivity())
 
                     } else {
                         ARouter.getInstance()
                             .build(ARTICLES_KNOWLEDGE)
-                            .withSerializable("knowledge", item)
+                            .withSerializable(KONWLEDGES, item)
                             .navigation(requireActivity())
                     }
                 }
@@ -45,7 +46,10 @@ class DiscoveryFragment : BaseFragment<WaFragmentDiscoveryBinding, DiscoveryView
         }
     }
 
-    override fun getLayoutRes() = R.layout.wa_fragment_discovery
+    override fun getLayoutRes(): Int {
+        ARouter.getInstance().inject(this)
+        return R.layout.wa_fragment_discovery
+    }
 
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)

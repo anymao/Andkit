@@ -17,29 +17,29 @@ interface IActivityLifecycle {
     /**
      * 代理 [Activity.onStart]
      */
-    fun onStart(){}
+    fun onStart() {}
 
     /**
      * 代理 [Activity.onResume]
      */
-    fun onResume(){}
+    fun onResume() {}
 
     /**
      * 代理 [Activity.onPause]
      */
-    fun onPause(){}
+    fun onPause() {}
 
     /**
      * 代理 [Activity.onStop]
      */
-    fun onStop(){}
+    fun onStop() {}
 
     /**
      * 代理 [Activity.onSaveInstanceState]
      *
      * @param outState 数据保存
      */
-    fun onSaveInstanceState(outState: Bundle?){}
+    fun onSaveInstanceState(outState: Bundle?) {}
 
     /**
      * 代理 [Activity.onDestroy]

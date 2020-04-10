@@ -15,7 +15,10 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @FragmentScope
-class HomePageViewModel @Inject constructor(application: Application,private val mModel:ArticlesModel) :
+class HomePageViewModel @Inject constructor(
+    application: Application,
+    private val mModel: ArticlesModel
+) :
     BaseViewModel(application) {
 
     val mBanners by lazy { MutableLiveData<List<Banner>>() }

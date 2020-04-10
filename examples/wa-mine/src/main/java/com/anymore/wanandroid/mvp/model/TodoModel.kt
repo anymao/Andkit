@@ -21,16 +21,27 @@ class TodoModel @Inject constructor(mApplication: Application) : BaseModel(mAppl
     TodoContract.ITodoModel {
 
     private val repository by lazy { mApplication.repositoryComponent.getRepository() }
-    private val api by lazy { repository.obtainRetrofitService(WAN_ANDROID_KEY,WanAndroidTodoApi::class.java) }
+    private val api by lazy {
+        repository.obtainRetrofitService(
+            WAN_ANDROID_KEY,
+            WanAndroidTodoApi::class.java
+        )
+    }
 
 
-    override fun saveTodo(title:String,content:String,date: String,type:Int,priority:Int): Observable<Pair<Int, String>> {
-        return api.createTodo(title,content,date,type,priority)
+    override fun saveTodo(
+        title: String,
+        content: String,
+        date: String,
+        type: Int,
+        priority: Int
+    ): Observable<Pair<Int, String>> {
+        return api.createTodo(title, content, date, type, priority)
             .map {
-                if (it.errorCode == ResponseCode.OK){
-                    return@map Pair(0,"创建成功!")
-                }else{
-                    return@map Pair(-1,it.errorMsg?:"创建失败")
+                if (it.errorCode == ResponseCode.OK) {
+                    return@map Pair(0, "创建成功!")
+                } else {
+                    return@map Pair(-1, it.errorMsg ?: "创建失败")
                 }
             }
     }
@@ -43,12 +54,12 @@ class TodoModel @Inject constructor(mApplication: Application) : BaseModel(mAppl
         type: Int,
         priority: Int
     ): Observable<Pair<Int, String>> {
-        return api.updateTodo(id,title,content,date,type,priority)
+        return api.updateTodo(id, title, content, date, type, priority)
             .map {
-                if (it.errorCode == ResponseCode.OK){
-                    return@map Pair(0,"更新成功!")
-                }else{
-                    return@map Pair(-1,it.errorMsg?:"更新失败")
+                if (it.errorCode == ResponseCode.OK) {
+                    return@map Pair(0, "更新成功!")
+                } else {
+                    return@map Pair(-1, it.errorMsg ?: "更新失败")
                 }
             }
     }
@@ -56,10 +67,10 @@ class TodoModel @Inject constructor(mApplication: Application) : BaseModel(mAppl
     override fun deleteTodo(id: Int): Observable<Pair<Int, String>> {
         return api.deleteTodo(id)
             .map {
-                if (it.errorCode == ResponseCode.OK){
-                    return@map Pair(0,"删除成功!")
-                }else{
-                    return@map Pair(-1,it.errorMsg?:"删除失败")
+                if (it.errorCode == ResponseCode.OK) {
+                    return@map Pair(0, "删除成功!")
+                } else {
+                    return@map Pair(-1, it.errorMsg ?: "删除失败")
                 }
             }
     }
@@ -71,16 +82,16 @@ class TodoModel @Inject constructor(mApplication: Application) : BaseModel(mAppl
         priority: Int?,
         orderby: Int?
     ): Observable<PagedData<Todo>> {
-        val params = HashMap<String,Any>()
-        status?.let {params["status"] = it}
+        val params = HashMap<String, Any>()
+        status?.let { params["status"] = it }
         type?.let { params["type"] = it }
         priority?.let { params["priority"] = it }
         orderby?.let { params["orderby"] = it }
-        return api.getTodoList(page,params)
+        return api.getTodoList(page, params)
             .map {
-                if (it.errorCode == ResponseCode.OK && it.data != null){
+                if (it.errorCode == ResponseCode.OK && it.data != null) {
                     return@map it.data!!
-                }else{
+                } else {
                     Timber.e("获取待办列表失败:${it.errorMsg}")
                     throw WanAndroidException("获取待办列表失败!")
                 }
@@ -88,12 +99,12 @@ class TodoModel @Inject constructor(mApplication: Application) : BaseModel(mAppl
     }
 
     override fun updateTodoStatus(id: Int, newStatus: Int): Observable<Pair<Int, String>> {
-        return api.updateTodoStatus(id,newStatus)
+        return api.updateTodoStatus(id, newStatus)
             .map {
-                if (it.errorCode == ResponseCode.OK){
-                    return@map Pair(0,"更新成功!")
-                }else{
-                    return@map Pair(-1,it.errorMsg?:"更新失败")
+                if (it.errorCode == ResponseCode.OK) {
+                    return@map Pair(0, "更新成功!")
+                } else {
+                    return@map Pair(-1, it.errorMsg ?: "更新失败")
                 }
             }
     }

@@ -1,12 +1,12 @@
 package com.anymore.wanandroid.adapter
 
-import androidx.paging.PagedListAdapter
-import androidx.databinding.DataBindingUtil
-import androidx.annotation.LayoutRes
-import androidx.recyclerview.widget.AsyncDifferConfig
-import androidx.recyclerview.widget.DiffUtil
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.AsyncDifferConfig
+import androidx.recyclerview.widget.DiffUtil
 import com.anymore.wanandroid.articles.BR
 import com.anymore.wanandroid.articles.R
 import com.anymore.wanandroid.repository.base.NetStatus
@@ -16,7 +16,7 @@ import timber.log.Timber
 /**
  * 带网络状态和重试按钮的Adapter基类
  * Created by liuyuanmao on 2019/6/20.
-*/
+ */
 abstract class NetStatusPagingAdapter<T> :
     PagedListAdapter<T, BindingViewHolder> {
 
@@ -25,7 +25,7 @@ abstract class NetStatusPagingAdapter<T> :
     protected constructor(config: AsyncDifferConfig<T>) : super(config)
 
 
-    var netStatus: NetStatus?=null
+    var netStatus: NetStatus? = null
         //在设置新的网络状态时候，需要更新列表下方的网络状态值
         set(value) {
             Timber.d("set netStatus!")
@@ -53,24 +53,31 @@ abstract class NetStatusPagingAdapter<T> :
         }
     }
 
-    var retry:Retry? = null
+    var retry: Retry? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder {
-        return BindingViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false))
+        return BindingViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                viewType,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
-        if (position >= super.getItemCount()){
-            holder.mBinding.setVariable(BR.status,netStatus)
-            holder.mBinding.setVariable(BR.retry,retryProxy)
+        if (position >= super.getItemCount()) {
+            holder.mBinding.setVariable(BR.status, netStatus)
+            holder.mBinding.setVariable(BR.retry, retryProxy)
         }
     }
 
-    override fun getItemCount()=super.getItemCount()+ (if (hasStatusRow()) 1 else 0)
+    override fun getItemCount() = super.getItemCount() + (if (hasStatusRow()) 1 else 0)
 
-    fun getDataItemCount()=super.getItemCount()
+    fun getDataItemCount() = super.getItemCount()
 
-    protected fun hasStatusRow()=netStatus!=null && netStatus!= NetStatus.SUCCESS
+    protected fun hasStatusRow() = netStatus != null && netStatus != NetStatus.SUCCESS
 
     final override fun getItemViewType(position: Int): Int {
         return if (hasStatusRow() && position == itemCount - 1) {
@@ -80,12 +87,12 @@ abstract class NetStatusPagingAdapter<T> :
         }
     }
 
-    abstract fun getItemViewLayout(position:Int):Int
+    abstract fun getItemViewLayout(position: Int): Int
 
     @LayoutRes
     open fun getNetStatusViewLayout(): Int = R.layout.wa_item_retry
 
-    interface RetryListener{
+    interface RetryListener {
         fun retry()
     }
 }

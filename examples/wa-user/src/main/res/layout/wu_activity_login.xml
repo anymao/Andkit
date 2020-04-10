@@ -77,7 +77,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/wa_selector_blue_corner_4px"
+            android:paddingLeft="42dp"
+            android:paddingRight="42dp"
             android:text="登录"
+            android:textColor="@android:color/white"
             app:layout_constraintEnd_toStartOf="@+id/vertical_center_guideline"
             app:layout_constraintStart_toStartOf="@+id/vertical_center_guideline"
             app:layout_constraintTop_toBottomOf="@+id/et_pwd" />
@@ -86,12 +90,12 @@
             android:id="@+id/tv_to_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="52dp"
             android:text="没有账号?现在注册"
             android:textColor="@android:color/holo_green_light"
-            app:layout_constraintEnd_toStartOf="@+id/vertical_center_guideline"
-            app:layout_constraintStart_toStartOf="@+id/vertical_center_guideline"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="52dp"/>
+            app:layout_constraintEnd_toStartOf="@+id/vertical_center_guideline"
+            app:layout_constraintStart_toStartOf="@+id/vertical_center_guideline" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

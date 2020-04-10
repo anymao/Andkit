@@ -16,17 +16,17 @@ class TodoPresenter @Inject constructor(
     mView: TodoContract.ITodoView,
     private val mModel: TodoContract.ITodoModel
 ) :
-    BasePresenter<TodoContract.ITodoView>(application, mView),TodoContract.ITodoPresenter {
+    BasePresenter<TodoContract.ITodoView>(application, mView), TodoContract.ITodoPresenter {
     override fun saveTodo(title: String, content: String, date: String, type: Int, priority: Int) {
-        val disposable = mModel.saveTodo(title,content,date,type,priority)
+        val disposable = mModel.saveTodo(title, content, date, type, priority)
             .network2Main()
             .subscribeBy(onError = {
                 Timber.e(it)
-                mView.showError(it.message?:"创建失败")
-            },onNext = {
-                if (it.first == 0){
-                    mView.success(0,"创建成功")
-                }else{
+                mView.showError(it.message ?: "创建失败")
+            }, onNext = {
+                if (it.first == 0) {
+                    mView.success(0, "创建成功")
+                } else {
                     mView.showError("创建失败:${it.second}")
                 }
             })
@@ -41,15 +41,15 @@ class TodoPresenter @Inject constructor(
         type: Int,
         priority: Int
     ) {
-        val disposable = mModel.updateTodo(id,title,content,date,type,priority)
+        val disposable = mModel.updateTodo(id, title, content, date, type, priority)
             .network2Main()
             .subscribeBy(onError = {
                 Timber.e(it)
-                mView.showError(it.message?:"更新失败")
-            },onNext = {
-                if (it.first == 0){
-                    mView.success(1,"更新成功")
-                }else{
+                mView.showError(it.message ?: "更新失败")
+            }, onNext = {
+                if (it.first == 0) {
+                    mView.success(1, "更新成功")
+                } else {
                     mView.showError("更新失败:${it.second}")
                 }
             })
@@ -61,12 +61,14 @@ class TodoPresenter @Inject constructor(
             .network2Main()
             .subscribeBy(onError = {
                 Timber.e(it)
-                mView.showError(it.message?:"删除失败")
-            },onNext = {
-                if (it.first == 0){
-                    mView.success(2,"删除成功" +
-                            "")
-                }else{
+                mView.showError(it.message ?: "删除失败")
+            }, onNext = {
+                if (it.first == 0) {
+                    mView.success(
+                        2, "删除成功" +
+                                ""
+                    )
+                } else {
                     mView.showError("删除失败:${it.second}")
                 }
             })

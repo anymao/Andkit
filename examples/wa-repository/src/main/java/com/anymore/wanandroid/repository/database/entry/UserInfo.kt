@@ -28,5 +28,5 @@ data class UserInfo(
     val token: String,
     val type: Int,
     val username: String,
-    var online:Boolean = false
+    var online: Boolean = false
 )

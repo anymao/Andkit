@@ -22,7 +22,6 @@ object BindingAdapters {
     }
 
 
-
     @BindingAdapter("isSelected")
     @JvmStatic
     fun setImageViewSelected(imageView: ImageView, selected: Boolean) {

@@ -14,6 +14,8 @@ import com.anymore.wanandroid.mvp.contract.TodoContract
 import com.anymore.wanandroid.mvp.view.widget.DatePickerDialog
 import com.anymore.wanandroid.route.MINE_TODO
 import com.anymore.wanandroid.route.NEED_LOGIN_FLAG
+import com.anymore.wanandroid.route.TODO_DATA
+import com.anymore.wanandroid.route.TODO_OPERATION
 import kotlinx.android.synthetic.main.wm_activity_todo.*
 import kotlinx.android.synthetic.main.wm_public_include_submit.*
 import org.greenrobot.eventbus.EventBus
@@ -36,11 +38,11 @@ class TodoActivity : BaseMvpActivity<TodoContract.ITodoPresenter>(), TodoContrac
         const val TYPE_EDIT = 2
     }
 
-    @Autowired
+    @Autowired(name = TODO_OPERATION, required = true, desc = "操作类型")
     @JvmField
     var mType = TYPE_CREATE
 
-    @Autowired
+    @Autowired(name = TODO_DATA, required = true, desc = "todo数据")
     @JvmField
     var mTodo: Todo? = null
 
@@ -112,11 +114,11 @@ class TodoActivity : BaseMvpActivity<TodoContract.ITodoPresenter>(), TodoContrac
     }
 
     private fun showSubmitButtonFunction(type: Int) {
-        val title = when(type){
-            TYPE_CREATE->R.string.wm_create_new_todo
-            TYPE_BROWSE->R.string.wm_todo_title
-            TYPE_EDIT->R.string.wm_todo_edit
-            else->0
+        val title = when (type) {
+            TYPE_CREATE -> R.string.wm_create_new_todo
+            TYPE_BROWSE -> R.string.wm_todo_title
+            TYPE_EDIT -> R.string.wm_todo_edit
+            else -> 0
         }
         tvTitle.setText(title)
         btnDelete.visibility = if (type == TYPE_CREATE) {
@@ -133,15 +135,15 @@ class TodoActivity : BaseMvpActivity<TodoContract.ITodoPresenter>(), TodoContrac
     private fun submitTodo() {
         val title = fivTitle.valueText
         val content = fleContent.valueText
-        val date = tvDate.text?.toString()?:""
-        if (mTodo != null){
-            mPresenter.updateTodo(mTodo!!.id,title,content,date,todoType)
-        }else{
-            mPresenter.saveTodo(title,content,date,todoType)
+        val date = tvDate.text?.toString() ?: ""
+        if (mTodo != null) {
+            mPresenter.updateTodo(mTodo!!.id, title, content, date, todoType)
+        } else {
+            mPresenter.saveTodo(title, content, date, todoType)
         }
     }
 
-    private fun deleteTodo(){
+    private fun deleteTodo() {
         mTodo?.let {
             mPresenter.deleteTodo(it.id)
         }

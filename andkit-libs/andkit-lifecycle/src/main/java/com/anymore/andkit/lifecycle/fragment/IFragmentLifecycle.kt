@@ -22,7 +22,7 @@ interface IFragmentLifecycle {
      *
      * @param savedInstanceState 数据恢复
      */
-    fun onCreate(savedInstanceState: Bundle?){}
+    fun onCreate(savedInstanceState: Bundle?) {}
 
     /**
      * 代理 [Fragment.onViewCreated]
@@ -30,7 +30,7 @@ interface IFragmentLifecycle {
      * @param view               View
      * @param savedInstanceState 数据恢复
      */
-    fun onCreateView(view: View, savedInstanceState: Bundle?){}
+    fun onCreateView(view: View, savedInstanceState: Bundle?) {}
 
     /**
      * 代理 [Fragment.onActivityCreated]
@@ -42,39 +42,43 @@ interface IFragmentLifecycle {
     /**
      * 代理 [Fragment.onStart]
      */
-    fun onStart(){}
+    fun onStart() {}
 
     /**
      * 代理 [Fragment.onResume]
      */
-    fun onResume(){Timber.i("IFragmentLifecycle onResume")}
+    fun onResume() {
+        Timber.i("IFragmentLifecycle onResume")
+    }
 
     /**
      * 代理 [Fragment.onPause]
      */
-    fun onPause(){Timber.i("IFragmentLifecycle onPause")}
+    fun onPause() {
+        Timber.i("IFragmentLifecycle onPause")
+    }
 
     /**
      * 代理 [Fragment.onStop]
      */
-    fun onStop(){}
+    fun onStop() {}
 
     /**
      * 代理 [onSaveInstanceState]
      *
      * @param outState 数据保存
      */
-    fun onSaveInstanceState(outState: Bundle){}
+    fun onSaveInstanceState(outState: Bundle) {}
 
     /**
      * 代理 [Fragment.onDestroyView]
      */
-    fun onDestroyView(){}
+    fun onDestroyView() {}
 
     /**
      * 代理 [Fragment.onDestroy]
      */
-    fun onDestroy(){}
+    fun onDestroy() {}
 
     /**
      * 代理 [Fragment.onDetach]

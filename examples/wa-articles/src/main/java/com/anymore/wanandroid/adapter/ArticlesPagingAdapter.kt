@@ -9,13 +9,13 @@ import com.anymore.wanandroid.entry.Article
 class ArticlesPagingAdapter(context: Context) :
     NetStatusPagingAdapter<Article>(diffCallback) {
 
-    var mItemEventHandler : OnItemEventHandler?=null
+    var mItemEventHandler: OnItemEventHandler? = null
 
     override fun getItemViewLayout(position: Int) = R.layout.wa_item_article
 
     override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
-        if (position < getDataItemCount()){
+        if (position < getDataItemCount()) {
             holder.mBinding.setVariable(BR.entry, getItem(position))
             mItemEventHandler?.let {
                 holder.mBinding.setVariable(BR.eventHandler, it)
@@ -26,9 +26,11 @@ class ArticlesPagingAdapter(context: Context) :
     companion object {
         private val diffCallback = object : DiffUtil.ItemCallback<Article>() {
 
-            override fun areItemsTheSame(oldItem: Article, newItem: Article) = (oldItem.id == newItem.id)
+            override fun areItemsTheSame(oldItem: Article, newItem: Article) =
+                (oldItem.id == newItem.id)
 
-            override fun areContentsTheSame(oldItem: Article, newItem: Article) = (oldItem.id == newItem.id)
+            override fun areContentsTheSame(oldItem: Article, newItem: Article) =
+                (oldItem.id == newItem.id)
         }
     }
 

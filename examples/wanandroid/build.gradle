@@ -39,7 +39,7 @@ android {
         targetCompatibility = '1.8'
     }
 
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 
@@ -72,7 +72,8 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger2_version"
     kapt "com.google.dagger:dagger-compiler:$dagger2_version"
     implementation "com.google.dagger:dagger-android:$dagger2_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger2_version" // if you use the support libraries
+    implementation "com.google.dagger:dagger-android-support:$dagger2_version"
+    // if you use the support libraries
     kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
@@ -85,8 +86,6 @@ dependencies {
     implementation project(':andkit-mvvm')
     implementation project(':andkit-mvp')
     implementation project(':andkit-dagger')
-
-
 
 
     implementation project(':wa-user')

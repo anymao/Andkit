@@ -8,11 +8,11 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by liuyuanmao on 2019/6/20.
  */
-class HeadersInterceptor:Interceptor{
+class HeadersInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val cacheControl = CacheControl.Builder()
-            .maxAge(1,TimeUnit.DAYS)
-            .maxStale(1,TimeUnit.HOURS)
+            .maxAge(1, TimeUnit.DAYS)
+            .maxStale(1, TimeUnit.HOURS)
             .build()
         val request = chain.request()
             .newBuilder()

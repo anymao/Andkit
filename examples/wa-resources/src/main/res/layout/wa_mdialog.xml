@@ -44,7 +44,7 @@
             android:textColor="@color/wa_mdialog_message_color"
             android:textIsSelectable="true"
             android:textSize="@dimen/wa_mdialog_message_text_size"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </LinearLayout>
 
 

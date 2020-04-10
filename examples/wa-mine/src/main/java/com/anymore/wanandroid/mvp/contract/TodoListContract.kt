@@ -8,16 +8,16 @@ import com.anymore.wanandroid.entry.Todo
  */
 interface TodoListContract {
     interface ITodoListView : BaseContract.IBaseView {
-        fun showTodoList(todos:List<Todo>,pageNumber:Int,hasMore:Boolean = true)
-        fun refreshOrLoadFailed(refresh:Boolean)
-        fun remove(index:Int)
+        fun showTodoList(todos: List<Todo>, pageNumber: Int, hasMore: Boolean = true)
+        fun refreshOrLoadFailed(refresh: Boolean)
+        fun remove(index: Int)
     }
 
     interface ITodoListPresenter : BaseContract.IBasePresenter {
-        fun refreshTodoList(type: Int,status: Int)
-        fun loadTodoList(page: Int,type: Int,status: Int)
-        fun deleteTodo(index: Int,id: Int)
-        fun updateTodoStatus(index: Int,id: Int,newStatus:Int)
+        fun refreshTodoList(type: Int, status: Int)
+        fun loadTodoList(page: Int, type: Int, status: Int)
+        fun deleteTodo(index: Int, id: Int)
+        fun updateTodoStatus(index: Int, id: Int, newStatus: Int)
     }
 
 }

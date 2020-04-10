@@ -14,5 +14,5 @@ import retrofit2.http.Path
 interface WanAndroidArticlesApi {
 
     @GET("/article/list/{page}/json")
-    fun getHomePageArticles(@Path("page") page:Int): Observable<WanAndroidResponse<PagedData<Article>>>
+    fun getHomePageArticles(@Path("page") page: Int): Observable<WanAndroidResponse<PagedData<Article>>>
 }

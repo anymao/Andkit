@@ -5,4 +5,4 @@ import androidx.lifecycle.LifecycleObserver
 /**
  * Created by liuyuanmao on 2019/2/20.
  */
-interface IViewModel:LifecycleObserver
+interface IViewModel : LifecycleObserver

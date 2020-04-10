@@ -9,7 +9,7 @@ import com.anymore.andkit.repository.di.component.RepositoryComponent
 /**
  * Created by liuyuanmao on 2020/1/16.
  */
-object RepositoryComponentManager:IRepositoryComponentProvider {
+object RepositoryComponentManager : IRepositoryComponentProvider {
 
 
     private lateinit var mApplication: Application
