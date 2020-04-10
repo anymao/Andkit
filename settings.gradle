@@ -32,7 +32,7 @@ project(':wa-user').projectDir = file('examples/wa-user')
 project(':wa-articles').projectDir = file('examples/wa-articles')
 project(':wa-mine').projectDir = file('examples/wa-mine')
 project(':wa-browse').projectDir = file('examples/wa-browse')
-project(':wa_about').projectDir = new File('flutter/wa_about')
+project(':wa_about').projectDir = file('flutter/wa_about')
 
 
 //andkit-libs

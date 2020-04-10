@@ -79,6 +79,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.youth.banner:banner:1.4.10'
 
+    implementation 'com.airbnb.android:lottie:3.4.0'
+
+
     //SmartRefreshLayout
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'//没有使用特殊Header，可以不加这行
@@ -139,6 +142,8 @@ dependencies {
     implementation project(':wa-repository')
     implementation project(':wa-resources')
     implementation project(':flutter')
+
+    implementation 'com.anymore:state-layout:1.0.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
