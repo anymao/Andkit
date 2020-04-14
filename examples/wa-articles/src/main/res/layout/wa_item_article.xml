@@ -6,11 +6,11 @@
 
         <variable
             name="entry"
-            type="com.anymore.wanandroid.entry.Article" />
+            type="com.anymore.wanandroid.articles.entry.Article" />
 
         <variable
             name="eventHandler"
-            type="com.anymore.wanandroid.adapter.ArticlesPagingAdapter.OnItemEventHandler" />
+            type="com.anymore.wanandroid.articles.adapter.ArticlesPagingAdapter.OnItemEventHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,13 +27,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{entry.title}"
             app:layout_constraintEnd_toStartOf="@+id/iv_like"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="8dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_article_author"

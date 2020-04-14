@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".mvvm.view.SplashActivity"
+            android:name=".user.mvvm.view.SplashActivity"
             android:screenOrientation="portrait">
 
         </activity>

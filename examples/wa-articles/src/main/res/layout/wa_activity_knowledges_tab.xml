@@ -16,17 +16,14 @@
             android:theme="@style/wa_ToolbarTheme"
             app:titleTextColor="@android:color/white" />
 
-        <com.google.android.material.tabs.TabLayout
+        <com.flyco.tablayout.SlidingTabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="48dp"
             android:background="@color/wa_colorPrimary"
-            app:tabBackground="@color/wa_colorPrimary"
-            app:tabIndicatorColor="@color/wa_colorPrimaryDark"
-            app:tabIndicatorHeight="3dp"
-            app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/wa_colorAccent"
-            app:tabTextColor="@android:color/white" />
+            app:tl_textAllCaps="true"
+            app:tl_textBold="BOTH"
+            app:tl_textsize="14sp" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"

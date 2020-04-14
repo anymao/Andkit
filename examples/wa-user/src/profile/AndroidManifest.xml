@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.anymore.wanandroid.UserApplication"
+        android:name=".UserApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/wu_app_name"
@@ -15,7 +15,7 @@
         android:theme="@style/wu_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.anymore.wanandroid.mvvm.view.SplashActivity"
+            android:name=".mvvm.view.SplashActivity"
             android:screenOrientation="portrait">
 
             <intent-filter>
@@ -25,10 +25,10 @@
 
         </activity>
         <activity
-            android:name="com.anymore.wanandroid.mvvm.view.LoginActivity"
+            android:name=".mvvm.view.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.anymore.wanandroid.mvvm.view.RegisterActivity"
+            android:name=".mvvm.view.RegisterActivity"
             android:screenOrientation="portrait" />
     </application>
 

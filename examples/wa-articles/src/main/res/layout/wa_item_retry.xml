@@ -9,7 +9,7 @@
 
         <variable
             name="retry"
-            type="com.anymore.wanandroid.adapter.NetStatusPagingAdapter.RetryListener" />
+            type="com.anymore.wanandroid.articles.adapter.NetStatusPagingAdapter.RetryListener" />
     </data>
 
     <LinearLayout

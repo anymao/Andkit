@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.anymore.wanandroid.mvp.view.widget.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.anymore.wanandroid.mine.mvp.view.widget.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -63,4 +63,4 @@
         android:text="删除"
         android:textColor="@android:color/white"
         android:textSize="15sp" />
-</com.anymore.wanandroid.mvp.view.widget.SwipeMenuLayout>
+</com.anymore.wanandroid.mine.mvp.view.widget.SwipeMenuLayout>

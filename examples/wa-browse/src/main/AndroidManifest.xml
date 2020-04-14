@@ -3,10 +3,10 @@
 
     <application>
         <activity
-            android:name="com.anymore.wanandroid.view.FragmentActivity"
+            android:name=".FragmentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.anymore.wanandroid.view.WebActivity"
+            android:name=".WebActivity"
             android:screenOrientation="portrait" />
     </application>
 </manifest>

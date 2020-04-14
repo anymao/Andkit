@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.anymore.wanandroid.ArticlesApplication"
+        android:name=".ArticlesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/wa_discovery"
@@ -14,7 +14,7 @@
         android:theme="@style/wa_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.anymore.wanandroid.mvvm.view.activity.KnowledgesTabActivity"
+            android:name="com.anymore.wanandroid.articles.mvvm.view.activity.KnowledgesTabActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

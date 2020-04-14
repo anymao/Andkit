@@ -44,9 +44,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
     implementation 'com.google.code.gson:gson:2.8.6'
 
-
     implementation 'com.jakewharton.timber:timber:4.7.1'
-
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

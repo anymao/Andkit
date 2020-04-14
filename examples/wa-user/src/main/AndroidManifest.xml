@@ -4,10 +4,10 @@
 
     <application>
         <activity
-            android:name="com.anymore.wanandroid.mvvm.view.LoginActivity"
+            android:name=".mvvm.view.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.anymore.wanandroid.mvvm.view.RegisterActivity"
+            android:name=".mvvm.view.RegisterActivity"
             android:screenOrientation="portrait" />
     </application>
 

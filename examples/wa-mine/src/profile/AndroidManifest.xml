@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.anymore.wanandroid.MineApplication"
+        android:name=".MineApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/wm_module_name"
@@ -14,7 +14,7 @@
         android:theme="@style/wa_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.anymore.wanandroid.mvp.view.activity.MineHostActivity"
+            android:name=".mvp.view.activity.MineHostActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.anymore.wanandroid.mvp.view.activity.TodoTabActivity"
+            android:name=".mvp.view.activity.TodoTabActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.anymore.wanandroid.mvp.view.activity.TodoActivity"
+            android:name=".mvp.view.activity.TodoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.anymore.wanandroid.mvp.view.activity.FlutterActivity"
+            android:name=".mvp.view.activity.FlutterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/wm_FlutterTheme">
             <meta-data

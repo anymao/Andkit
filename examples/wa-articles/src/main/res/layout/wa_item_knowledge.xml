@@ -5,11 +5,11 @@
 
         <variable
             name="entry"
-            type="com.anymore.wanandroid.entry.Knowledge" />
+            type="com.anymore.wanandroid.articles.entry.Knowledge" />
 
         <variable
             name="eventHandler"
-            type="com.anymore.wanandroid.adapter.KnowledgesAdapter.OnItemEventHandler" />
+            type="com.anymore.wanandroid.articles.adapter.KnowledgesAdapter.OnItemEventHandler" />
     </data>
 
     <LinearLayout

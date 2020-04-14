@@ -6,8 +6,11 @@ import com.anymore.andkit.AndkitApplication
 import com.anymore.andkit.annotations.Kiss
 import com.anymore.andkit.annotations.Kisses
 import com.anymore.andkit.dagger.module.ApplicationModule
+import com.anymore.wanandroid.articles.ArticlesApplicationWrapper
 import com.anymore.wanandroid.di.component.DaggerWanAndroidComponent
+import com.anymore.wanandroid.mine.MineApplicationWrapper
 import com.anymore.wanandroid.user.BuildConfig
+import com.anymore.wanandroid.user.UserApplicationWrapper
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader

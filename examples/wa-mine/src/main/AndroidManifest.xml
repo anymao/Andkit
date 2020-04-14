@@ -3,13 +3,13 @@
 
     <application>
         <activity
-            android:name="com.anymore.wanandroid.mvp.view.activity.TodoTabActivity"
+            android:name="com.anymore.wanandroid.mine.mvp.view.activity.TodoTabActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.anymore.wanandroid.mvp.view.activity.TodoActivity"
+            android:name="com.anymore.wanandroid.mine.mvp.view.activity.TodoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.anymore.wanandroid.mvp.view.activity.FlutterActivity"
+            android:name="com.anymore.wanandroid.mine.mvp.view.activity.FlutterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/wm_FlutterTheme">
             <meta-data
