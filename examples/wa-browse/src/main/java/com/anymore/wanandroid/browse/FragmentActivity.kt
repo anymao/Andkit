@@ -88,7 +88,7 @@ class FragmentActivity : AppCompatActivity(), IActivity {
             try {
                 val fragmentFactory = supportFragmentManager.fragmentFactory
                 @Suppress("UNCHECKED_CAST")
-                fragment = fragmentFactory.instantiate(classLoader, fragmentName!!) as F
+                fragment = fragmentFactory.instantiate(classLoader, fragmentName) as F
                 params?.apply {
                     this.classLoader = this@FragmentActivity.classLoader
                     fragment?.arguments = this

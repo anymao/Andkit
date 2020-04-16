@@ -12,7 +12,7 @@ Andkit是一个比较灵活的Android组件化方案，是我在学习和工作�
 
 - andkit-lifecycle：定义框架之中Activity和Fragment的必要接口（用于实现依赖注入、EventBus事件订阅等），并且将Activity、Fragment和Application在生命周期中的一些关键回调事件进行封装处理,其实andkit-lifecycle部分。
 - andkit-repository：封装仓储层的实现，如OkHttp、Retrofit、Room、Gson等等与数据的操作相关的组件的配置和提供，并且暴露方法，可通过Application直接获取全局统一的仓储层对象实例。
-- andkit：统筹lifecycle和repository层，管理各个组件间依赖注入的完成、管理不同模块的AbsApplicationWrapper[代理Application，组件内没有真正的Application，具体必须要在Application生命周期中要调用的方法，可在AbsApplicationWrapper对应生命周期中完成，并且通过@Kiss注解添加到主模块的Application上]。
+- andkit：统筹lifecycle和repository层，管理各个组件间依赖注入的完成、管理不同模块的AbsApplicationWrapper *代理Application，组件内没有真正的Application，具体必须要在Application生命周期中要调用的方法，可在AbsApplicationWrapper对应生命周期中完成，并且通过@Kiss注解添加到主模块的Application上。*
 
 ___注意:Andkit框架选择了Dagger2作为依赖注入的工具，所以如果在子模块(组件)也使用了Dagger2去注入你的Activity或者Fragment，那么需要将子模块的Module通过@Component 中的 modules参数添加到主模块的Component中去，这样在子模块(组件)无论是在单独运行时亦或是作为模块运行时，其依赖注入都会正常。详情请参考[WanAndroid模块的Component](https://github.com/anymao/Andkit/blob/master/examples/wanandroid/src/main/java/com/anymore/wanandroid/di/component/WanAndroidComponent.kt)和[wa-user模块的Module](https://github.com/anymao/Andkit/blob/master/examples/wa-user/src/main/java/com/anymore/wanandroid/user/di/module/UserModule.kt)。虽然在Andkit框架中引入了Dagger2作为依赖注入的工具，但是实际上在实际开发子模块时候，可以完全不需要使用Dagger2进行注入，自己进行依赖的管理。___
 
