@@ -3,8 +3,8 @@ package com.anymore.wanandroid.articles.paging
 import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.anymore.wanandroid.common.executors.AppExecutors
 import com.anymore.wanandroid.articles.entry.Article
+import com.anymore.wanandroid.common.executors.AppExecutors
 import com.anymore.wanandroid.repository.base.NetStatus
 import com.anymore.wanandroid.repository.paging.Retry
 import io.reactivex.rxkotlin.subscribeBy
@@ -91,7 +91,7 @@ class ArticlesSource(private val provider: ArticlesProvider) : PageKeyedDataSour
             }, onError = {
                 mRetry.postValue {
                     getRetryExecutor().execute {
-                        loadAfter(params, callback)
+                        loadBefore(params, callback)
                     }
                 }
                 mStatus.postValue(NetStatus.failed(it))

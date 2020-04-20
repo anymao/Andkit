@@ -14,10 +14,25 @@
         android:theme="@style/wa_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.anymore.wanandroid.browse.FragmentActivity"
+            android:name=".FragmentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.anymore.wanandroid.browse.WebActivity"
+            android:name=".WebActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".SchemeNavigateActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <data
+                    android:host="github.com"
+                    android:scheme="https" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+
+        </activity>
     </application>
 </manifest>

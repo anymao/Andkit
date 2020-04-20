@@ -11,7 +11,8 @@ import dagger.Module
         ViewModelFactoryModule::class,
         HomePageFragmentModule::class,
         DiscoveryFragmentModule::class,
-        KnowledgesArticlesFragmentModule::class
+        KnowledgesArticlesFragmentModule::class,
+        ArticlesSearchActivityModule::class
     ]
 )
 class ArticlesModule

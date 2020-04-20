@@ -14,12 +14,15 @@
         android:theme="@style/wa_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.anymore.wanandroid.articles.mvvm.view.activity.KnowledgesTabActivity"
+            android:name=".mvvm.view.activity.KnowledgesTabActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mvvm.view.activity.ArticlesSearchActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

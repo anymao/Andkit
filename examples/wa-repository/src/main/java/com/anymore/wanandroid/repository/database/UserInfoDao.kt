@@ -2,6 +2,7 @@ package com.anymore.wanandroid.repository.database
 
 import androidx.room.*
 import com.anymore.wanandroid.repository.database.entry.UserInfo
+import io.reactivex.Flowable
 import io.reactivex.Maybe
 
 /**
@@ -27,4 +28,7 @@ interface UserInfoDao {
 
     @Query("DELETE FROM UserInfo")
     fun deleteAll()
+
+    @Query("SELECT * FROM UserInfo")
+    fun loadAllUser():Flowable<List<UserInfo>>
 }
