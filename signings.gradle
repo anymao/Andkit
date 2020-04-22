@@ -1,0 +1,58 @@
+/**
+ * 应用签名文件信息及其秘钥，模块下的build.gradle引入此文件即可
+ * e.g
+ *    apply from: "../../signings.gradle"
+ */
+android {
+    signingConfigs {
+
+        def jksPath = System.getenv("ANDROID_JKS_PATH")
+        def jksStorePwd = System.getenv("ANDROID_JKS_STORE_PWD")
+        def jksKeyAlias = System.getenv("ANDROID_JKS_ALIAS")
+        def jksKeyPwd = System.getenv("ANDROID_JKS_KEY_PWD")
+        //判断签名配置信息是否存在
+        def hasSigningConfigs = allNotEmpty(jksPath, jksStorePwd, jksKeyAlias, jksKeyPwd)
+        println("------------------Signing Configs------------------")
+        println("---------------------------------------------------")
+        println(String.format("jksFile at: %s", jksPath))
+        println(String.format("jksStorePassword is: %s", jksStorePwd))
+        println(String.format("jksKeyAlias is: %s", jksKeyAlias))
+        println(String.format("jksKeyPassword is: %s", jksKeyPwd))
+        println(String.format("hasSigningConfigs is:%s", hasSigningConfigs))
+        println("---------------------------------------------------")
+        //如果不存在则不配置
+        if (hasSigningConfigs) {
+            debug {
+                storeFile file(jksPath)
+                storePassword jksStorePwd
+                keyAlias jksKeyAlias
+                keyPassword jksKeyPwd
+            }
+
+            release {
+                storeFile file(jksPath)
+                storePassword jksStorePwd
+                keyAlias jksKeyAlias
+                keyPassword jksKeyPwd
+            }
+        }
+
+    }
+
+}
+
+static boolean allNotEmpty(String... texts) {
+    if (texts.length == 0) {
+        return false
+    }
+    for (String text : texts) {
+        if (isEmpty(text)) {
+            return false
+        }
+    }
+    return true
+}
+
+static boolean isEmpty(String text) {
+    return text == null || text.length() == 0
+}

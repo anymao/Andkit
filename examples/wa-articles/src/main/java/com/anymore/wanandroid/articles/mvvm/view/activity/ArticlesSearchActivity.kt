@@ -22,6 +22,5 @@ class ArticlesSearchActivity :
 
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
-        setupToolbar(toolbar)
     }
 }
