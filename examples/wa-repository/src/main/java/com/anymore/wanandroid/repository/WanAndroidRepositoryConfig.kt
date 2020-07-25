@@ -11,6 +11,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 import java.io.File
+import java.util.*
+import java.util.concurrent.ConcurrentHashMap
 
 /**
  * Created by liuyuanmao on 2019/3/12.
@@ -40,10 +42,9 @@ class WanAndroidRepositoryConfig : RepositoryConfigsModule.RepositoryConfig {
                     }
                     builder
 //                        .addNetworkInterceptor(HeadersInterceptor())//为请求添加Headers
-                        .addNetworkInterceptor(CacheControlInterceptor(context))
-                        .addNetworkInterceptor(okLogger)
+                        .addInterceptor(CacheControlInterceptor(context))
+                        .addInterceptor(okLogger)
                 }
-
             }
             roomDatabaseConfig = object : RepositoryConfigsModule.RoomDatabaseConfig {
                 override fun config(context: Context, builder: RoomDatabase.Builder<*>) {

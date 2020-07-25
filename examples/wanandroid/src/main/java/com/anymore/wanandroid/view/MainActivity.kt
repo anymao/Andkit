@@ -2,6 +2,7 @@ package com.anymore.wanandroid.view
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -85,6 +86,15 @@ class MainActivity : AppCompatActivity(), IActivity {
             return@setOnNavigationItemSelectedListener true
         }
     }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        return super.onTouchEvent(event)
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return super.dispatchTouchEvent(ev)
+    }
+
 
     override fun onBackPressed() {
         lastPressedTime = SystemClock.uptimeMillis()

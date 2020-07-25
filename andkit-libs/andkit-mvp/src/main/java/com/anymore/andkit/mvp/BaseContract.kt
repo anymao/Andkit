@@ -2,8 +2,10 @@ package com.anymore.andkit.mvp
 
 import androidx.annotation.StringRes
 import androidx.annotation.UiThread
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
 import timber.log.Timber
 
 /**
@@ -61,6 +63,7 @@ interface BaseContract {
         /**
          * Presenter层的初始化操作，绑定在View层的OnCreate时机
          */
+//        @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun onCreate() {
             Timber.d("==>onCreate()")
         }
@@ -68,6 +71,7 @@ interface BaseContract {
         /**
          * Presenter层的清除操作，绑定在View层的OnDestroy时机
          */
+//        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun onDestroy() {
             Timber.d("==>onDestroy()")
         }

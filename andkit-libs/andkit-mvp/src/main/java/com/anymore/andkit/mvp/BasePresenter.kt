@@ -24,6 +24,7 @@ abstract class BasePresenter<V : BaseContract.IBaseView>(
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     override fun onCreate() {
         super.onCreate()
+        mView.provideLifecycleOwner().lifecycle.addObserver(this)
     }
 
     protected fun addDisposable(disposable: Disposable) {
@@ -33,6 +34,7 @@ abstract class BasePresenter<V : BaseContract.IBaseView>(
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     override fun onDestroy() {
         super.onDestroy()
+        mView.provideLifecycleOwner().lifecycle.removeObserver(this)
         mCompositeDisposable.clear()
     }
 

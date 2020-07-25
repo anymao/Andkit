@@ -164,3 +164,7 @@ fun AppCompatActivity.setupToolbar(toolbar: Toolbar, click: ((view: View) -> Uni
         }
     }
 }
+
+fun Activity.supportSideSlipExit(){
+
+}
