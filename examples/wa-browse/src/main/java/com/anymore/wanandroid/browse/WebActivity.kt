@@ -50,12 +50,6 @@ class WebActivity : AppCompatActivity(), IActivity {
             useWideViewPort = true
             loadWithOverviewMode = true
         }
-        mAgentWeb.apply {
-
-        }
-        mAgentWeb.also {
-
-        }
     }
 
     override fun onResume() {

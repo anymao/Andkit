@@ -1,7 +1,6 @@
 package com.anymore.wanandroid.browse
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Autowired
@@ -10,6 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.lifecycle.activity.IActivity
 import com.anymore.wanandroid.common.ext.ifNotEmpty
 import com.anymore.wanandroid.common.ext.setupToolbar
+import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.route.*
 import kotlinx.android.synthetic.main.wb_activity_fragment.*
 import timber.log.Timber
@@ -58,7 +58,7 @@ class FragmentActivity : AppCompatActivity(), IActivity {
     private fun injectFragment() {
         val fragment = getFragmentFromArgs()
         if (fragment == null) {
-            Toast.makeText(this, "参数错误，启动界面失败！", Toast.LENGTH_LONG).show()
+            toast("参数错误，启动界面失败！")
             finish()
             return
         }

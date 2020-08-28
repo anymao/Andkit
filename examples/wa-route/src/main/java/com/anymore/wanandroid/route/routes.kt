@@ -61,3 +61,5 @@ const val MINE_COLLECTED_ARTICLES_FRAGMENT = "/$MINE_GROUP/$COLLECTED_ARTICLES_F
 const val INTERCEPTOR_LOGIN = "login"
 const val SCHEME_HTTP = "http"
 const val SCHEME_HTTPS = "https"
+
+const val SCHEME_WANANDROID = "wanandroid"
