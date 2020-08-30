@@ -2,11 +2,12 @@ package com.anymore.wanandroid.common.ext
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.widget.Toast
-import androidx.annotation.RequiresPermission
-import androidx.annotation.StringRes
+import androidx.annotation.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.anymore.wanandroid.common.executors.AppExecutors
 import com.google.gson.Gson
@@ -58,3 +59,33 @@ fun Context.isNetworkConnected(): Boolean {
     val info: NetworkInfo? = networkService.activeNetworkInfo
     return info?.isAvailable ?: false
 }
+
+
+fun Context.dp2px(dp: Int): Int {
+    val scale = resources.displayMetrics.density
+    return (dp * scale + 0.5f).toInt()
+}
+
+fun Context.px2dp(px: Float): Int {
+    val scale = resources.displayMetrics.density
+    return (px / scale + 0.5f).toInt()
+}
+
+fun Context.getDimension(@DimenRes id: Int): Float {
+    return resources.getDimension(id)
+}
+
+fun Context.getDimensionPixelSize(@DimenRes id: Int): Int {
+    return resources.getDimensionPixelSize(id)
+}
+
+/**
+ * 兼容获取颜色值资源
+ */
+fun Context.getColorCompatibly(@ColorRes id: Int): Int = ContextCompat.getColor(this, id)
+
+/**
+ * 兼容获取Drawable资源
+ */
+fun Context.getDrawableCompatibly(@DrawableRes id: Int): Drawable? =
+    ContextCompat.getDrawable(this, id)

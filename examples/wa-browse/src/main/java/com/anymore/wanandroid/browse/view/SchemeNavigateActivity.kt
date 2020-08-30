@@ -1,4 +1,4 @@
-package com.anymore.wanandroid.browse
+package com.anymore.wanandroid.browse.view
 
 import android.net.Uri
 import android.os.Bundle
@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.wanandroid.browse.R
 import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.route.*
 
@@ -16,13 +17,13 @@ import com.anymore.wanandroid.route.*
 class SchemeNavigateActivity : AppCompatActivity(), IActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.we_activity_scheme_navigate)
+        setContentView(R.layout.wb_activity_scheme_navigate)
         val uri: Uri? = intent.data
         if (uri == null) {
             finish()
             return
         }
-        if (uri.scheme == SCHEME_WANANDROID && uri.host == "web"){
+        if (uri.scheme == SCHEME_WANANDROID && uri.host == "browse"){
             val browseUrl = uri.getQueryParameter("url")
             if (!browseUrl.isNullOrEmpty()){
                 ARouter.getInstance()

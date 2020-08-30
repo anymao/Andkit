@@ -1,5 +1,6 @@
 if (moduleRunning.toBoolean()) {
     apply plugin: 'com.android.application'
+    apply from: "../../signings.gradle"
 } else {
     apply plugin: 'com.android.library'
 }
@@ -124,7 +125,9 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
 
-    implementation project(':andkit')
+    if (moduleRunning.toBoolean()){
+        implementation project(':andkit')
+    }
     implementation project(':andkit-lifecycle')
     implementation project(':andkit-mvvm')
     implementation project(':andkit-repository')

@@ -1,4 +1,4 @@
-package com.anymore.wanandroid.browse
+package com.anymore.wanandroid.browse.view
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.wanandroid.browse.R
 import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.route.BROWSE_URL
 import com.anymore.wanandroid.route.URL_VALUE

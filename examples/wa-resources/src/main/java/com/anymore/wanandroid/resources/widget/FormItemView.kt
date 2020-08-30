@@ -17,8 +17,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.IntRange
 import androidx.core.view.ViewCompat
+import com.anymore.wanandroid.common.ext.dp2px
 import com.anymore.wanandroid.resources.R
-import com.anymore.wanandroid.resources.exts.dp2px
 
 
 /**

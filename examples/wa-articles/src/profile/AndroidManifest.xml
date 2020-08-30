@@ -8,19 +8,22 @@
         android:name=".ArticlesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/wa_discovery"
+        android:label="@string/wa_app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/wa_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".mvvm.view.activity.KnowledgesTabActivity"
+
+        <activity android:name=".mvvm.view.ArticleProxyActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mvvm.view.activity.KnowledgesTabActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mvvm.view.activity.ArticlesSearchActivity"
             android:screenOrientation="portrait" />

@@ -1,4 +1,4 @@
-package com.anymore.wanandroid.browse
+package com.anymore.wanandroid.browse.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.wanandroid.browse.R
 import com.anymore.wanandroid.common.ext.ifNotEmpty
 import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.common.ext.toast

@@ -1,5 +1,6 @@
 if (moduleRunning.toBoolean()) {
     apply plugin: 'com.android.application'
+    apply from: "../../signings.gradle"
 } else {
     apply plugin: 'com.android.library'
 }
@@ -137,7 +138,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
 
-    implementation project(':andkit')
+    if (moduleRunning.toBoolean()){
+        implementation project(':andkit')
+    }
     implementation project(':andkit-lifecycle')
     implementation project(':andkit-mvp')
     implementation project(':andkit-repository')

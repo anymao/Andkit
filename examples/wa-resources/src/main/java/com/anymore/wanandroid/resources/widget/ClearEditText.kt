@@ -14,9 +14,9 @@ import android.view.animation.TranslateAnimation
 
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
+import com.anymore.wanandroid.common.ext.dp2px
 
 import com.anymore.wanandroid.resources.R
-import com.anymore.wanandroid.resources.exts.dp2px
 
 class ClearEditText @JvmOverloads constructor(
     context: Context,

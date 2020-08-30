@@ -3,19 +3,19 @@
 
     <application>
         <activity
-            android:name=".FragmentActivity"
+            android:name=".view.FragmentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".WebActivity"
+            android:name=".view.WebActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SchemeNavigateActivity"
+            android:name=".view.SchemeNavigateActivity"
             android:screenOrientation="portrait">
 
             <intent-filter>
                 <data
                     android:path="/navigate"
-                    android:host="web"
+                    android:host="browse"
                     android:scheme="wanandroid" />
 
                 <action android:name="android.intent.action.VIEW" />
