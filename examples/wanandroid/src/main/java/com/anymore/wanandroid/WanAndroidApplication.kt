@@ -3,13 +3,9 @@ package com.anymore.wanandroid
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.AndkitApplication
-import com.anymore.andkit.annotations.Kiss
 import com.anymore.andkit.annotations.Kisses
 import com.anymore.andkit.dagger.module.ApplicationModule
-import com.anymore.wanandroid.articles.ArticlesApplicationWrapper
 import com.anymore.wanandroid.di.component.DaggerWanAndroidComponent
-import com.anymore.wanandroid.mine.MineApplicationWrapper
-import com.anymore.wanandroid.user.UserApplicationWrapper
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
@@ -19,11 +15,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader
  * Created by liuyuanmao on 2020/1/17.
  */
 @Kisses(
-    value = [
-        Kiss(MineApplicationWrapper::class, priority = 99),
-        Kiss(UserApplicationWrapper::class, priority = 98),
-        Kiss(ArticlesApplicationWrapper::class, priority = 97)
-    ]
+    value = []
 )
 class WanAndroidApplication : AndkitApplication() {
 

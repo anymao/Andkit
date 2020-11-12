@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/selectedTodoType"
-        android:title="@string/wm_todo_only_use"
-        app:showAsAction="always" />
-</menu>

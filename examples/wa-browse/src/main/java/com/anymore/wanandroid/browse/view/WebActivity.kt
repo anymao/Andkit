@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.webkit.WebView
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.andkit.lifecycle.activity.AndkitActivity
 import com.anymore.wanandroid.browse.R
 import com.anymore.wanandroid.common.ext.setupToolbar
 import com.anymore.wanandroid.route.BROWSE_URL
@@ -22,7 +21,7 @@ import kotlinx.android.synthetic.main.wb_activity_web.*
  * Created by anymore on 2020/1/25.
  */
 @Route(path = BROWSE_URL)
-class WebActivity : AppCompatActivity(), IActivity {
+class WebActivity : AndkitActivity() {
 
     protected lateinit var mAgentWeb: AgentWeb
 

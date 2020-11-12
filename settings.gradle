@@ -11,11 +11,7 @@ include ':wa-resources',
         ':wa-route',
         ':wa-common',
         ':wa-repository',
-        ':wa-user',
-        ':wa-articles',
-        ':wa-mine',
         ':wa-browse',
-        ':wa_about',
         ':andkit-dagger',
         ':andkit-lifecycle',
         ':andkit-repository',
@@ -28,11 +24,7 @@ project(':wa-resources').projectDir = file('examples/wa-resources')
 project(':wa-route').projectDir = file('examples/wa-route')
 project(':wa-common').projectDir = file('examples/wa-common')
 project(':wa-repository').projectDir = file('examples/wa-repository')
-project(':wa-user').projectDir = file('examples/wa-user')
-project(':wa-articles').projectDir = file('examples/wa-articles')
-project(':wa-mine').projectDir = file('examples/wa-mine')
 project(':wa-browse').projectDir = file('examples/wa-browse')
-project(':wa_about').projectDir = file('flutter/wa_about')
 
 
 //andkit-libs
@@ -43,9 +35,3 @@ project(':andkit-mvvm').projectDir = file('andkit-libs/andkit-mvvm')
 project(':andkit-mvp').projectDir = file('andkit-libs/andkit-mvp')
 project(':andkit').projectDir = file('andkit-libs/andkit')
 
-//about flutter
-setBinding(new Binding([gradle: this]))
-evaluate(new File(
-        settingsDir.absolutePath,
-        'flutter/wa_about/.android/include_flutter.groovy'
-))

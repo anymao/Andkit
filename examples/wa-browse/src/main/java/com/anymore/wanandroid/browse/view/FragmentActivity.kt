@@ -1,12 +1,11 @@
 package com.anymore.wanandroid.browse.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.andkit.lifecycle.activity.AndkitActivity
 import com.anymore.wanandroid.browse.R
 import com.anymore.wanandroid.common.ext.ifNotEmpty
 import com.anymore.wanandroid.common.ext.setupToolbar
@@ -19,7 +18,7 @@ import timber.log.Timber
  * Created by anymore on 2020/1/25.
  */
 @Route(path = BROWSE_FRAGMENT)
-class FragmentActivity : AppCompatActivity(), IActivity {
+class FragmentActivity : AndkitActivity() {
 
     /**
      * 界面标题

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <declare-styleable name="wm_SwipeMenuLayout">
-        <attr name="swipeEnable" format="boolean" tools:ignore="ResourceName" />
-        <attr name="ios" format="boolean" tools:ignore="ResourceName" />
-        <attr name="leftSwipe" format="boolean" tools:ignore="ResourceName" />
-    </declare-styleable>
-</resources>

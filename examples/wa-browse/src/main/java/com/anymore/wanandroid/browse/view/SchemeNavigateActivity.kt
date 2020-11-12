@@ -2,11 +2,10 @@ package com.anymore.wanandroid.browse.view
 
 import android.net.Uri
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
-import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.andkit.lifecycle.activity.AndkitActivity
 import com.anymore.wanandroid.browse.R
 import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.route.*
@@ -14,7 +13,9 @@ import com.anymore.wanandroid.route.*
 /**
  * Created by anymore on 2020/4/17.
  */
-class SchemeNavigateActivity : AppCompatActivity(), IActivity {
+class SchemeNavigateActivity : AndkitActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.wb_activity_scheme_navigate)

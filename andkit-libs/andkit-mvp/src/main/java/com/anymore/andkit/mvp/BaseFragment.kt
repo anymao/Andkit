@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.anymore.andkit.lifecycle.fragment.IFragment
+import com.anymore.andkit.lifecycle.fragment.AndkitFragment
 import com.anymore.andkit.mvp.widget.LoadingDialog
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
@@ -18,9 +18,10 @@ import java.util.concurrent.atomic.AtomicBoolean
  * 如无必需，无需重复实现其接口
  * Created by liuyuanmao on 2019/7/16.
  */
-abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView {
+abstract class BaseFragment : AndkitFragment(), BaseContract.IBaseView {
 
     private val TAG = "BaseFragment@${hashCode()}"
+
     //用于存储当前Fragment的前一个可见状态
     private var mPreviousVisibleState = AtomicBoolean(false)
     protected lateinit var mLoadingDialog: AlertDialog
@@ -89,7 +90,6 @@ abstract class BaseFragment : Fragment(), IFragment, BaseContract.IBaseView {
         Timber.tag(TAG).w("Fragment(${this.hashCode()})可见性：$visible")
     }
 
-    override fun provideLifecycleOwner() = this
 
     override fun showProgressBar(message: String, cancelable: Boolean) {
         showDefaultLoadingDialog(message, cancelable)

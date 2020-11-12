@@ -7,17 +7,21 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
-import com.anymore.andkit.lifecycle.fragment.IFragment
+import com.anymore.andkit.lifecycle.coroutines.AndkitLifecycleCoroutineScope
+import com.anymore.andkit.lifecycle.fragment.AndkitFragment
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * Created by liuyuanmao on 2019/2/23.
  */
-abstract class BindingFragment<BD : ViewDataBinding> : Fragment(), IFragment {
+abstract class BindingFragment<BD : ViewDataBinding> : AndkitFragment() {
 
     protected lateinit var mBinding: BD
+    override val mContext by lazy { requireContext() }
+    override val mLifecycleOwner by lazy { this }
+    override val mCoroutineScope by lazy { AndkitLifecycleCoroutineScope(this) }
+    override val hasDestroyed get() = isDetached
     private val TAG = "${this::class.simpleName}#${hashCode()}"
     //用于存储当前Fragment的前一个可见状态
     private var mPreviousVisibleState = AtomicBoolean(false)

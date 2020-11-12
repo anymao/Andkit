@@ -2,10 +2,9 @@ package com.anymore.andkit.mvp
 
 import androidx.annotation.StringRes
 import androidx.annotation.UiThread
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.OnLifecycleEvent
+import com.anymore.andkit.lifecycle.coroutines.AndkitLifecycleCoroutineScope
 import timber.log.Timber
 
 /**
@@ -17,12 +16,13 @@ interface BaseContract {
      * View层基础契约接口
      */
     interface IBaseView {
+        val mCoroutineScope: AndkitLifecycleCoroutineScope
 
         /**
          * 向Presenter层提供当前View的[LifecycleOwner]对象，这对于在Presenter层
          * 使用像Uber的AutoDispose这种库时候十分有用
          */
-        fun provideLifecycleOwner(): LifecycleOwner
+        val mLifecycleOwner: LifecycleOwner
 
         /**
          * 通知UI目前处于loading状态，在[BaseActivity]和[BaseFragment]中有默认实现的弹窗形式LoadingDialog
@@ -59,20 +59,18 @@ interface BaseContract {
     /**
      *Presenter层基础接口
      */
-    interface IBasePresenter : LifecycleObserver {
+    interface IBasePresenter : DefaultLifecycleObserver {
         /**
          * Presenter层的初始化操作，绑定在View层的OnCreate时机
          */
-//        @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-        fun onCreate() {
+        override fun onCreate(owner: LifecycleOwner) {
             Timber.d("==>onCreate()")
         }
 
         /**
          * Presenter层的清除操作，绑定在View层的OnDestroy时机
          */
-//        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-        fun onDestroy() {
+        override fun onDestroy(owner: LifecycleOwner) {
             Timber.d("==>onDestroy()")
         }
     }

@@ -2,8 +2,7 @@ package com.anymore.andkit.mvp
 
 import android.app.Application
 import androidx.annotation.StringRes
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.LifecycleOwner
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -20,21 +19,20 @@ abstract class BasePresenter<V : BaseContract.IBaseView>(
     BaseContract.IBasePresenter {
 
     protected val mCompositeDisposable by lazy { CompositeDisposable() }
+    private val mLifecycleOwner by lazy { mView.mLifecycleOwner }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    override fun onCreate() {
-        super.onCreate()
-        mView.provideLifecycleOwner().lifecycle.addObserver(this)
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        mLifecycleOwner.lifecycle.addObserver(this)
     }
 
     protected fun addDisposable(disposable: Disposable) {
         mCompositeDisposable.add(disposable)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    override fun onDestroy() {
-        super.onDestroy()
-        mView.provideLifecycleOwner().lifecycle.removeObserver(this)
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
+        mLifecycleOwner.lifecycle.removeObserver(this)
         mCompositeDisposable.clear()
     }
 

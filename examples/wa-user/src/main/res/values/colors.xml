@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="wu_colorPrimary">#349ff5</color>
-    <color name="wu_colorPrimaryDark">#349ff5</color>
-    <color name="wu_colorAccent">#f576a5</color>
-    <color name="wu_nbv_background">#E7E7E7</color>
-    <color name="wu_color_white">#FFFFFF</color>
-</resources>

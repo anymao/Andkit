@@ -3,12 +3,11 @@ package com.anymore.wanandroid.view
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.MotionEvent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.andkit.lifecycle.activity.AndkitActivity
 import com.anymore.wanandroid.R
 import com.anymore.wanandroid.common.adapter.FragmentsAdapter
 import com.anymore.wanandroid.common.entry.FragmentItem
@@ -21,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.properties.Delegates
 
 @Route(path = MAIN_PAGE)
-class MainActivity : AppCompatActivity(), IActivity {
+class MainActivity : AndkitActivity() {
 
     //利用kotlin属性委托->标准委托中的Delegates.observable实现点击两次返回桌面
     private var lastPressedTime: Long by Delegates.observable(0L) { _, oldValue, newValue ->

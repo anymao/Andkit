@@ -5,6 +5,7 @@ import androidx.annotation.CallSuper
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.anymore.andkit.lifecycle.coroutines.AndkitLifecycleCoroutineScope
 import timber.log.Timber
 import javax.inject.Inject
 

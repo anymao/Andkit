@@ -3,8 +3,7 @@ package com.anymore.andkit.mvp
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import com.anymore.andkit.lifecycle.activity.IActivity
+import com.anymore.andkit.lifecycle.activity.AndkitActivity
 import com.anymore.andkit.mvp.widget.LoadingDialog
 
 /**
@@ -12,7 +11,7 @@ import com.anymore.andkit.mvp.widget.LoadingDialog
  * 如无必需，无需重复实现其接口
  * Created by liuyuanmao on 2019/7/16.
  */
-abstract class BaseActivity : AppCompatActivity(), IActivity, BaseContract.IBaseView {
+abstract class BaseActivity : AndkitActivity(), BaseContract.IBaseView {
 
     protected lateinit var mLoadingDialog: AlertDialog
 
@@ -32,8 +31,6 @@ abstract class BaseActivity : AppCompatActivity(), IActivity, BaseContract.IBase
         hideProgressBar()
         super.onDestroy()
     }
-
-    override fun provideLifecycleOwner() = this
 
     override fun showProgressBar(message: String, cancelable: Boolean) {
         showDefaultLoadingDialog(message, cancelable)

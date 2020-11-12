@@ -18,11 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".user.mvvm.view.SplashActivity"
-            android:screenOrientation="portrait">
 
-        </activity>
+
         <activity
             android:name=".view.MainActivity"
             android:screenOrientation="portrait">
