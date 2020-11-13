@@ -1,12 +1,9 @@
 package com.anymore.baike
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import com.anymore.baike.bean.BaikeResult
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -16,9 +13,14 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.anymore.baike.test", appContext.packageName)
+    fun testFound() {
+        val result = BaikeFinder.find("水稻")
+        assert(result.resultCode == BaikeResult.SUCCESS)
+    }
+
+    @Test
+    fun testNotFound(){
+        val result2 = BaikeFinder.find("sdds4d4fdf4f4fg5")
+        assert(result2.resultCode == BaikeResult.NOT_FOUND)
     }
 }

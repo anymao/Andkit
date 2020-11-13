@@ -28,9 +28,7 @@ class TensorFlowInterpreterDetector private constructor(
     val labelName: String,
     val threadNumber: Int,
     val inputSize: Int,
-    val cancelable: Boolean,
     val useNNAPI: Boolean,
-    val useXNNPACK: Boolean,
     val isQuantized: Boolean
 ) : TensorFlowDetector {
 
@@ -47,7 +45,7 @@ class TensorFlowInterpreterDetector private constructor(
     private val mLabels = mutableListOf<String>()
     private lateinit var mTfInterpreter: Interpreter
     private var mImageData: ByteBuffer
-    private lateinit var  mIntValues : IntArray
+    private var  mIntValues : IntArray
     private lateinit var mOutputLocations:Array<Array<FloatArray>>
     private lateinit var mOutputClasses:Array<FloatArray>
     private lateinit var mOutputScores:Array<FloatArray>
@@ -71,12 +69,10 @@ class TensorFlowInterpreterDetector private constructor(
             Timber.e(e, "Read Labels Error")
         }
         try {
-            val options = Interpreter.Options()
-                .setNumThreads(threadNumber)
-                .setCancellable(cancelable)
-                .setUseNNAPI(useNNAPI)
-                .setUseXNNPACK(useXNNPACK)
-            mTfInterpreter = Interpreter(modelFileBuffer, options)
+            mTfInterpreter = Interpreter(modelFileBuffer).apply {
+                setNumThreads(threadNumber)
+                setUseNNAPI(useNNAPI)
+            }
 
         } catch (e: Exception) {
             Timber.e(e, "Create Interpreter Error")
@@ -164,9 +160,7 @@ class TensorFlowInterpreterDetector private constructor(
         var labelName: String = ""
         var threadNumber: Int = 4
         var inputSize: Int = 1
-        var cancelable: Boolean = true
         var useNNAPI: Boolean = true
-        var useXNNPACK: Boolean = true
         var isQuantized: Boolean = true
 
 
@@ -177,9 +171,7 @@ class TensorFlowInterpreterDetector private constructor(
                 labelName,
                 threadNumber,
                 inputSize,
-                cancelable,
                 useNNAPI,
-                useXNNPACK,
                 isQuantized
             )
         }

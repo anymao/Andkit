@@ -8,7 +8,7 @@ import timber.log.Timber
 /**
  * Created by lym on 2020/11/13.
  */
-object ImageCompressor {
+internal object ImageCompressor {
 
     fun compress(bitmap: Bitmap, size: Int): Bitmap {
         if (bitmap.width * bitmap.height > size * size) {

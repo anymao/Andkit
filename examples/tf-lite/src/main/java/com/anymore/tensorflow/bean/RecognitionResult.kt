@@ -7,9 +7,10 @@ import kotlinx.android.parcel.Parcelize
 /**
  * Created by lym on 2020/11/12.
  */
+@Parcelize
 data class RecognitionResult(
     val id: Int? = null,
     val title: String? = null,
     val confidence: Float? = 0f,
     val location: RectF? = null
-)
+) : Parcelable
