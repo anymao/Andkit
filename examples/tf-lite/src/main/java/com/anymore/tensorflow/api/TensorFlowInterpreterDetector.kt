@@ -2,7 +2,9 @@ package com.anymore.tensorflow.api
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.RectF
 import com.anymore.tensorflow.bean.RecognitionResult
+import com.anymore.tensorflow.image.ImageCompressor
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.support.metadata.MetadataExtractor
 import timber.log.Timber
@@ -15,13 +17,15 @@ import java.nio.ByteOrder
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 import java.nio.charset.Charset
+import kotlin.math.min
 
 /**
  * Created by lym on 2020/11/12.
  */
 class TensorFlowInterpreterDetector private constructor(
-    val modelPath: String,
-    val labelPath: String,
+    val path: String,
+    val modelName: String,
+    val labelName: String,
     val threadNumber: Int,
     val inputSize: Int,
     val cancelable: Boolean,
@@ -31,6 +35,7 @@ class TensorFlowInterpreterDetector private constructor(
 ) : TensorFlowDetector {
 
     companion object {
+        private const val TAG = "TensorFlowInterpreterDetector"
         // Only return this many results.
         private const val NUM_DETECTIONS = 10
 
@@ -42,16 +47,20 @@ class TensorFlowInterpreterDetector private constructor(
     private val mLabels = mutableListOf<String>()
     private lateinit var mTfInterpreter: Interpreter
     private var mImageData: ByteBuffer
-    private val mIntValues = IntArray(inputSize * inputSize)
-    private val mOutputLocations:Array<Array<IntArray>> = arrayOf()
+    private lateinit var  mIntValues : IntArray
+    private lateinit var mOutputLocations:Array<Array<FloatArray>>
+    private lateinit var mOutputClasses:Array<FloatArray>
+    private lateinit var mOutputScores:Array<FloatArray>
+    private lateinit var mNumDetections:FloatArray
+
 
     init {
-        val modelFileBuffer = loadModelFile(modelPath)
+        val modelFileBuffer = loadModelFile(path+modelName)
         val metaData = MetadataExtractor(modelFileBuffer)
         try {
             BufferedReader(
                 InputStreamReader(
-                    metaData.getAssociatedFile(labelPath),
+                    metaData.getAssociatedFile(labelName),
                     Charset.defaultCharset()
                 )
             ).use {
@@ -79,7 +88,7 @@ class TensorFlowInterpreterDetector private constructor(
         }
         mImageData = ByteBuffer.allocateDirect(1 * inputSize * inputSize * 3 * numBytesPerChannel)
         mImageData.order(ByteOrder.nativeOrder())
-
+        mIntValues = IntArray(inputSize*inputSize)
     }
 
 
@@ -87,14 +96,14 @@ class TensorFlowInterpreterDetector private constructor(
         val length = File(path).length()
         return FileInputStream(path).use {
             val channel = it.channel
-            val fd = it.fd
             channel.map(FileChannel.MapMode.READ_ONLY, 0, length)
         }
     }
 
 
     override fun detect(bitmap: Bitmap): List<RecognitionResult> {
-        bitmap.getPixels(mIntValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
+        val scropBitmap = ImageCompressor.compress(bitmap,inputSize)
+        scropBitmap.getPixels(mIntValues, 0, scropBitmap.width, 0, 0, scropBitmap.width, scropBitmap.height)
         mImageData.rewind()
         for (i in 0 until inputSize) {
             for (j in 0 until inputSize) {
@@ -111,6 +120,37 @@ class TensorFlowInterpreterDetector private constructor(
                 }
             }
         }
+        mOutputLocations = Array(1){ Array(NUM_DETECTIONS){ FloatArray(4) } }
+        mOutputClasses = Array(1){ FloatArray(NUM_DETECTIONS) }
+        mOutputScores = Array(1){ FloatArray(NUM_DETECTIONS) }
+        mNumDetections = FloatArray(1)
+        val outputMap = mutableMapOf<Int, Any>().apply {
+            put(0, mOutputLocations)
+            put(1, mOutputClasses)
+            put(2, mOutputScores)
+            put(3, mNumDetections)
+        }
+        mTfInterpreter.runForMultipleInputsOutputs(arrayOf(mImageData), outputMap)
+        val outputDetectNum = min(NUM_DETECTIONS, mNumDetections[0].toInt())
+        val result = mutableListOf<RecognitionResult>()
+        for (i in 0 until outputDetectNum){
+            val location = RectF(
+                (mOutputLocations[0][i][1] * inputSize),
+                (mOutputLocations[0][i][0] * inputSize),
+                (mOutputLocations[0][i][3] * inputSize),
+                (mOutputLocations[0][i][2] * inputSize)
+            )
+            result.add(
+                RecognitionResult(
+                    id = i, title = mLabels[mOutputClasses[0][i].toInt()],confidence = mOutputScores[0][i],location = location
+                )
+            )
+        }
+        return result.also {
+            Timber.v("TensorFlowInterpreterDetector  detect:===>")
+            Timber.v(it.toString())
+            Timber.v("TensorFlowInterpreterDetector  detect:<===")
+        }
     }
 
     override fun close() {
@@ -119,8 +159,9 @@ class TensorFlowInterpreterDetector private constructor(
 
 
     class Builder(private val context: Context) {
-        var modelPath: String = ""
-        var labelPath: String = ""
+        var path:String = ""
+        var modelName: String = ""
+        var labelName: String = ""
         var threadNumber: Int = 4
         var inputSize: Int = 1
         var cancelable: Boolean = true
@@ -131,8 +172,9 @@ class TensorFlowInterpreterDetector private constructor(
 
         fun build(): TensorFlowDetector {
             return TensorFlowInterpreterDetector(
-                modelPath,
-                labelPath,
+                path,
+                modelName,
+                labelName,
                 threadNumber,
                 inputSize,
                 cancelable,

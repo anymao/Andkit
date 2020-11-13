@@ -1,26 +1,45 @@
 package com.anymore.wanandroid.view
 
+import android.Manifest
+import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.SystemClock
-import android.view.MotionEvent
-import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
-import com.anymore.andkit.lifecycle.activity.AndkitActivity
+import com.anymore.andkit.lifecycle.checkPermissions
+import com.anymore.andkit.lifecycle.coroutines.bg
+import com.anymore.andkit.lifecycle.coroutines.launch
+import com.anymore.andkit.mvp.BaseActivity
+import com.anymore.tensorflow.api.TensorFlowDetector
+import com.anymore.tensorflow.api.TensorFlowInterpreterDetector
 import com.anymore.wanandroid.R
-import com.anymore.wanandroid.common.adapter.FragmentsAdapter
-import com.anymore.wanandroid.common.entry.FragmentItem
 import com.anymore.wanandroid.common.ext.toast
-import com.anymore.wanandroid.route.ARTICLES_DISCOVERY_FRAGMENT
-import com.anymore.wanandroid.route.ARTICLES_HOMEPAGE_FRAGMENT
+import com.anymore.wanandroid.repository.glide.GlideApp
 import com.anymore.wanandroid.route.MAIN_PAGE
-import com.anymore.wanandroid.route.MINE_MINE_FRAGMENT
+import com.zhihu.matisse.Matisse
+import com.zhihu.matisse.MimeType
+import com.zhihu.matisse.engine.impl.GlideEngine
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
+import java.io.File
 import kotlin.properties.Delegates
 
 @Route(path = MAIN_PAGE)
-class MainActivity : AndkitActivity() {
+class MainActivity : BaseActivity() {
+
+    companion object {
+        const val REQUEST_SELECT_IMAGE = 63
+    }
+
+    private val mTensorFlowDetector: TensorFlowDetector by lazy {
+        TensorFlowInterpreterDetector.Builder(this).apply {
+            path = getExternalFilesDir(null)!!.absolutePath+File.separator
+            labelName = "labelmap.txt"
+            modelName = "detect.tflite"
+            inputSize = 300
+            isQuantized = true
+        }.build()
+    }
 
     //利用kotlin属性委托->标准委托中的Delegates.observable实现点击两次返回桌面
     private var lastPressedTime: Long by Delegates.observable(0L) { _, oldValue, newValue ->
@@ -32,68 +51,48 @@ class MainActivity : AndkitActivity() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setupViewPager()
-    }
+    override fun initView(savedInstanceState: Bundle?) = R.layout.activity_main
 
-    private fun setupViewPager() {
-        val homepage =
-            ARouter.getInstance().build(ARTICLES_HOMEPAGE_FRAGMENT).navigation() as Fragment
-        val discovery =
-            ARouter.getInstance().build(ARTICLES_DISCOVERY_FRAGMENT).navigation() as Fragment
-        val mine = ARouter.getInstance().build(MINE_MINE_FRAGMENT).navigation() as Fragment
-        val fragments = listOf(
-            FragmentItem(homepage, getString(R.string.home)),
-            FragmentItem(discovery, getString(R.string.discovery)),
-            FragmentItem(mine, getString(R.string.my))
-        )
-        val adapter = FragmentsAdapter(supportFragmentManager, fragments)
-        viewPager.adapter = adapter
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(p0: Int) {
-
+    override fun initData(savedInstanceState: Bundle?) {
+        super.initData(savedInstanceState)
+        image.setOnClickListener {
+            checkPermissions(
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) {
+                Matisse.from(this)
+                    .choose(MimeType.ofImage())
+                    .maxSelectable(1)
+                    .imageEngine(GlideEngine())
+                    .forResult(REQUEST_SELECT_IMAGE)
             }
-
-            override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-                when (position) {
-                    0 -> {
-                        bnv.selectedItemId = R.id.action_home
-                    }
-                    1 -> {
-                        bnv.selectedItemId = R.id.action_discovery
-                    }
-                    2 -> {
-                        bnv.selectedItemId = R.id.action_my
-                    }
-                }
-            }
-
-        })
-
-        bnv.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.action_home -> viewPager.currentItem = 0
-                R.id.action_discovery -> viewPager.currentItem = 1
-                R.id.action_my -> viewPager.currentItem = 2
-            }
-            return@setOnNavigationItemSelectedListener true
         }
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return super.onTouchEvent(event)
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_SELECT_IMAGE) {
+                val path = Matisse.obtainPathResult(data)?.firstOrNull()
+                if (path != null) {
+                    GlideApp.with(this)
+                        .load(path)
+                        .into(image)
+                    startDetect(path)
+                }
+            }
+        }
     }
 
-    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        return super.dispatchTouchEvent(ev)
+    private fun startDetect(path: String) {
+        launch {
+            val result = bg {
+                val image = BitmapFactory.decodeFile(path)
+                mTensorFlowDetector.detect(image)
+            }
+            tvResult.text = result.toString()
+        }
     }
-
 
     override fun onBackPressed() {
         lastPressedTime = SystemClock.uptimeMillis()

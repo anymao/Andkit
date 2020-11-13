@@ -47,6 +47,6 @@ fun ComponentLifecycle.launch(
     return job
 }
 
-suspend fun bg(block: suspend CoroutineScope.() -> Unit) {
-    withContext(Dispatchers.IO, block)
+suspend fun<T> bg(block: suspend CoroutineScope.() -> T):T {
+    return withContext(Dispatchers.IO, block)
 }
