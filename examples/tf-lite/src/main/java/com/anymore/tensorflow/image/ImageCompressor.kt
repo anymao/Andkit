@@ -3,12 +3,45 @@ package com.anymore.tensorflow.image
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Matrix
+import android.util.LruCache
+import android.util.Size
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.common.ops.NormalizeOp
+import org.tensorflow.lite.support.image.ImageProcessor
+import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.image.ops.ResizeOp
+import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp
 import timber.log.Timber
+import kotlin.math.min
 
 /**
  * Created by lym on 2020/11/13.
  */
 internal object ImageCompressor {
+
+    private val mProcessors by lazy { LruCache<String,ImageProcessor>(64) }
+
+    private fun createOrGetProcessor(bitmapSize:Size,inputSize: Size):ImageProcessor{
+        val key = "ImageCompressor_${bitmapSize}_$inputSize"
+        var target = mProcessors.get(key)
+        val cropSize = min(bitmapSize.width,bitmapSize.height)
+        if (target == null ){
+            target = ImageProcessor.Builder()
+                .add(ResizeWithCropOrPadOp(cropSize, cropSize))
+                .add(ResizeOp(inputSize.height, inputSize.width, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
+                .add(NormalizeOp(0f, 1f))
+                .build()
+            mProcessors.put(key,target)
+        }
+        return target
+    }
+
+    fun process(bitmap: Bitmap,inputSize: Size): TensorImage {
+        val tfImage = TensorImage(DataType.UINT8).apply { load(bitmap) }
+        val processor = createOrGetProcessor(Size(bitmap.width,bitmap.height),inputSize)
+        return processor.process(tfImage)
+    }
+
 
     fun compress(bitmap: Bitmap, size: Int): Bitmap {
         if (bitmap.width * bitmap.height > size * size) {

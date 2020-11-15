@@ -22,6 +22,7 @@ import android.graphics.ImageFormat
 import android.graphics.Rect
 import android.media.Image
 import android.renderscript.*
+import com.anymore.camera.BuildConfig
 
 /**
  * Helper class used to efficiently convert a [Media.Image] object from
@@ -78,7 +79,9 @@ class YuvToRgbConverter(context: Context) {
     }
 
     private fun imageToByteArray(image: Image, outputBuffer: ByteArray) {
-        assert(image.format == ImageFormat.YUV_420_888)
+        if (BuildConfig.DEBUG && image.format != ImageFormat.YUV_420_888) {
+            error("Assertion failed")
+        }
 
         val imageCrop = image.cropRect
         val imagePlanes = image.planes

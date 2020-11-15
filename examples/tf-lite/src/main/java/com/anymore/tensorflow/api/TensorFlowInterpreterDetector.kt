@@ -3,6 +3,7 @@ package com.anymore.tensorflow.api
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.RectF
+import android.util.Size
 import com.anymore.tensorflow.bean.RecognitionResult
 import com.anymore.tensorflow.image.ImageCompressor
 import org.tensorflow.lite.Interpreter
@@ -69,10 +70,10 @@ class TensorFlowInterpreterDetector private constructor(
             Timber.e(e, "Read Labels Error")
         }
         try {
-            mTfInterpreter = Interpreter(modelFileBuffer).apply {
-                setNumThreads(threadNumber)
-                setUseNNAPI(useNNAPI)
-            }
+            val options = Interpreter.Options()
+                .setNumThreads(threadNumber)
+                .setUseNNAPI(useNNAPI)
+            mTfInterpreter = Interpreter(modelFileBuffer, options)
 
         } catch (e: Exception) {
             Timber.e(e, "Create Interpreter Error")
@@ -98,24 +99,24 @@ class TensorFlowInterpreterDetector private constructor(
 
 
     override fun detect(bitmap: Bitmap): List<RecognitionResult> {
-        val scropBitmap = ImageCompressor.compress(bitmap,inputSize)
-        scropBitmap.getPixels(mIntValues, 0, scropBitmap.width, 0, 0, scropBitmap.width, scropBitmap.height)
-        mImageData.rewind()
-        for (i in 0 until inputSize) {
-            for (j in 0 until inputSize) {
-                val value = mIntValues[i * inputSize + j]
-                if (isQuantized) {
-                    // Quantized model
-                    mImageData.put((value shr 16 and 0xFF).toByte())
-                    mImageData.put((value shr 8 and 0xFF).toByte())
-                    mImageData.put((value and 0xFF).toByte())
-                } else { // Float model
-                    mImageData.putFloat(((value shr 16 and 0xFF) - IMAGE_MEAN) / IMAGE_STD)
-                    mImageData.putFloat(((value shr 8 and 0xFF) - IMAGE_MEAN) / IMAGE_STD)
-                    mImageData.putFloat(((value and 0xFF) - IMAGE_MEAN) / IMAGE_STD)
-                }
-            }
-        }
+        val scropBitmap = ImageCompressor.process(bitmap, Size(inputSize,inputSize))
+//        scropBitmap.getPixels(mIntValues, 0, scropBitmap.width, 0, 0, scropBitmap.width, scropBitmap.height)
+//        mImageData.rewind()
+//        for (i in 0 until inputSize) {
+//            for (j in 0 until inputSize) {
+//                val value = mIntValues[i * inputSize + j]
+//                if (isQuantized) {
+//                    // Quantized model
+//                    mImageData.put((value shr 16 and 0xFF).toByte())
+//                    mImageData.put((value shr 8 and 0xFF).toByte())
+//                    mImageData.put((value and 0xFF).toByte())
+//                } else { // Float model
+//                    mImageData.putFloat(((value shr 16 and 0xFF) - IMAGE_MEAN) / IMAGE_STD)
+//                    mImageData.putFloat(((value shr 8 and 0xFF) - IMAGE_MEAN) / IMAGE_STD)
+//                    mImageData.putFloat(((value and 0xFF) - IMAGE_MEAN) / IMAGE_STD)
+//                }
+//            }
+//        }
         mOutputLocations = Array(1){ Array(NUM_DETECTIONS){ FloatArray(4) } }
         mOutputClasses = Array(1){ FloatArray(NUM_DETECTIONS) }
         mOutputScores = Array(1){ FloatArray(NUM_DETECTIONS) }
@@ -126,7 +127,7 @@ class TensorFlowInterpreterDetector private constructor(
             put(2, mOutputScores)
             put(3, mNumDetections)
         }
-        mTfInterpreter.runForMultipleInputsOutputs(arrayOf(mImageData), outputMap)
+        mTfInterpreter.runForMultipleInputsOutputs(arrayOf(scropBitmap.buffer), outputMap)
         val outputDetectNum = min(NUM_DETECTIONS, mNumDetections[0].toInt())
         val result = mutableListOf<RecognitionResult>()
         for (i in 0 until outputDetectNum){
