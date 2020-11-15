@@ -14,6 +14,7 @@ include ':wa-resources',
         ':wa-browse',
         ':tf-lite',
         ':baike',
+        ':camera',
         ':andkit-dagger',
         ':andkit-lifecycle',
         ':andkit-repository',
@@ -29,6 +30,7 @@ project(':wa-repository').projectDir = file('examples/wa-repository')
 project(':wa-browse').projectDir = file('examples/wa-browse')
 project(':tf-lite').projectDir = file('examples/tf-lite')
 project(':baike').projectDir = file('examples/baike')
+project(':camera').projectDir = file('examples/camera')
 
 
 //andkit-libs

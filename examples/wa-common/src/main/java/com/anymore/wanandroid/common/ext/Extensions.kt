@@ -1,14 +1,14 @@
 package com.anymore.wanandroid.common.ext
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import android.widget.Toast
-import androidx.annotation.*
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.anymore.wanandroid.common.executors.AppExecutors
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -31,22 +31,6 @@ inline fun CharSequence?.ifNotEmpty(block: () -> Unit) {
     }
 }
 
-fun Activity.toast(@StringRes id: Int, duration: Int = Toast.LENGTH_SHORT) {
-    toast(getString(id), duration)
-}
-
-fun Activity.toast(message: CharSequence?, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(this, message, duration).show()
-}
-
-
-fun Fragment.toast(@StringRes id: Int, duration: Int = Toast.LENGTH_SHORT) {
-    toast(getString(id), duration)
-}
-
-fun Fragment.toast(message: CharSequence?, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(context, message, duration).show()
-}
 
 fun runOnUiThread(block: () -> Unit) {
     AppExecutors.mainExecutor.execute(block)

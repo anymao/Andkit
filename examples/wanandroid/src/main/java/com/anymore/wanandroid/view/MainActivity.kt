@@ -13,6 +13,7 @@ import com.anymore.andkit.mvp.BaseActivity
 import com.anymore.tensorflow.api.TensorFlowDetector
 import com.anymore.tensorflow.api.TensorFlowInterpreterDetector
 import com.anymore.wanandroid.R
+import com.anymore.wanandroid.common.ext.click
 import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.repository.glide.GlideApp
 import com.anymore.wanandroid.route.MAIN_PAGE
@@ -20,7 +21,6 @@ import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
 import com.zhihu.matisse.engine.impl.GlideEngine
 import kotlinx.android.synthetic.main.activity_main.*
-import timber.log.Timber
 import java.io.File
 import kotlin.properties.Delegates
 
@@ -65,6 +65,9 @@ class MainActivity : BaseActivity() {
                     .imageEngine(GlideEngine())
                     .forResult(REQUEST_SELECT_IMAGE)
             }
+        }
+        btnCamera.click {
+            startActivity(Intent(this,CameraActivity::class.java))
         }
     }
 
