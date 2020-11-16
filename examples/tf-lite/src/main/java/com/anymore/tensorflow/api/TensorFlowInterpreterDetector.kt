@@ -100,6 +100,7 @@ class TensorFlowInterpreterDetector private constructor(
 
     override fun detect(bitmap: Bitmap): List<RecognitionResult> {
         val scropBitmap = ImageCompressor.process(bitmap, Size(inputSize,inputSize))
+        Timber.d("scroped:w=${scropBitmap.width},h=${scropBitmap.height}")
 //        scropBitmap.getPixels(mIntValues, 0, scropBitmap.width, 0, 0, scropBitmap.width, scropBitmap.height)
 //        mImageData.rewind()
 //        for (i in 0 until inputSize) {

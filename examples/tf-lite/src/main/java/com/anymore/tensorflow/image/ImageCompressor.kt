@@ -38,6 +38,7 @@ internal object ImageCompressor {
 
     fun process(bitmap: Bitmap,inputSize: Size): TensorImage {
         val tfImage = TensorImage(DataType.UINT8).apply { load(bitmap) }
+        Timber.d("src:w=${tfImage.width},h=${tfImage.height},target:w=${inputSize.width},h=${inputSize.height}")
         val processor = createOrGetProcessor(Size(bitmap.width,bitmap.height),inputSize)
         return processor.process(tfImage)
     }

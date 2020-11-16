@@ -12,9 +12,9 @@ fun <T> MutableLiveData<T>.setDiffValue(value: T) {
     }
 }
 
-fun <T> MutableLiveData<T>.setPostValue(value: T) {
+fun <T> MutableLiveData<T>.postDiffValue(value: T) {
     val old = getValue()
     if (old != value) {
-        setValue(value)
+        postValue(value)
     }
 }
