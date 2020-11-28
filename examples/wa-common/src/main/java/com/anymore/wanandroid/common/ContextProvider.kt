@@ -55,5 +55,11 @@ class ContextProvider : ContentProvider() {
         private var appContext: Context by Delegates.notNull()
 
         fun getApplicationContext(): Context = appContext
+        val resources by lazy { appContext.resources }
+        val applicationInfo by lazy { appContext.applicationInfo }
+        val packageManager by lazy { appContext.packageManager }
+        val appName by lazy { applicationInfo.loadLabel(packageManager).toString() }
+        val appIconRes by lazy { applicationInfo.icon }
+        val appIconDrawable by lazy { applicationInfo.loadIcon(packageManager) }
     }
 }

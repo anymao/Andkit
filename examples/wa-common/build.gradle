@@ -46,6 +46,9 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.6'
     api 'com.blankj:utilcodex:1.30.5'
 
+    api project(':livedata-ext')
+
+
     api 'com.jakewharton.timber:timber:4.7.1'
 
     testImplementation 'junit:junit:4.13.1'

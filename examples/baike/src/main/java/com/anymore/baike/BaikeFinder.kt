@@ -34,7 +34,7 @@ object BaikeFinder {
                 BaikeResult(BaikeResult.NETWORK_FAILED, keywords, null, null, null)
             }
         }.let {
-            Timber.d("Baidu baike find:${it.value} with time<${it.duration.inMilliseconds}>")
+            Timber.d("Baidu baike find:${it.value} with time<${it.duration.inMilliseconds} ms>")
             it.value
         }
     }

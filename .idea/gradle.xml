@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/andkit-libs/andkit-repository" />
             <option value="$PROJECT_DIR$/examples/baike" />
             <option value="$PROJECT_DIR$/examples/camera" />
+            <option value="$PROJECT_DIR$/examples/livedata-ext" />
             <option value="$PROJECT_DIR$/examples/tf-lite" />
             <option value="$PROJECT_DIR$/examples/wa-browse" />
             <option value="$PROJECT_DIR$/examples/wa-common" />

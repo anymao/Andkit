@@ -10,25 +10,16 @@ import io.reactivex.Maybe
  */
 
 @Dao
-interface UserInfoDao {
+abstract class UserInfoDao: BaseDao<UserInfo>() {
     @Query("SELECT * FROM UserInfo WHERE online LIMIT 1")
-    fun getCurrentUser(): Maybe<UserInfo>
-
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(userInfo: UserInfo)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(userInfo: UserInfo)
-
-    @Delete
-    fun delete(userInfo: UserInfo)
+    abstract fun getCurrentUser(): Maybe<UserInfo>
 
     @Query("UPDATE UserInfo SET online=:newStatus WHERE online")
-    fun updateOnlineStatus(newStatus: Boolean)
+    abstract fun updateOnlineStatus(newStatus: Boolean)
 
     @Query("DELETE FROM UserInfo")
-    fun deleteAll()
+    abstract fun deleteAll()
 
     @Query("SELECT * FROM UserInfo")
-    fun loadAllUser():Flowable<List<UserInfo>>
+    abstract fun loadAllUser():Flowable<List<UserInfo>>
 }

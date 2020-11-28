@@ -2,6 +2,10 @@
     package="com.anymore.wanandroid.repository">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application>
         <meta-data
             android:name="com.anymore.wanandroid.repository.WanAndroidRepositoryConfig"
@@ -9,5 +13,14 @@
         <meta-data
             android:name="com.anymore.wanandroid.repository.glide.WanAndroidGlideModule"
             android:value="AppGlideModule" />
+
+        <service
+            android:name=".download.DownloadService"
+            android:exported="false" />
+
+        <provider
+            android:name=".download.OkDownloadContentProvider"
+            android:authorities="${applicationId}.andkit.okdownload"
+            android:exported="false" />
     </application>
 </manifest>

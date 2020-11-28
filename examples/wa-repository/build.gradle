@@ -54,8 +54,22 @@ dependencies {
     //Paging对RxJava2的原生支持
     api 'androidx.paging:paging-rxjava2-ktx:2.1.2'
 
+    // core
+    api "com.liulishuo.okdownload:okdownload:1.0.7"
+    // provide sqlite to store breakpoints
+    api "com.liulishuo.okdownload:sqlite:1.0.7"
+    // provide okhttp to connect to backend
+    // and then please import okhttp dependencies by yourself
+    api "com.liulishuo.okdownload:okhttp:1.0.7"
+    // provide interface to match filedownloader
+    api "com.liulishuo.okdownload:filedownloader:1.0.7"
+    api "com.liulishuo.okdownload:ktx:1.0.7"
+
+
+
     api project(':wa-common')
     api project(':andkit-repository')
+    api project(':andkit-lifecycle')
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

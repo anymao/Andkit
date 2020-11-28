@@ -1,5 +1,7 @@
 package com.anymore.wanandroid.common.executors
 
+import android.os.Handler
+import android.os.Looper
 import androidx.core.content.ContextCompat
 import com.anymore.wanandroid.common.ContextProvider
 import io.reactivex.Scheduler
@@ -15,7 +17,7 @@ object AppExecutors {
     val diskIoExecutor: Executor by lazy { Executors.newSingleThreadExecutor() }
     val networkExecutor: Executor by lazy { Executors.newFixedThreadPool(3) }
     val mainExecutor: Executor by lazy { ContextCompat.getMainExecutor(ContextProvider.getApplicationContext()) }
-
+    val mainHandler by lazy { Handler(Looper.getMainLooper()) }
     val diskIoScheduler: Scheduler
         get() = Schedulers.from(diskIoExecutor)
 
@@ -24,6 +26,5 @@ object AppExecutors {
 
     val mainScheduler: Scheduler
         get() = Schedulers.from(mainExecutor)
-
 
 }

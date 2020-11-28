@@ -11,8 +11,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 import java.io.File
-import java.util.*
-import java.util.concurrent.ConcurrentHashMap
 
 /**
  * Created by liuyuanmao on 2019/3/12.

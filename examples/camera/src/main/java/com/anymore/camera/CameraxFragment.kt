@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
-import androidx.annotation.WorkerThread
 import androidx.camera.core.*
+import androidx.camera.extensions.AutoPreviewExtender
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.anymore.andkit.lifecycle.checkPermissions
@@ -54,14 +54,21 @@ class CameraxFragment : BindingFragment<FragmentCameraxBinding>() {
         val providerFuture = ProcessCameraProvider.getInstance(requireContext())
         providerFuture.addListener({
             val provider = providerFuture.get()
-            mPreview = Preview.Builder()
+            val cameraTarget =
+                CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
+            val previewBuilder = Preview.Builder()
                 .setTargetAspectRatio(AspectRatio.RATIO_4_3)
                 .setTargetRotation(mBinding.pvPreview.display.rotation)
-                .build()
+            AutoPreviewExtender.create(previewBuilder).apply {
+                if (isExtensionAvailable(cameraTarget)){
+                    enableExtension(cameraTarget)
+                }
+            }
+            mPreview = previewBuilder.build()
             val imageAnalysis = ImageAnalysis.Builder()
                 .setTargetAspectRatio(AspectRatio.RATIO_4_3)
                 .setTargetRotation(mBinding.pvPreview.display.rotation)
-                .setBackpressureStrategy(ImageAnalysis.STRATEGY_BLOCK_PRODUCER)
+                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
             imageAnalysis.setAnalyzer(mAnalysisExecutor,
                 { image ->
@@ -77,8 +84,7 @@ class CameraxFragment : BindingFragment<FragmentCameraxBinding>() {
                         Timber.e(e, "analyze ERROR!")
                     }
                 })
-            val cameraTarget =
-                CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
+
             try {
                 provider.unbindAll()
                 mCamera = provider.bindToLifecycle(this, cameraTarget, mPreview,imageAnalysis)

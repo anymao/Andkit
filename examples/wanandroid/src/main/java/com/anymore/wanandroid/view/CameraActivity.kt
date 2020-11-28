@@ -9,11 +9,10 @@ import com.anymore.andkit.lifecycle.checkPermissions
 import com.anymore.andkit.lifecycle.coroutines.bg
 import com.anymore.andkit.lifecycle.coroutines.launch
 import com.anymore.andkit.mvvm.BindingActivity
-import com.anymore.andkit.mvvm.ext.postDiffValue
-import com.anymore.andkit.mvvm.ext.setDiffValue
 import com.anymore.baike.BaikeFinder
 import com.anymore.baike.bean.BaikeResult
 import com.anymore.camera.CameraxFragment
+import com.anymore.livedata.ext.setDiffValue
 import com.anymore.tensorflow.api.TensorFlowDetector
 import com.anymore.tensorflow.api.TensorFlowInterpreterDetector
 import com.anymore.wanandroid.R
@@ -21,6 +20,7 @@ import com.anymore.wanandroid.common.ext.click
 import com.anymore.wanandroid.common.ext.toast
 import com.anymore.wanandroid.databinding.ActicityCameraBinding
 import com.anymore.wanandroid.route.BROWSE_URL
+import com.anymore.wanandroid.route.URL_VALUE
 import com.blankj.utilcode.util.FileIOUtils
 import com.blankj.utilcode.util.FileUtils
 import timber.log.Timber
@@ -95,7 +95,7 @@ class CameraActivity : BindingActivity<ActicityCameraBinding>() {
             if (url?.isNotEmpty() == true){
                 ARouter.getInstance()
                     .build(BROWSE_URL)
-                    .withString("url",url)
+                    .withString(URL_VALUE,url)
                     .navigation(this)
             }
         }
