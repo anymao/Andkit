@@ -61,7 +61,7 @@ class CameraActivity : BindingActivity<ActicityCameraBinding>() {
             path = "${mTensorFlowDir.absolutePath}${File.separator}"
             labelName = "labelmap.txt"
             modelName = "detect.tflite"
-            inputSize = 300
+            inputSize = 416
             isQuantized = true
         }.build()
     }
