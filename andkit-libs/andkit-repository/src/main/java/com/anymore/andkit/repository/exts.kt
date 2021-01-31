@@ -2,20 +2,13 @@ package com.anymore.andkit.repository
 
 import android.app.Application
 import android.content.Context
-import com.anymore.andkit.repository.di.component.RepositoryComponent
+import com.anymore.andkit.repository.di.RepositoryEntry
+import dagger.hilt.EntryPoints
 
 /**
- * Created by liuyuanmao on 2020/1/16.
+ * Created by anymore on 2021/1/31.
  */
-val Context.repositoryComponent: RepositoryComponent
-    get() = (this.applicationContext as Application).repositoryComponent
+val Application.repositoryManager
+    get() = EntryPoints.get(this, RepositoryEntry::class.java).provideIRepositoryManager()
 
-
-val Application.repositoryComponent: RepositoryComponent
-    get() {
-        if (this is IRepositoryComponentProvider) {
-            return repositoryComponent
-        } else {
-            throw RuntimeException("the Application must be Implementation class of IRepositoryComponentProvider")
-        }
-    }
+val Context.repositoryManager get() = (applicationContext as Application).repositoryManager

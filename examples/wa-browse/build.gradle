@@ -4,9 +4,7 @@ if (moduleRunning.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+apply from: "../../public.gradle"
 
 android {
     compileSdkVersion 29
@@ -65,16 +63,11 @@ android {
 
 dependencies {
 
-    def dagger2_version = "2.28.3"
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     implementation 'com.alibaba:arouter-api:1.5.0'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
-
-    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
 
     //agentWeb
     implementation 'com.just.agentweb:agentweb:4.1.3'

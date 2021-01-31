@@ -4,25 +4,26 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.text.TextUtils
-import com.anymore.andkit.repository.di.module.RepositoryConfigsModule
+import com.anymore.andkit.repository.configs.RepositoryConfig
 
 /**
  * Created by liuyuanmao on 2019/3/11.
  */
 internal object ManifestParser {
-    const val REPOSITORY_MODULE_CONFIG = "repositoryModuleConfig"
+    const val REPOSITORY_CONFIG = "repositoryConfig"
+
     /**
      * 从Manifest 的mate-data中读取配置
      */
-    fun parseRepositoryConfig(context: Context): List<RepositoryConfigsModule.RepositoryConfig> {
-        return parse(context, REPOSITORY_MODULE_CONFIG)
+    fun parseRepositoryConfig(context: Context): List<RepositoryConfig> {
+        return parse(context, REPOSITORY_CONFIG)
     }
 
-    private fun parse(
+    private inline fun <reified T> parse(
         context: Context,
         key: String
-    ): List<RepositoryConfigsModule.RepositoryConfig> {
-        val result = ArrayList<RepositoryConfigsModule.RepositoryConfig>()
+    ): List<T> {
+        val result = ArrayList<T>()
         val applicationInfo: ApplicationInfo? = context.packageManager.getApplicationInfo(
             context.packageName,
             PackageManager.GET_META_DATA
@@ -37,7 +38,7 @@ internal object ManifestParser {
         return result
     }
 
-    private fun createConfigByName(className: String): RepositoryConfigsModule.RepositoryConfig {
+    private inline fun <reified T> createConfigByName(className: String): T {
         val clazz: Class<*>
         try {
             clazz = Class.forName(className)
@@ -60,7 +61,7 @@ internal object ManifestParser {
             )
         }
 
-        if (config !is RepositoryConfigsModule.RepositoryConfig) {
+        if (config !is T) {
             throw RuntimeException("Expected instance of ConfigRepository, but found: $config")
         }
         return config

@@ -5,9 +5,10 @@ import android.util.SparseArray
 import androidx.collection.LruCache
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.anymore.andkit.repository.di.module.RepositoryConfigsModule
+import com.anymore.andkit.repository.configs.RoomDatabaseConfig
 import com.anymore.cachekit.DataCache
 import dagger.Lazy
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -40,14 +41,17 @@ interface IRepositoryManager {
      * 获取一个[DataCache]对象，这个是被Application所持有的，可用于全局的双缓存场景
      */
     fun obtainDataCache(): DataCache
+
+    fun obtainOkHttpClient(): OkHttpClient
 }
 
 @Singleton
 class RepositoryManager @Inject constructor(
     private val mApplication: Application,
     private val mRetrofits: Lazy<SparseArray<Retrofit>>,
-    private val mRoomDatabaseConfig: RepositoryConfigsModule.RoomDatabaseConfig,
-    private val mDataCache: Lazy<DataCache>
+    private val mRoomDatabaseConfig: RoomDatabaseConfig,
+    private val mDataCache: Lazy<DataCache>,
+    private val okHttpClient: Lazy<OkHttpClient>
 ) : IRepositoryManager {
 
     private val mRetrofitCache by lazy { LruCache<String, Any>(500) }
@@ -99,4 +103,6 @@ class RepositoryManager @Inject constructor(
     }
 
     override fun obtainDataCache(): DataCache = mDataCache.get()
+
+    override fun obtainOkHttpClient(): OkHttpClient = okHttpClient.get()
 }

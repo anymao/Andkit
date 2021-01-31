@@ -100,6 +100,5 @@ class FragmentActivity : AndkitActivity() {
         return fragment
     }
 
-    override fun useFragment() = true
 
 }

@@ -4,38 +4,24 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import com.anymore.andkit.annotations.Kiss
-import com.anymore.andkit.repository.IRepositoryComponentProvider
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
 import timber.log.Timber
-import javax.inject.Inject
 
 /**
  * Created by liuyuanmao on 2019/2/20.
  */
 @Kiss(value = InternalApplicationWrapper::class, priority = Int.MAX_VALUE)
-open class AndkitApplication : Application(), HasAndroidInjector,
-    IRepositoryComponentProvider by RepositoryComponentManager {
-
-
-    @Inject
-    @Volatile
-    lateinit var mAndroidInjector: DispatchingAndroidInjector<Any>
+open class AndkitApplication : Application() {
 
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         timberPlant()
-        //仓储层注入相关初始化
-        RepositoryComponentManager.install(this)
         ApplicationWrapperMonitor.install(this)
         ApplicationWrapperMonitor.attachBaseContext()
     }
 
     override fun onCreate() {
         super.onCreate()
-        RepositoryComponentManager.onCreate()
         ApplicationWrapperMonitor.onCreate()
     }
 
@@ -58,8 +44,6 @@ open class AndkitApplication : Application(), HasAndroidInjector,
         super.onTrimMemory(level)
         ApplicationWrapperMonitor.onTrimMemory(level)
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = mAndroidInjector
 
     /**
      * 初始化[Timber]debug日志组件，

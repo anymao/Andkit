@@ -1,7 +1,7 @@
 package com.anymore.wanandroid.repository.glide
 
 import android.content.Context
-import com.anymore.andkit.repository.repositoryComponent
+import com.anymore.andkit.repository.repositoryManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Registry
 import com.bumptech.glide.annotation.GlideModule
@@ -16,8 +16,9 @@ import java.io.InputStream
 @GlideModule
 class WanAndroidGlideModule : AppGlideModule() {
 
+
     override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
-        val client = context.repositoryComponent.okHttpClient()
+        val client = context.repositoryManager.obtainOkHttpClient()
         super.registerComponents(context, glide, registry)
         registry.replace(
             GlideUrl::class.java,

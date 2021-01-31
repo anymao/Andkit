@@ -24,5 +24,4 @@ abstract class BaseMvpFragment<P : BaseContract.IBasePresenter> : BaseFragment()
         lifecycle.removeObserver(mPresenter)
     }
 
-    override fun injectable() = true
 }

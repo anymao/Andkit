@@ -1,14 +1,12 @@
 package com.anymore.wanandroid
 
-import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.AndkitApplication
 import com.anymore.andkit.annotations.Kisses
-import com.anymore.andkit.dagger.module.ApplicationModule
-import com.anymore.wanandroid.di.component.DaggerWanAndroidComponent
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import dagger.hilt.android.HiltAndroidApp
 
 
 /**
@@ -17,6 +15,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader
 @Kisses(
     value = []
 )
+@HiltAndroidApp
 class WanAndroidApplication : AndkitApplication() {
 
     companion object {
@@ -32,14 +31,6 @@ class WanAndroidApplication : AndkitApplication() {
                 ClassicsFooter(context).setDrawableSize(20f)
             }
         }
-    }
-
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        DaggerWanAndroidComponent.builder()
-            .applicationModule(ApplicationModule(this))
-            .build()
-            .inject(this)
     }
 
     override fun onCreate() {

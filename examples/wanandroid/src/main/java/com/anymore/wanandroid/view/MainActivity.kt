@@ -43,5 +43,4 @@ class MainActivity : BaseActivity() {
         lastPressedTime = SystemClock.uptimeMillis()
     }
 
-    override fun useFragment() = true
 }

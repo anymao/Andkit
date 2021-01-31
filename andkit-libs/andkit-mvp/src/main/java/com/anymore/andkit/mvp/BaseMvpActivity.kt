@@ -23,5 +23,4 @@ abstract class BaseMvpActivity<P : BaseContract.IBasePresenter> : BaseActivity()
         lifecycle.removeObserver(mPresenter)
     }
 
-    override fun injectable() = true
 }

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="Andkit.andkit" target="1.8" />
+      <module name="Andkit.andkit-dagger" target="1.8" />
+      <module name="Andkit.andkit-lifecycle" target="1.8" />
+      <module name="Andkit.andkit-mvp" target="1.8" />
+      <module name="Andkit.andkit-mvvm" target="1.8" />
+      <module name="Andkit.andkit-repository" target="1.8" />
+      <module name="Andkit.baike" target="1.8" />
+      <module name="Andkit.livedata-ext" target="1.8" />
+      <module name="Andkit.tf-lite" target="1.8" />
+      <module name="Andkit.wa-browse" target="1.8" />
+      <module name="Andkit.wa-common" target="1.8" />
+      <module name="Andkit.wa-repository" target="1.8" />
+      <module name="Andkit.wa-resources" target="1.8" />
+      <module name="Andkit.wa-route" target="1.8" />
+      <module name="Andkit.wanandroid" target="1.8" />
+      <module name="examples.Andkit.camera" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
