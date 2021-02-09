@@ -17,6 +17,7 @@ include ':wa-resources',
         ':camera',
         ':livedata-ext',
         ':andkit-di',
+        ':andkit-di-compiler',
         ':andkit-dagger',
         ':andkit-lifecycle',
         ':andkit-repository',
@@ -38,6 +39,7 @@ project(':livedata-ext').projectDir = file('examples/livedata-ext')
 
 //andkit-libs
 project(':andkit-di').projectDir = file('andkit-libs/andkit-di')
+project(':andkit-di-compiler').projectDir = file('andkit-libs/andkit-di-compiler')
 project(':andkit-dagger').projectDir = file('andkit-libs/andkit-dagger')
 project(':andkit-lifecycle').projectDir = file('andkit-libs/andkit-lifecycle')
 project(':andkit-repository').projectDir = file('andkit-libs/andkit-repository')
