@@ -54,6 +54,23 @@ android {
         correctErrorTypes true
     }
 
+    //自定生成 apk 文件名和生成路径
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+
+            // 名称+当前版本号
+            def fileName = "WanAndroid-${defaultConfig.versionName}"
+
+            // 如果有渠道，显示渠道名""
+            if (variant.flavorName != "") {
+                fileName = fileName + "_${variant.flavorName}"
+            }
+
+            // 最终生成文件名
+            output.outputFileName = fileName + ".apk"
+        }
+    }
+
 }
 
 dependencies {
