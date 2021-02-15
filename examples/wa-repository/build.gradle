@@ -29,6 +29,13 @@ android {
         targetCompatibility = '1.8'
     }
 
+    kapt{
+        arguments {
+            arg('ANDKIT_MODULE_NAME', project.name)
+            arg("AROUTER_MODULE_NAME", project.name)
+        }
+    }
+
 }
 
 dependencies {
@@ -69,8 +76,10 @@ dependencies {
     api project(':wa-common')
     api project(':andkit-repository')
     api project(':andkit-lifecycle')
+    kapt project(':andkit-di-compiler')
 
-    testImplementation 'junit:junit:4.13.1'
+
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

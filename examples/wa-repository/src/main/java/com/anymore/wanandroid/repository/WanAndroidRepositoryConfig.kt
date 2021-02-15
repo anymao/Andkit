@@ -2,6 +2,7 @@ package com.anymore.wanandroid.repository
 
 import android.content.Context
 import android.util.SparseArray
+import com.anymore.andkit.di.RepositoryConfiguration
 import com.anymore.andkit.repository.configs.OkHttpConfig
 import com.anymore.andkit.repository.configs.RepositoryConfig
 import com.anymore.wanandroid.repository.cookies.PersistentCookieJar
@@ -13,11 +14,13 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
+import javax.inject.Inject
 
 /**
  * Created by liuyuanmao on 2019/3/12.
  */
-class WanAndroidRepositoryConfig : RepositoryConfig {
+@RepositoryConfiguration
+class WanAndroidRepositoryConfig @Inject constructor() : RepositoryConfig {
 
     companion object {
         const val MAX_CACHE_SIZE = 30 * 1024 * 1024L

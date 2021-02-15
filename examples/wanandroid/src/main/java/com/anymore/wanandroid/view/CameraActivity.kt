@@ -3,8 +3,10 @@ package com.anymore.wanandroid.view
 import android.Manifest
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.launcher.ARouter
+import com.anymore.andkit.di.DataBundle
 import com.anymore.andkit.lifecycle.checkPermissions
 import com.anymore.andkit.lifecycle.coroutines.bg
 import com.anymore.andkit.lifecycle.coroutines.launch
@@ -23,12 +25,14 @@ import com.anymore.wanandroid.route.BROWSE_URL
 import com.anymore.wanandroid.route.URL_VALUE
 import com.blankj.utilcode.util.FileIOUtils
 import com.blankj.utilcode.util.FileUtils
+import kotlinx.android.parcel.Parcelize
 import timber.log.Timber
 import java.io.File
 
 /**
  * Created by anymore on 2020/11/15.
  */
+@DataBundle(clazz = CameraActivity.DataBundle::class)
 class CameraActivity : BindingActivity<ActicityCameraBinding>() {
 
     companion object {
@@ -163,4 +167,6 @@ class CameraActivity : BindingActivity<ActicityCameraBinding>() {
         val url = MutableLiveData<String>()
     }
 
+    @Parcelize
+    data class DataBundle(val id: Long? = null) : Parcelable
 }

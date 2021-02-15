@@ -9,6 +9,7 @@ import com.anymore.andkit.repository.configs.RepositoryConfig
 /**
  * Created by liuyuanmao on 2019/3/11.
  */
+@Deprecated("use @RepositoryConfiguration")
 internal object ManifestParser {
     const val REPOSITORY_CONFIG = "repositoryConfig"
 

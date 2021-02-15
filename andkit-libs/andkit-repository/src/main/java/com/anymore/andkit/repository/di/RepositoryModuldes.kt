@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.util.SparseArray
 import com.anymore.andkit.repository.IRepositoryManager
-import com.anymore.andkit.repository.ManifestParser
 import com.anymore.andkit.repository.RepositoryManager
 import com.anymore.andkit.repository.configs.*
 import com.anymore.cachekit.DataCache
@@ -51,12 +50,12 @@ class RepositoryModule {
         )
     }
 
-    @Singleton
-    @Provides
-    fun provideRepositoryConfig(context: Context): RepositoryConfig {
-        return ManifestParser.parseRepositoryConfig(context).firstOrNull()
-            ?: RepositoryConfig.DEFAULT
-    }
+//    @Singleton
+//    @Provides
+//    fun provideRepositoryConfig(context: Context): RepositoryConfig {
+//        return ManifestParser.parseRepositoryConfig(context).firstOrNull()
+//            ?: RepositoryConfig.DEFAULT
+//    }
 
     @Singleton
     @Provides

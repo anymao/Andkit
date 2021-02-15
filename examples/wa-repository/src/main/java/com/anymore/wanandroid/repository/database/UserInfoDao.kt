@@ -11,9 +11,9 @@ import io.reactivex.Maybe
  * Created by anymore on 2019/4/20.
  */
 
-@RoomDao
+@RoomDao(database = AppDatabase::class)
 @Dao
-abstract class UserInfoDao: BaseDao<UserInfo>() {
+abstract class UserInfoDao : BaseDao<UserInfo>() {
     @Query("SELECT * FROM UserInfo WHERE online LIMIT 1")
     abstract fun getCurrentUser(): Maybe<UserInfo>
 
@@ -24,5 +24,5 @@ abstract class UserInfoDao: BaseDao<UserInfo>() {
     abstract fun deleteAll()
 
     @Query("SELECT * FROM UserInfo")
-    abstract fun loadAllUser():Flowable<List<UserInfo>>
+    abstract fun loadAllUser(): Flowable<List<UserInfo>>
 }

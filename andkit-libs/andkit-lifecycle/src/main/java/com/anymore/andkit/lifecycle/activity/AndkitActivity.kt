@@ -36,7 +36,7 @@ abstract class AndkitActivity : AppCompatActivity(), ComponentLifecycle {
 
     override fun onDestroy() {
         if (useEventBus) {
-            EventBusManager.unregister(theme)
+            EventBusManager.unregister(this)
         }
         super.onDestroy()
     }

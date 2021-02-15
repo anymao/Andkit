@@ -2,7 +2,7 @@
 apply plugin: 'com.alibaba.arouter'
 
 buildscript {
-    ext.kotlin_version = '1.4.21'
+    ext.kotlin_version = '1.4.30'
     ext.anko_version = '0.10.8'
     ext.hilt_version = '2.31.2-alpha'
     repositories {
@@ -11,10 +11,10 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.2'
+        classpath 'com.android.tools.build:gradle:4.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.alibaba:arouter-register:1.0.2"
-        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         classpath 'com.billy.android:autoregister:1.4.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -24,6 +24,7 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://www.jitpack.io' }

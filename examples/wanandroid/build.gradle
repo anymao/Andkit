@@ -4,7 +4,7 @@ apply from: "../../public.gradle"
 apply from: "../../signings.gradle"
 apply plugin: 'dagger.hilt.android.plugin'
 
-def versionProperties =  new Properties()
+def versionProperties = new Properties()
 versionProperties.load(new FileReader("version.properties"))
 
 android {
@@ -26,6 +26,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [AROUTER_MODULE_NAME: project.name]
+                arguments += ["ANDKIT_MODULE_NAME": project.name]
                 arguments += ["dagger.gradle.incremental": "true"]
                 arguments += ["room.incremental": "true"]
 
@@ -103,7 +104,7 @@ dependencies {
     implementation project(':camera')
 
 
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

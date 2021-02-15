@@ -1,8 +1,8 @@
 package com.anymore.andkit.di
 
 /**
- * 用于注解Retrofit的接口，自动生成
+ * Created by anymore on 2021/2/15.
  */
 @Retention(AnnotationRetention.SOURCE)
 @Target(AnnotationTarget.CLASS)
-annotation class RetrofitService
+annotation class RepositoryConfiguration

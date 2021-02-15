@@ -11,25 +11,29 @@ class Logger(val messager: Messager) {
 
     fun v(message: String?) {
         if (message.isNotBlank()) {
-            messager.printMessage(Diagnostic.Kind.NOTE, "$tag=>[$message]")
+            println("$tag=>[$message]\n")
+            messager.printMessage(Diagnostic.Kind.NOTE, "$tag=>[$message]\n")
         }
     }
 
     fun w(message: String?) {
         if (message.isNotBlank()) {
-            messager.printMessage(Diagnostic.Kind.WARNING, "$tag=>[$message]")
+            System.err.println("$tag=>[$message]\n")
+            messager.printMessage(Diagnostic.Kind.WARNING, "$tag=>[$message]\n")
         }
     }
 
     fun e(message: String?) {
         if (message.isNotBlank()) {
-            messager.printMessage(Diagnostic.Kind.ERROR, "$tag=>[$message]")
+            System.err.println("$tag=>[$message]\n")
+            messager.printMessage(Diagnostic.Kind.ERROR, "$tag=>[$message]\n")
         }
     }
 
     fun e(throwable: Throwable?) {
         if (throwable != null) {
-            messager.printMessage(Diagnostic.Kind.ERROR, "$tag=>[ERROR:${throwable.message}]")
+            throwable.printStackTrace(System.err)
+            messager.printMessage(Diagnostic.Kind.ERROR, "$tag=>[ERROR:${throwable.message}]\n")
         }
     }
 
