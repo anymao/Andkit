@@ -43,10 +43,14 @@ fun ComponentLifecycle.launch(
         }
     }
     val key = block.javaClass.name
-    mCoroutineScope.putTask(key,job)
+    mCoroutineScope.putTask(key, job)
     return job
 }
 
-suspend fun<T> bg(block: suspend CoroutineScope.() -> T):T {
+suspend fun <T> bg(block: suspend CoroutineScope.() -> T): T {
     return withContext(Dispatchers.IO, block)
+}
+
+suspend fun <T> ComponentLifecycle.async(block: suspend CoroutineScope.() -> T): Deferred<T> {
+    return mCoroutineScope.async { block() }
 }

@@ -2,7 +2,6 @@ package com.anymore.andkit.lifecycle.activity
 
 import android.app.Activity
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.anymore.andkit.lifecycle.ComponentLifecycle
 import com.anymore.andkit.lifecycle.coroutines.AndkitLifecycleCoroutineScope
@@ -27,8 +26,8 @@ abstract class AndkitActivity : AppCompatActivity(), ComponentLifecycle {
 
     override val useEventBus = false
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         if (useEventBus) {
             EventBusManager.register(this)
         }

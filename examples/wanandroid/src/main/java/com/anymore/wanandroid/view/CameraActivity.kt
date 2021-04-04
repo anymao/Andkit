@@ -26,6 +26,8 @@ import com.anymore.wanandroid.route.URL_VALUE
 import com.blankj.utilcode.util.FileIOUtils
 import com.blankj.utilcode.util.FileUtils
 import kotlinx.android.parcel.Parcelize
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import timber.log.Timber
 import java.io.File
 
@@ -96,13 +98,18 @@ class CameraActivity : BindingActivity<ActicityCameraBinding>() {
         }
         mBinding.tvResult.click {
             val url = model.url.value
-            if (url?.isNotEmpty() == true){
+            if (url?.isNotEmpty() == true) {
                 ARouter.getInstance()
                     .build(BROWSE_URL)
-                    .withString(URL_VALUE,url)
+                    .withString(URL_VALUE, url)
                     .navigation(this)
             }
         }
+        GlobalScope.async { }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     private fun copyTensorFlowModel(success: () -> Unit) {
