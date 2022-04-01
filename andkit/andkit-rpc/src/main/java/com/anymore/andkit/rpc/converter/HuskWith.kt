@@ -4,6 +4,7 @@ import com.anymore.andkit.rpc.ResponseWrapper
 import kotlin.reflect.KClass
 
 /**
+ * 注意：HuskWith只接受Class<out ResponseWrapper>
  * Created by anymore on 2022/3/30.
  */
 @Target(AnnotationTarget.FUNCTION)

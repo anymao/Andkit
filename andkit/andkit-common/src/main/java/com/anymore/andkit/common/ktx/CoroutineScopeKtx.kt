@@ -53,3 +53,8 @@ internal fun CoroutineScope.launch(
         block = block
     )
 }
+
+suspend fun <T> bg(block: suspend CoroutineScope.() -> T) = withContext(Dispatchers.IO, block)
+
+suspend fun <T> ui(block: suspend CoroutineScope.() -> Unit) =
+    withContext(Dispatchers.Main.immediate, block)

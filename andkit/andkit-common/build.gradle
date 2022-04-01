@@ -7,6 +7,8 @@ dependencies {
     def fragment_version = "1.4.1"
 
     api("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
+    api("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
+
     api("androidx.core:core-ktx:$core_version")
     api("androidx.appcompat:appcompat:$appcompat_version")
     api("androidx.fragment:fragment-ktx:$fragment_version")

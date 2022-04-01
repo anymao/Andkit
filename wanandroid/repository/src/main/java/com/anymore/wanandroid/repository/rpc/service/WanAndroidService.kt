@@ -10,7 +10,7 @@ import retrofit2.http.GET
  */
 interface WanAndroidService {
 
-    @HuskWith(WanAndroidBaseResponse::class)
+    @HuskWith(WanAndroidBaseResponse::class,codes = [0L])
     @GET("/banner/json")
     suspend fun getHomeBanners(): List<HomeBannerVo>
 }

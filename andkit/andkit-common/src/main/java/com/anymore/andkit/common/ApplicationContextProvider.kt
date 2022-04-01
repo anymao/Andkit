@@ -13,7 +13,9 @@ import kotlin.properties.Delegates
 class ApplicationContextProvider : ContentProvider() {
 
     companion object {
+        @JvmStatic
         var application by Delegates.notNull<Context>()
+            private set
     }
 
     override fun onCreate(): Boolean {

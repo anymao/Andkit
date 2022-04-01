@@ -12,18 +12,21 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.create
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 /**
  * Created by anymore on 2022/3/31.
  */
 @Module
-//@InstallIn(SingletonComponent::class)
+@InstallIn(SingletonComponent::class)
 object Repository {
 
 
+    @Singleton
     @Provides
     fun provideGson() = Gson()
 
+    @Singleton
     @Provides
     fun provideOkHttpClient() = kotlin.run {
         OkHttpClient.Builder()
@@ -34,6 +37,7 @@ object Repository {
             .build()
     }
 
+    @Singleton
     @Provides
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient) = kotlin.run {
         Retrofit.Builder()
@@ -43,6 +47,7 @@ object Repository {
             .build()
     }
 
+    @Singleton
     @Provides
     fun provideWanAndroidService(retrofit: Retrofit):WanAndroidService = retrofit.create()
 
