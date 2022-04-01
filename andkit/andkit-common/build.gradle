@@ -1,0 +1,18 @@
+apply from: '../../common.gradle'
+
+dependencies {
+
+    def core_version = "1.7.0"
+    def appcompat_version = "1.4.1"
+    def fragment_version = "1.4.1"
+
+    api("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
+    api("androidx.core:core-ktx:$core_version")
+    api("androidx.appcompat:appcompat:$appcompat_version")
+    api("androidx.fragment:fragment-ktx:$fragment_version")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1")
+    api("com.google.android.material:material:1.2.1")
+    api("com.jakewharton.timber:timber:4.7.1")
+    api("com.google.auto.service:auto-service:1.0")
+
+}

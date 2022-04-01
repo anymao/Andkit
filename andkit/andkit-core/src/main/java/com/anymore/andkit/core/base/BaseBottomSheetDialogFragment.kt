@@ -1,0 +1,44 @@
+package com.anymore.andkit.core.base
+
+import android.os.Bundle
+import android.view.View
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import org.greenrobot.eventbus.EventBus
+
+/**
+ * Created by anymore on 2022/3/29.
+ */
+abstract class BaseBottomSheetDialogFragment : BottomSheetDialogFragment(), ComponentContext {
+    override val ccContext get() = context
+    override val ccActivity get() = activity
+    override val ccCoroutineScope get() = lifecycleScope
+    override val ccFragmentManager get() = parentFragmentManager
+    override val ccDestroyed get() = isDetached
+
+    open val useEventBus = false
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (useEventBus){
+            EventBus.getDefault().register(this)
+        }
+        initView()
+        getData()
+    }
+
+    open fun initView() {
+
+    }
+
+    open fun getData() {
+
+    }
+
+    override fun onDestroyView() {
+        if (useEventBus){
+            EventBus.getDefault().unregister(this)
+        }
+        super.onDestroyView()
+    }
+}

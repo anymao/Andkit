@@ -1,0 +1,11 @@
+apply from: '../../common.gradle'
+
+android {
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    api(project(":andkit-core"))
+}
