@@ -6,7 +6,7 @@ import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.anymore.andkit.core.ApplicationDelegate
 import com.anymore.andkit.core.BuildConfig
-import com.google.auto.service.AutoService
+import com.anymore.auto.AutoService
 import timber.log.Timber
 
 /**
@@ -26,6 +26,5 @@ class WanAndroidApplicationDelegate : ApplicationDelegate {
             ARouter.openLog()
             ARouter.printStackTrace()
         }
-        Timber.d("success")
     }
 }

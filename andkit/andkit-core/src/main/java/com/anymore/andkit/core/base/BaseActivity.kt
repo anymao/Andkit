@@ -3,6 +3,7 @@ package com.anymore.andkit.core.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.anymore.andkit.core.loading.DialogLoadingDelegateImpl
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -15,6 +16,7 @@ abstract class BaseActivity : AppCompatActivity(), ComponentContext {
     override val ccCoroutineScope get() = lifecycleScope
     override val ccFragmentManager get() = supportFragmentManager
     override val ccDestroyed get() = isDestroyed
+    override val delegate by lazy { DialogLoadingDelegateImpl(this) }
 
     open val useEventBus = false
 

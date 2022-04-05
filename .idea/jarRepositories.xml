@@ -31,5 +31,10 @@
       <option name="name" value="maven2" />
       <option name="url" value="https://oss.sonatype.org/content/repositories/public" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2" />
+      <option name="name" value="maven2" />
+      <option name="url" value="https://packages.aliyun.com/maven/repository/2202395-release-jr0puW/" />
+    </remote-repository>
   </component>
 </project>

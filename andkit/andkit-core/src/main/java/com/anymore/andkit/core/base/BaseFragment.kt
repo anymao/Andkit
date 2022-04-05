@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.anymore.andkit.core.loading.DialogLoadingDelegateImpl
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -16,6 +17,7 @@ abstract class BaseFragment : Fragment(), ComponentContext {
     override val ccCoroutineScope get() = lifecycleScope
     override val ccFragmentManager get() = parentFragmentManager
     override val ccDestroyed get() = isDetached
+    override val delegate by lazy { DialogLoadingDelegateImpl(requireContext()) }
 
     open val useEventBus = false
 

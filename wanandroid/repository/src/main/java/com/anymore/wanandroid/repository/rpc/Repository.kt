@@ -51,6 +51,5 @@ object Repository {
     @Provides
     fun provideWanAndroidService(retrofit: Retrofit):WanAndroidService = retrofit.create()
 
-    fun test()= provideRetrofit(provideGson(), provideOkHttpClient()).create<WanAndroidService>()
 
 }

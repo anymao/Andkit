@@ -3,6 +3,7 @@ package com.anymore.andkit.core.base
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.anymore.andkit.core.loading.DialogLoadingDelegateImpl
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.greenrobot.eventbus.EventBus
 
@@ -15,6 +16,7 @@ abstract class BaseBottomSheetDialogFragment : BottomSheetDialogFragment(), Comp
     override val ccCoroutineScope get() = lifecycleScope
     override val ccFragmentManager get() = parentFragmentManager
     override val ccDestroyed get() = isDetached
+    override val delegate by lazy { DialogLoadingDelegateImpl(requireContext()) }
 
     open val useEventBus = false
 

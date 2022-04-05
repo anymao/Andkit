@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -47,6 +48,7 @@ dependencies {
     api("com.squareup.retrofit2:converter-gson:2.9.0")
     api("com.squareup.okhttp3:okhttp:4.9.3")
     api("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    kapt "com.google.dagger:hilt-compiler:2.38.1"
     implementation "com.google.dagger:hilt-android:2.38.1"
     api project(path: ':andkit-rpc')
 }

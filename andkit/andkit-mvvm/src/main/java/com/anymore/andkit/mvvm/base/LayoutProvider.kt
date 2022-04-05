@@ -12,5 +12,5 @@ interface LayoutProvider {
     fun getLayoutRes(): Int
 
     @StringRes
-    fun getTitleRes(): Int
+    fun getTitleRes(): Int = -1
 }

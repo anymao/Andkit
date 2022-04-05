@@ -3,7 +3,7 @@ package com.anymore.andkit.core
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
-import java.util.*
+import com.anymore.auto.ServiceLoader
 
 /**
  * Created by anymore on 2022/3/29.

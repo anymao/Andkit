@@ -1,5 +1,6 @@
 package com.anymore.andkit.rpc.converter
 
+import androidx.annotation.IntRange
 import com.anymore.andkit.rpc.ErrorResponseException
 import com.anymore.andkit.rpc.ResponseWrapper
 import com.google.gson.Gson
