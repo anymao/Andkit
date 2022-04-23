@@ -1,0 +1,7 @@
+apply from: '../common.gradle'
+
+dependencies {
+    api(project(path: ':wanandroid-frame'))
+//    implementation project(':flutter_andkit_module')
+    implementation project(':flutter')
+}

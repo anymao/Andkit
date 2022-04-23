@@ -10,6 +10,7 @@
         <option name="gradleHome" value="D:/Program Files/gradle/gradle-6.0.1" />
         <option name="modules">
           <set>
+            <option value="D:/Android/flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher_android-6.0.15/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/andkit/andkit-common" />
             <option value="$PROJECT_DIR$/andkit/andkit-core" />
@@ -17,9 +18,15 @@
             <option value="$PROJECT_DIR$/andkit/andkit-rpc" />
             <option value="$PROJECT_DIR$/andkit/image-loader" />
             <option value="$PROJECT_DIR$/wanandroid/app" />
+            <option value="$PROJECT_DIR$/wanandroid/articles" />
+            <option value="$PROJECT_DIR$/wanandroid/flutter" />
+            <option value="$PROJECT_DIR$/wanandroid/frame" />
             <option value="$PROJECT_DIR$/wanandroid/login" />
             <option value="$PROJECT_DIR$/wanandroid/repository" />
+            <option value="$PROJECT_DIR$/wanandroid/web" />
             <option value="$PROJECT_DIR$/wanandroid/widget" />
+            <option value="$PROJECT_DIR$/../flutter/flutter_andkit_module" />
+            <option value="$PROJECT_DIR$/../flutter/flutter_andkit_module/.android/Flutter" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="top"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@id/cw_iv_indicator"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_marginBottom="12.5dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/widget_content_wrapper_failed"
+        app:lottie_repeatMode="restart" />
+
+    <TextView
+        android:id="@id/cw_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="加载失败"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@id/cw_tv_sub_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@id/cw_tv_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:drawableStart="@drawable/widget_icon_retry"
+        android:drawablePadding="8dp"
+        android:padding="8dp"
+        android:text="点击重试"
+        android:textColor="#cdcdcd"
+        android:textSize="18sp"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+
+</LinearLayout>

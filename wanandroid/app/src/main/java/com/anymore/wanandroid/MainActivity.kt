@@ -1,17 +1,21 @@
 package com.anymore.wanandroid
 
-import android.os.Bundle
-import com.anymore.andkit.common.ktx.bg
-import com.anymore.andkit.core.ktx.launchWithLoading
+import androidx.fragment.app.Fragment
 import com.anymore.andkit.mvvm.base.BaseDataBindingActivity
 import com.anymore.wanandroid.databinding.ActivityMainBinding
+import com.anymore.wanandroid.frame.ktx.routeFragment
+import com.anymore.wanandroid.frame.router.WanAndroidRouter.articlesFragment
+import com.anymore.wanandroid.frame.router.WanAndroidRouter.main
+import com.anymore.wanandroid.frame.router.WanAndroidRouter.naHost
+import com.anymore.wanandroid.frame.router.WanAndroidRouter.naScheme
 import com.anymore.wanandroid.repository.rpc.service.WanAndroidService
+import com.anymore.wanandroid.widget.adapter.FragmentAdapter
+import com.didi.drouter.annotation.Router
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
+@Router(scheme = naScheme, host = naHost, path = main)
 class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
 
     @Inject
@@ -19,18 +23,26 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
 
     override fun getLayoutRes() = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        launchWithLoading {
-            delay(5000L)
-            val vo = bg { service.getHomeBanners() }
-            Timber.d(vo.toString())
+
+    override fun initView() {
+        super.initView()
+
+        val adapter = FragmentAdapter(
+            mutableListOf(
+                provideFragmentCreator(),
+                provideFragmentCreator(),
+                provideFragmentCreator()
+            ),
+            supportFragmentManager,
+            lifecycle
+        )
+        binding.viewPager.adapter = adapter
+    }
+
+    private fun provideFragmentCreator(): () -> Fragment {
+        return {
+            routeFragment(articlesFragment)
         }
     }
 
-    override fun onDestroy() {
-        Timber.d("onDestroy")
-        super.onDestroy()
-    }
 }

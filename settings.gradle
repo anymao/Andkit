@@ -1,6 +1,18 @@
-include ':wanandroid-repository'
-include ':wanandroid-login'
+def flutterModuleDir = new File(settingsDir.parent+File.separator+"flutter","flutter_andkit_module")
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        flutterModuleDir,
+        '.android/include_flutter.groovy'
+))
+
+include ':flutter_andkit_module'
 include ':wanandroid-widget'
+include ':wanandroid-repository'
+include ':wanandroid-frame'
+include ':wanandroid-web'
+include ':wanandroid-flutter'
+include ':wanandroid-login'
+include ':wanandroid-articles'
 include ':wanandroid-app'
 
 include ':andkit-mvvm'
@@ -17,8 +29,12 @@ project(':andkit-rpc').projectDir = file('andkit/andkit-rpc')
 project(':image-loader').projectDir = file('andkit/image-loader')
 project(':andkit-mvvm').projectDir = file('andkit/andkit-mvvm')
 
-project(':wanandroid-repository').projectDir = file('wanandroid/repository')
-project(':wanandroid-login').projectDir = file('wanandroid/login')
 project(':wanandroid-widget').projectDir = file('wanandroid/widget')
+project(':wanandroid-repository').projectDir = file('wanandroid/repository')
+project(':wanandroid-frame').projectDir = file('wanandroid/frame')
+project(':wanandroid-web').projectDir = file('wanandroid/web')
+project(':wanandroid-flutter').projectDir = file('wanandroid/flutter')
+project(':wanandroid-login').projectDir = file('wanandroid/login')
+project(':wanandroid-articles').projectDir = file('wanandroid/articles')
 project(':wanandroid-app').projectDir = file('wanandroid/app')
-
+project(':flutter_andkit_module').projectDir = flutterModuleDir

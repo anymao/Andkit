@@ -8,6 +8,9 @@ import androidx.annotation.CallSuper
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.anymore.andkit.core.base.BaseDialogFragment
+import com.anymore.andkit.core.ktx.toast
+import com.anymore.andkit.core.ktx.toastFailed
+import com.anymore.andkit.core.ktx.toastSuccess
 
 /**
  * Created by anymore on 2022/3/29.
@@ -30,17 +33,17 @@ abstract class BaseDataBindingDialogFragment<VB : ViewDataBinding> : BaseDialogF
 
     override fun register(viewModel: BaseViewModel) {
         viewModel.toast.observe(this) {
-
+            toast(it)
         }
         viewModel.successToast.observe(this) {
-
+            toastSuccess(it)
         }
         viewModel.failedToast.observe(this) {
-
+            toastFailed(it)
         }
         viewModel.loading.observe(this) {
             if (it) {
-                showLoading(null)
+                showLoading()
             } else {
                 hideLoading()
             }

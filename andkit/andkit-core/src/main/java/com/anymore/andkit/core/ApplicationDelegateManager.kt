@@ -10,7 +10,7 @@ import com.anymore.auto.ServiceLoader
  */
 internal object ApplicationDelegateManager : ApplicationDelegate {
 
-    private val delegates = ServiceLoader.load(ApplicationDelegate::class.java)
+    private val delegates = ServiceLoader.load<ApplicationDelegate>()
 
     override fun attachBaseContext(application: Application, base: Context?) {
         delegates.forEach {

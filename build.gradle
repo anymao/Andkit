@@ -2,14 +2,12 @@
 buildscript {
     ext.kotlin_version = "1.5.31"
     ext.booster_version = '4.5.3'
-    ext.aliyun_username = System.getenv("ALIYUN_USERNAME")
-    ext.aliyun_password = System.getenv("ALIYUN_PASSWORD")
 
     repositories {
         maven {
             credentials {
-                username "$aliyun_username"
-                password "$aliyun_password"
+                username "$ALIYUN_USERNAME"
+                password "$ALIYUN_PASSWORD"
             }
             url 'https://packages.aliyun.com/maven/repository/2202395-release-jr0puW/'
         }
@@ -22,8 +20,8 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.2.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
-        classpath "com.alibaba:arouter-register:1.0.2"
-        classpath("com.anymore:auto-service-register:0.0.1")
+        classpath "io.github.didi:drouter-plugin-proxy:1.0.2"
+        classpath("com.anymore:auto-service-register:0.0.3")
 //        classpath "com.didiglobal.booster:booster-gradle-plugin:$booster_version" // ①
 //        classpath("io.johnsonlee.spi:booster-transform-service-loader:1.0.0")
 
@@ -36,14 +34,15 @@ allprojects {
     repositories {
         maven {
             credentials {
-                username "$aliyun_username"
-                password "$aliyun_password"
+                username "$ALIYUN_USERNAME"
+                password "$ALIYUN_PASSWORD"
             }
             url 'https://packages.aliyun.com/maven/repository/2202395-release-jr0puW/'
         }
         google()
         mavenCentral()
         maven { url 'https://oss.sonatype.org/content/repositories/public' }
+        maven { url 'https://jitpack.io' }
 
     }
 }

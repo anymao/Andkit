@@ -21,10 +21,14 @@ import kotlin.coroutines.EmptyCoroutineContext
  */
 
 object ComponentContextCoroutineExceptionHolder {
-    val defaultOnBizFailed: suspend CoroutineScope.(ErrorResponseException) -> Boolean = { false }
+    val defaultOnBizFailed: suspend CoroutineScope.(ErrorResponseException) -> Boolean = {
+        toastFailed(it.message)
+        true
+    }
     val defaultOnFailed: suspend CoroutineScope.(Throwable) -> Boolean = {
         Timber.e(it, "defaultOnFailed")
-        false
+        toastFailed(it.message)
+        true
     }
 }
 
@@ -80,7 +84,7 @@ fun ComponentContext.launchWithLoading(
     block: suspend CoroutineScope.() -> Unit
 ): Job {
     return launch(
-        doBefore = { showLoading(null) },
+        doBefore = { showLoading() },
         doFinal = { hideLoading() },
         block = block
     )

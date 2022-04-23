@@ -10,7 +10,7 @@ import kotlin.coroutines.EmptyCoroutineContext
 /**
  * Created by anymore on 2022/3/29.
  */
-internal object CoroutineExceptionHandler {
+object CoroutineExceptionHandler {
     var globalCoroutineExceptionHandler: CoroutineExceptionHandler =
         CoroutineExceptionHandler { _, _ -> }
     val defaultDoFailed: CoroutineScope.(Throwable) -> Boolean = { false }

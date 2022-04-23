@@ -1,6 +1,7 @@
 package com.anymore.wanandroid.repository.rpc
 
 import com.anymore.andkit.rpc.converter.HuskResponseConverter
+import com.anymore.wanandroid.repository.rpc.interceptor.WanAndroidInterceptor
 import com.anymore.wanandroid.repository.rpc.service.WanAndroidService
 import com.google.gson.Gson
 import dagger.Module
@@ -21,16 +22,18 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object Repository {
 
-
     @Singleton
     @Provides
     fun provideGson() = Gson()
 
     @Singleton
     @Provides
-    fun provideOkHttpClient() = kotlin.run {
+    fun provideOkHttpClient(wanAndroidInterceptor: WanAndroidInterceptor) = kotlin.run {
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor())
+            .addInterceptor(wanAndroidInterceptor)
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                setLevel(HttpLoggingInterceptor.Level.BODY)
+            })
             .connectTimeout(30L, TimeUnit.SECONDS)
             .readTimeout(30L, TimeUnit.SECONDS)
             .writeTimeout(60L, TimeUnit.SECONDS)
@@ -49,7 +52,7 @@ object Repository {
 
     @Singleton
     @Provides
-    fun provideWanAndroidService(retrofit: Retrofit):WanAndroidService = retrofit.create()
+    fun provideWanAndroidService(retrofit: Retrofit): WanAndroidService = retrofit.create()
 
 
 }

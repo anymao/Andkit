@@ -1,9 +1,12 @@
 package com.anymore.wanandroid.repository.rpc.response
 
+import android.os.Parcelable
 import androidx.annotation.Keep
+import kotlinx.parcelize.Parcelize
 import java.io.Serializable
 
 @Keep
+@Parcelize
 data class HomeBannerVo(
     val desc: String? = null,
     val id: Int? = null,
@@ -13,4 +16,4 @@ data class HomeBannerVo(
     val title: String? = null,
     val type: Int? = null,
     val url: String? = null
-) : Serializable
+) : Serializable, Parcelable

@@ -1,12 +1,11 @@
 package com.anymore.wanandroid.repository.rpc.service
 
 import com.anymore.andkit.rpc.converter.HuskWith
-import com.anymore.wanandroid.repository.rpc.request.LoginBody
-import com.anymore.wanandroid.repository.rpc.request.RegisterBody
 import com.anymore.wanandroid.repository.rpc.response.HomeBannerVo
 import com.anymore.wanandroid.repository.rpc.response.LoginVo
 import com.anymore.wanandroid.repository.rpc.response.WanAndroidBaseResponse
-import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -17,11 +16,20 @@ interface WanAndroidService {
 
     @HuskWith(WanAndroidBaseResponse::class)
     @POST("/user/register")
-    suspend fun register(@Body body: RegisterBody): LoginVo?
+    @FormUrlEncoded
+    suspend fun register(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("repassword") repassword: String
+    ): LoginVo?
 
     @HuskWith(WanAndroidBaseResponse::class)
     @POST("/user/login")
-    suspend fun login(@Body body: LoginBody): LoginVo?
+    @FormUrlEncoded
+    suspend fun login(
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): LoginVo?
 
 
     @HuskWith(WanAndroidBaseResponse::class)

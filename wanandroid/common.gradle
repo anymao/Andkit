@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    kapt {
+        useBuildCache = true
+        arguments {
+            arg('eventBusIndex', "com.anymore.wanandroid.${project.name.capitalize()}EventBusIndex")
+            arg('DI_MODULE_NAME', project.name)
+            arg("AROUTER_MODULE_NAME", project.name)
+            arg('verbose', "false")
+        }
+        javacOptions {
+            option("-Xmaxerrs", 1000)
+        }
+    }
+}
+
+dependencies {
+    kapt("com.google.dagger:hilt-compiler:2.38.1")
+    api("com.google.dagger:hilt-android:2.38.1")
+}

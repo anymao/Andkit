@@ -7,7 +7,7 @@ interface Loadable {
 
     val delegate: LoadingDelegate
 
-    fun showLoading(text: String?) {
+    fun showLoading(text: String?="正在加载...") {
         delegate.showLoading(text)
     }
 

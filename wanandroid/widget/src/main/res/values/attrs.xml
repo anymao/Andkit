@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoadingButton">
+        <attr name="android:text" format="string" />
+        <attr name="lb_retry_text" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ContentWrapper">
+        <attr name="cwSpaceLayout" format="reference" />
+        <attr name="cwLoadingLayout" format="reference" />
+        <attr name="cwEmptyLayout" format="reference" />
+        <attr name="cwFailedLayout" format="reference" />
+        <attr name="failedIndicatorRes" format="reference" />
+        <attr name="failedTitle" format="string" />
+        <attr name="failedSubTitle" format="string" />
+        <attr name="failedRetryText" format="string" />
+        <attr name="showFailedRetry" format="string" />
+        <attr name="emptyIndicatorRes" format="reference" />
+        <attr name="emptyTitle" format="string" />
+        <attr name="emptySubTitle" format="string" />
+        <attr name="emptyRetryText" format="string" />
+        <attr name="showEmptyRetry" format="string" />
+        <attr name="loadingIndicatorRes" format="reference" />
+        <attr name="loadingTitle" format="string" />
+        <attr name="loadingSubTitle" format="string" />
+        <attr name="state" format="enum">
+            <enum name="space" value="0" />
+            <enum name="loading" value="1" />
+            <enum name="empty" value="2" />
+            <enum name="failed" value="3" />
+            <enum name="success" value="4" />
+        </attr>
+    </declare-styleable>
+</resources>

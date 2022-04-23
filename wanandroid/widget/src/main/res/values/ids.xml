@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="cw_tv_title" type="id" />
+    <item name="cw_iv_indicator" type="id" />
+    <item name="cw_tv_retry" type="id" />
+    <item name="cw_tv_sub_title" type="id" />
+</resources>

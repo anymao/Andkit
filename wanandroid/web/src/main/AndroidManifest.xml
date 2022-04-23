@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anymore.wanandroid.web">
+
+    <application>
+        <activity
+            android:name=".view.WebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.SchemaDispatchActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <data
+                    android:host="m.wan-android.com"
+                    android:scheme="app" />
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

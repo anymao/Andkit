@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'auto-service'
+    id 'com.didi.drouter'
 }
 
 android {
@@ -12,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.anymore.wanandroid"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 31
         multiDexEnabled true
         versionCode 1
@@ -49,15 +50,11 @@ android {
 }
 
 dependencies {
-    api(project(":andkit-mvvm"))
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    implementation project(path: ':wanandroid-repository')
+    implementation project(path: ':wanandroid-frame')
+    implementation project(path: ':wanandroid-login')
+    implementation project(path: ':wanandroid-articles')
+    implementation project(path: ':wanandroid-web')
+    implementation project(path: ':wanandroid-flutter')
+    api("com.google.dagger:hilt-android:2.38.1")
     kapt "com.google.dagger:hilt-compiler:2.38.1"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-
-    implementation 'com.alibaba:arouter-api:1.5.2'
-//    kapt 'com.alibaba:arouter-compiler:1.5.2'
-
-    kapt 'com.google.auto.service:auto-service:1.0'
-
 }

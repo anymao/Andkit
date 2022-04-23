@@ -1,0 +1,10 @@
+apply from: '../common.gradle'
+
+dependencies {
+    api(project(":andkit-mvvm"))
+    api(project(path: ':wanandroid-repository'))
+    api(project(path: ':wanandroid-widget'))
+    api( "com.google.dagger:hilt-android:2.38.1")
+    kapt("com.google.dagger:hilt-compiler:2.38.1")
+    api "io.github.didi:drouter-api:2.3.0"
+}
