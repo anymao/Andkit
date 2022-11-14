@@ -1,34 +1,36 @@
 package com.anymore.andkit.common.ktx
 
-import timber.log.Timber
+import com.anymore.andkit.common.ktx.ExceptionTrackerHolder.tracker
 
 /**
- * Created by anymore on 2022/3/29.
+ * 统一追踪被捕捉的异常
+ * 例如我们在开发环境下打印出来
+ * 在线上环境进行上报
  */
-var exceptionTracker: (Throwable, String?) -> Unit = { e, m -> Timber.e(e, m.orEmpty()) }
-
-inline fun <T> tryOr(default: T, block: () -> T): T {
-    return try {
-        block()
-    } catch (e: Throwable) {
-        exceptionTracker(e, "[tryOr] catch and return $default")
-        default
-    }
+object ExceptionTrackerHolder {
+    @JvmStatic
+    @Volatile
+    var tracker: ((Throwable?) -> Unit)? = null
 }
 
-inline fun <T> tryOrNull(block: () -> T?): T? {
-    return try {
-        block()
-    } catch (e: Throwable) {
-        exceptionTracker(e, "[tryOrNull] catch and return null")
-        null
-    }
+inline fun <T> tryOr(default: T, block: () -> T) = try {
+    block()
+} catch (e: Throwable) {
+    tracker?.invoke(e)
+    default
+}
+
+inline fun <T> tryOrNull(block: () -> T?): T? = try {
+    block()
+} catch (e: Throwable) {
+    tracker?.invoke(e)
+    null
 }
 
 inline fun tryOrNothing(block: () -> Unit) {
     try {
         block()
     } catch (e: Throwable) {
-        exceptionTracker(e, "[tryOrNothing] catch")
+        tracker?.invoke(e)
     }
 }

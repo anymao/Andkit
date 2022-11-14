@@ -6,22 +6,24 @@ import kotlin.reflect.cast
 /**
  * Created by anymore on 2022/4/1.
  */
-fun <A : Annotation> Any.annotationsOf(clazz: KClass<A>): List<A> =
-    this::class.annotations.filter { clazz.isInstance(it) }.map { clazz.cast(it) }
+fun <T : Annotation> Any.annotationOrNull(clazz: KClass<T>): T? {
+    return this::class.annotations.firstOrNull { clazz.isInstance(it) }?.let { clazz.cast(it) }
+}
 
-inline fun <reified A : Annotation> Any.annotationsOf(): List<A> = annotationsOf(A::class)
+inline fun <reified T : Annotation> Any.annotationOrNull(): T? = annotationOrNull(T::class)
 
-fun <A : Annotation> Any.annotationOf(clazz: KClass<A>): A? =
-    this::class.annotations.firstOrNull { clazz.isInstance(it) }?.let { clazz.cast(it) }
+fun <T : Annotation> Any.requireAnnotation(
+    clazz: KClass<T>,
+    lazyMessage: () -> Any = { "class ${this::class.qualifiedName} must annotation by ${clazz.qualifiedName}" }
+) = requireNotNull(annotationOrNull(clazz), lazyMessage)
 
-inline fun <reified A : Annotation> Any.annotationOf() = annotationOf(A::class)
+inline fun <reified T : Annotation> Any.requireAnnotation(
+    noinline lazyMessage: () -> Any = { "class ${this::class.qualifiedName} must annotation by ${T::class.qualifiedName}" }
+): T = requireAnnotation(T::class, lazyMessage)
 
-fun <A : Annotation> Any.requireAnnotation(
-    clazz: KClass<A>,
-    lazyMessage: (() -> Any) = { "the class ${this.className} must annotation with ${clazz.qualifiedName}" }
-): A =
-    requireNotNull(annotationOf(clazz), lazyMessage)
 
-inline fun <reified A : Annotation> Any.requireAnnotation(
-    noinline lazyMessage: (() -> Any) = { "the class ${this.className} must annotation with ${A::class.qualifiedName}" }
-): A = requireAnnotation(A::class, lazyMessage)
+fun <T : Annotation> Any.annotations(clazz: KClass<T>): List<T> {
+    return this::class.annotations.filter { clazz.isInstance(it) }.map { clazz.cast(it) }
+}
+
+inline fun <reified T : Annotation> Any.annotations() = annotations(T::class)

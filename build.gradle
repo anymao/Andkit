@@ -2,6 +2,9 @@
 buildscript {
     ext.kotlin_version = "1.5.31"
     ext.booster_version = '4.5.3'
+//    ext.GROUP_ID = "com.anymore.andkit"
+//    ext.VERSION = "0.0.1-SNAPSHOT"
+
 
     repositories {
         maven {
@@ -21,7 +24,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
         classpath "io.github.didi:drouter-plugin-proxy:1.0.2"
-        classpath("com.anymore:auto-service-register:0.0.3")
+        classpath("com.anymore:auto-service-register:0.0.6")
 //        classpath "com.didiglobal.booster:booster-gradle-plugin:$booster_version" // ①
 //        classpath("io.johnsonlee.spi:booster-transform-service-loader:1.0.0")
 

@@ -6,9 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.anymore.andkit.common.livedata.NullSafetyLiveData
 
 /**
- * Created by anymore on 2022/4/7.
+ * LiveData相关扩展，类似RxJava
  */
-
 /**
  * 同setValue但是会忽略和已有值一样的数据
  * setDiffValue: 1 1 2 2 3 4
@@ -94,6 +93,26 @@ fun <T1, T2, R> combine(
 ): NullSafetyLiveData<R> {
     var latestData1: T1? = l1.value
     var latestData2: T2? = l2.value
+    val result = NullSafetyLiveData(combiner(latestData1, latestData2))
+    l1.observeForever { data1: T1 ->
+        latestData1 = data1
+        result.value = combiner(data1, latestData2)
+    }
+    l2.observeForever { data2: T2 ->
+        latestData2 = data2
+        result.value = combiner(latestData1, data2)
+    }
+    return result
+}
+
+@MainThread
+fun <T1, T2, R> combine(
+    l1: NullSafetyLiveData<T1>,
+    l2: NullSafetyLiveData<T2>,
+    combiner: (T1, T2) -> R
+): NullSafetyLiveData<R> {
+    var latestData1 = l1.value
+    var latestData2 = l2.value
     val result = NullSafetyLiveData(combiner(latestData1, latestData2))
     l1.observeForever { data1: T1 ->
         latestData1 = data1
@@ -234,3 +253,10 @@ fun <T> merge(
     }
     return result
 }
+
+
+@MainThread
+fun MutableLiveData<Boolean>.toggle() {
+    value = value?.not()
+}
+

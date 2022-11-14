@@ -8,7 +8,6 @@ import com.anymore.andkit.core.ktx.toastFailed
 import com.anymore.andkit.mvvm.base.BaseDataBindingActivity
 import com.anymore.andkit.mvvm.base.BaseViewModel
 import com.anymore.andkit.mvvm.ktx.andkitViewModels
-import com.anymore.wanandroid.frame.ktx.go
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.login
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.main
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.naHost
@@ -17,6 +16,7 @@ import com.anymore.wanandroid.login.R
 import com.anymore.wanandroid.login.databinding.LoginActivityLoginBinding
 import com.anymore.wanandroid.repository.rpc.service.WanAndroidService
 import com.didi.drouter.annotation.Router
+import com.didi.drouter.api.DRouter
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -53,7 +53,7 @@ class LoginActivity : BaseDataBindingActivity<LoginActivityLoginBinding>() {
         launchWithLoading {
             val vo = vm.login(username, password)
             if (vo != null) {
-                go(main)
+                DRouter.build(main).start(this@LoginActivity)
                 finish()
             } else {
                 toastFailed("登录失败")

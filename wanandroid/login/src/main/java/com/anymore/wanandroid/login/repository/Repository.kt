@@ -1,8 +1,8 @@
 package com.anymore.wanandroid.login.repository
 
 import android.content.Context
-import com.anymore.wanandroid.frame.ktx.route
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.login
+import com.didi.drouter.api.DRouter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +21,7 @@ object Repository {
     @Provides
     fun provideWanAndroidOnLogOutAction(@ApplicationContext context: Context): () -> Unit {
         return {
-            route(login).start(context)
+            DRouter.build(login).start(context)
         }
     }
 }

@@ -7,7 +7,6 @@ import com.anymore.andkit.core.ktx.launch
 import com.anymore.andkit.mvvm.base.BaseDataBindingActivity
 import com.anymore.andkit.mvvm.base.BaseViewModel
 import com.anymore.andkit.mvvm.ktx.andkitViewModels
-import com.anymore.wanandroid.frame.ktx.startFlutter
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.naHost
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.naScheme
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.splash
@@ -34,7 +33,7 @@ class SplashActivity : BaseDataBindingActivity<LoginActivitySplashBinding>() {
         super.initView()
         vm.start.observe(this) {
             if (it) {
-                startFlutter(path = "/login")
+//                startFlutter(path = "/login")
 
 //                go("https://www.baidu.com")
             }

@@ -1,0 +1,107 @@
+import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
+import org.gradle.api.internal.artifacts.dependencies.DefaultProjectDependency
+
+apply plugin: 'maven-publish'
+
+Properties gradleProperties = new Properties().with(true){
+    it.load(new FileReader(file("../../gradle.properties")))
+}
+
+gradle.ext.GROUP_ID=gradleProperties["GROUP_ID"]
+gradle.ext.VERSION=gradleProperties["VERSION"]
+gradle.ext.maven_username = System.getenv("ALIYUN_USERNAME")
+gradle.ext.maven_password = System.getenv("ALIYUN_PASSWORD")
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.getSrcDirs() // 源码路径
+}
+
+uploadArchives.dependsOn publish
+
+publish.doFirst {
+    System.err.println("-------> start upload：$project.name:${gradle.ext.VERSION}")
+}
+
+publish.doLast {
+    System.err.println("-------> finish upload：$project.name:${gradle.ext.VERSION}")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication){
+                groupId gradle.ext.GROUP_ID
+                artifactId ARTIFACT_ID
+                version gradle.ext.VERSION
+                artifact bundleReleaseAar
+                artifact androidSourcesJar
+
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    configurations.api.dependencies.each {
+                        configApi(it, dependenciesNode)
+                    }
+                    configurations.implementation.dependencies.each {
+                        configImplementation(it, dependenciesNode)
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                url gradle.ext.VERSION.endsWith('SNAPSHOT') ? "https://packages.aliyun.com/maven/repository/2202395-snapshot-3OoSzj/" : "https://packages.aliyun.com/maven/repository/2202395-release-jr0puW/"
+                credentials {
+                    username = gradle.ext.maven_username
+                    password = gradle.ext.maven_password
+                }
+            }
+//            maven {
+//                url uri("E:\\StudioProjects\\Andkit-2022\\repo")
+//            }
+        }
+    }
+}
+
+def configApi(Dependency dependency, Node dependenciesNode) {
+    configDependency(dependency, dependenciesNode, 'api')
+}
+
+def configImplementation(Dependency dependency, Node dependenciesNode) {
+    configDependency(dependency, dependenciesNode, 'implementation')
+}
+
+def configDependency(Dependency dependency, Node dependenciesNode, String scope) {
+    if (dependency instanceof DefaultProjectDependency) {
+        def dependencyNode = dependenciesNode.appendNode('dependency')
+        dependencyNode.appendNode('groupId', gradle.ext.GROUP_ID)
+        dependencyNode.appendNode('artifactId', dependency.dependencyProject.ARTIFACT_ID)
+        dependencyNode.appendNode('version', gradle.ext.VERSION)
+        dependencyNode.appendNode('scope', scope)
+        addOtherDependencyInfo(dependency, dependencyNode)
+    } else if (dependency instanceof DefaultExternalModuleDependency) {
+        def dependencyNode = dependenciesNode.appendNode('dependency')
+        dependencyNode.appendNode('groupId', dependency.group)
+        dependencyNode.appendNode('artifactId', dependency.name)
+        dependencyNode.appendNode('version', dependency.version)
+        dependencyNode.appendNode('scope', scope)
+        addOtherDependencyInfo(dependency, dependencyNode)
+    }
+}
+
+static def addOtherDependencyInfo(Dependency dependency, Node dependencyNode) {
+    if (!dependency.transitive) {
+        // If this dependency is transitive, we should force exclude all its dependencies them from the POM
+        def exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+        exclusionNode.appendNode('groupId', '*')
+        exclusionNode.appendNode('artifactId', '*')
+    } else if (!dependency.properties.excludeRules.empty) {
+        // Otherwise add specified exclude rules
+        def exclusionsNode = dependencyNode.appendNode('exclusions')
+        dependency.properties.excludeRules.each { ExcludeRule rule ->
+            def exclusionNode = exclusionsNode.appendNode('exclusion')
+            exclusionNode.appendNode('groupId', rule.group ?: '*')
+            exclusionNode.appendNode('artifactId', rule.module ?: '*')
+        }
+    }
+}

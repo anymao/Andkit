@@ -3,7 +3,7 @@ package com.anymore.wanandroid
 import androidx.fragment.app.Fragment
 import com.anymore.andkit.mvvm.base.BaseDataBindingActivity
 import com.anymore.wanandroid.databinding.ActivityMainBinding
-import com.anymore.wanandroid.frame.ktx.routeFragment
+import com.anymore.wanandroid.frame.ktx.navigateFragment
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.articlesFragment
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.main
 import com.anymore.wanandroid.frame.router.WanAndroidRouter.naHost
@@ -11,6 +11,7 @@ import com.anymore.wanandroid.frame.router.WanAndroidRouter.naScheme
 import com.anymore.wanandroid.repository.rpc.service.WanAndroidService
 import com.anymore.wanandroid.widget.adapter.FragmentAdapter
 import com.didi.drouter.annotation.Router
+import com.didi.drouter.api.DRouter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -41,7 +42,7 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
 
     private fun provideFragmentCreator(): () -> Fragment {
         return {
-            routeFragment(articlesFragment)
+            DRouter.build(articlesFragment).navigateFragment()
         }
     }
 

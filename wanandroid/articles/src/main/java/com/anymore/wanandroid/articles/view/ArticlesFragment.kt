@@ -38,7 +38,7 @@ class ArticlesFragment : BaseDataBindingDialogFragment<ArticlesFragmentArticlesB
             binding.text.text = it?.firstOrNull()?.title
         }
         binding.wrapper.loader = {
-            launch(loadCallback = binding.wrapper) {
+            launch(callback = binding.wrapper) {
                 delay(5000)
                 vm.loadBanners()
             }

@@ -16,7 +16,7 @@ include ':wanandroid-articles'
 include ':wanandroid-app'
 
 include ':andkit-mvvm'
-include ':image-loader'
+//include ':image-loader'
 include ':andkit-rpc'
 include ':andkit-core'
 include ':andkit-common'
@@ -26,7 +26,7 @@ rootProject.name = "Andkit"
 project(':andkit-common').projectDir = file('andkit/andkit-common')
 project(':andkit-core').projectDir = file('andkit/andkit-core')
 project(':andkit-rpc').projectDir = file('andkit/andkit-rpc')
-project(':image-loader').projectDir = file('andkit/image-loader')
+//project(':image-loader').projectDir = file('andkit/image-loader')
 project(':andkit-mvvm').projectDir = file('andkit/andkit-mvvm')
 
 project(':wanandroid-widget').projectDir = file('wanandroid/widget')
