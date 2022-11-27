@@ -105,25 +105,25 @@ fun <T1, T2, R> combine(
     return result
 }
 
-@MainThread
-fun <T1, T2, R> combine(
-    l1: NullSafetyLiveData<T1>,
-    l2: NullSafetyLiveData<T2>,
-    combiner: (T1, T2) -> R
-): NullSafetyLiveData<R> {
-    var latestData1 = l1.value
-    var latestData2 = l2.value
-    val result = NullSafetyLiveData(combiner(latestData1, latestData2))
-    l1.observeForever { data1: T1 ->
-        latestData1 = data1
-        result.value = combiner(data1, latestData2)
-    }
-    l2.observeForever { data2: T2 ->
-        latestData2 = data2
-        result.value = combiner(latestData1, data2)
-    }
-    return result
-}
+//@MainThread
+//fun <T1, T2, R> combine(
+//    l1: NullSafetyLiveData<T1>,
+//    l2: NullSafetyLiveData<T2>,
+//    combiner: (T1, T2) -> R
+//): NullSafetyLiveData<R> {
+//    var latestData1 = l1.value
+//    var latestData2 = l2.value
+//    val result = NullSafetyLiveData(combiner(latestData1, latestData2))
+//    l1.observeForever { data1: T1 ->
+//        latestData1 = data1
+//        result.value = combiner(data1, latestData2)
+//    }
+//    l2.observeForever { data2: T2 ->
+//        latestData2 = data2
+//        result.value = combiner(latestData1, data2)
+//    }
+//    return result
+//}
 
 @MainThread
 fun <T1, T2, T3, R> combine(
@@ -179,6 +179,52 @@ fun <T1, T2, T3, T4, R> combine(
     l4.observeForever { data4: T4 ->
         latestData4 = data4
         result.value = combiner(latestData1, latestData2, latestData3, data4)
+    }
+    return result
+}
+
+@MainThread
+fun <T1, T2, T3, T4, T5, R> combine(
+    l1: LiveData<T1>,
+    l2: LiveData<T2>,
+    l3: LiveData<T3>,
+    l4: LiveData<T4>,
+    l5: LiveData<T5>,
+    combiner: (T1?, T2?, T3?, T4?, T5?) -> R
+): NullSafetyLiveData<R> {
+    var latestData1: T1? = l1.value
+    var latestData2: T2? = l2.value
+    var latestData3: T3? = l3.value
+    var latestData4: T4? = l4.value
+    var latestData5: T5? = l5.value
+    val result = NullSafetyLiveData(
+        combiner(
+            latestData1,
+            latestData2,
+            latestData3,
+            latestData4,
+            latestData5
+        )
+    )
+    l1.observeForever { data1: T1 ->
+        latestData1 = data1
+        result.value = combiner(data1, latestData2, latestData3, latestData4, latestData5)
+    }
+    l2.observeForever { data2: T2 ->
+        latestData2 = data2
+        result.value = combiner(latestData1, data2, latestData3, latestData4, latestData5)
+    }
+    l3.observeForever { data3: T3 ->
+        latestData3 = data3
+        result.value = combiner(latestData1, latestData2, data3, latestData4, latestData5)
+    }
+    l4.observeForever { data4: T4 ->
+        latestData4 = data4
+        result.value = combiner(latestData1, latestData2, latestData3, data4, latestData5)
+    }
+    l5.observeForever { data5 ->
+        latestData5 = data5
+        result.value = combiner(latestData1, latestData2, latestData3, latestData4, data5)
     }
     return result
 }

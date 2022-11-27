@@ -18,8 +18,7 @@ import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
-import com.anymore.andkit.common.ktx.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -101,14 +100,14 @@ fun View.showKeyboard() {
  * [buffer]同时对数据流默认背压策略是CONFLATED：表示保留最新，send调用后就存放在channel里直接返回，但是channel里只能存放最近一次send的值。
  * [debounce]限流
  */
-@OptIn(ExperimentalCoroutinesApi::class)
+@OptIn(FlowPreview::class)
 fun TextView.afterTextChangedFlow(
     buffer: Int = Channel.CONFLATED,
     debounce: Long = 300L
 ): Flow<Editable?> {
     return callbackFlow {
         val watcher = doAfterTextChanged {
-            offer(it)
+            trySend(it)
         }
         awaitClose { removeTextChangedListener(watcher) }
     }.buffer(buffer).debounce(debounce)
